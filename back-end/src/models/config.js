@@ -7,4 +7,4 @@ const config = {
   database: 'Trybeer',
 };
 
-export default config;
+module.exports = config;
