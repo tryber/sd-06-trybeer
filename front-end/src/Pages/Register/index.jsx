@@ -27,7 +27,6 @@ const handleSubmit = async (event, { name, email, password, isChecked }) => {
   }
 
   const user = await registerUser(name, email, password, role);
-
   handleRedirect(user);
 };
 
