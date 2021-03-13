@@ -12,6 +12,8 @@ const MenuTop = () => {
     switch (window.location.pathname) {
     case '/profile':
       return setPathName('Meu perfil');
+    case '/products':
+      return setPathName('TryBeer');
     default:
       return '';
     }

@@ -8,6 +8,7 @@ import theme from './Styles/Theme';
 import Login from './Pages/Login';
 import Register from './Pages/Register';
 import Profile from './Pages/Profile';
+import Products from './Pages/Products';
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
           <Route path="/login" component={ Login } />
           <Route path="/register" component={ Register } />
           <Route path="/profile" component={ Profile } />
-          <Route path="/products" />
+          <Route path="/products" component={ Products } />
         </Switch>
       </GlobalProvider>
     </ThemeProvider>
