@@ -30,6 +30,8 @@ const Button = ({
 
 Button.defaultProps = {
   color: '',
+  onClick: () => {},
+  disabled: false,
 };
 
 Button.propTypes = {
@@ -38,8 +40,8 @@ Button.propTypes = {
   width: PropTypes.string.isRequired,
   heigth: PropTypes.string.isRequired,
   color: PropTypes.string,
-  disabled: PropTypes.bool.isRequired,
-  onClick: PropTypes.func.isRequired,
+  disabled: PropTypes.bool,
+  onClick: PropTypes.func,
   fontSize: PropTypes.string.isRequired,
   dataTestid: PropTypes.string.isRequired,
 };
