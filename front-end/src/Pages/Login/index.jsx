@@ -4,7 +4,7 @@ import { loginUser } from '../../Services/Apis';
 
 import Container from './styles';
 
-// import Input from '../../Components/Input';
+import Input from '../../Components/Input';
 import Button from '../../Components/Button';
 
 const handleRedirect = () => {
@@ -40,30 +40,18 @@ const userRegistered = () => {
 const form = ({ setEmail, setPassword, isDisabled, email, password }) => (
   <form onSubmit={ (e) => handleSubmit(e, email, password) }>
     <h1>Login</h1>
-    <label htmlFor="email">
-      Email
-      <input
-        id="email"
-        placeholder="Email"
-        // width="400px"
-        // heigth="40px"
-        // fontSize="16px"
-        onChange={ ({ target }) => setEmail(target.value) }
-        data-testid="email-input"
-      />
-    </label>
-    <label htmlFor="senha">
-      Senha
-      <input
-        id="senha"
-        placeholder="Senha"
-        // width="400px"
-        // heigth="40px"
-        // fontSize="16px"
-        onChange={ ({ target }) => setPassword(target.value) }
-        data-testid="password-input"
-      />
-    </label>
+    <Input
+      id="email"
+      label="Email"
+      dataTestid="email-input"
+      onChange={ ({ target }) => setEmail(target.value) }
+    />
+    <Input
+      id="senha"
+      label="Senha"
+      dataTestid="password-input"
+      onChange={ ({ target }) => setPassword(target.value) }
+    />
     <Button
       type="submit"
       width="400px"

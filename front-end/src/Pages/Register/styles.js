@@ -24,7 +24,7 @@ const Container = styled.div`
       margin-bottom: 20px; 
     }
 
-    > label {
+    .label-checkBox {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -36,8 +36,8 @@ const Container = styled.div`
       font-size: 18px;
       font-weight: 500;
 
-      > input {
-        width: 50px;
+      .input-checkBox {
+        width: 20px;
         height: 20px;
 
         font-size: 16px;

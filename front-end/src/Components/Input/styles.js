@@ -1,22 +1,32 @@
 import styled, { css } from 'styled-components';
 
-const CompInput = styled.input`
-  ${({ heigth }) => css`
-    width: 400px;
-    height: ${heigth};
-    margin-bottom: 20px; 
+const CompInput = styled.label`
+  ${() => css`
+    width: 100%;
 
-    font-size: 16px;
+    display: flex;
+    flex-direction: column;
 
-    padding-left: 10px;
+    font-size: 20px;
+    font-weight: 450;
 
-    border: none;
-    border-radius: 5px;
+    > input {
+      width: 400px;
+      height: 40px;
 
-    box-shadow: 0 0 2px 0;
+      padding-left: 10px;
+      font-size: 16px;
 
-    @media (max-width: 500px) {
-      width: 100%;
+      margin: 5px 0 20px 0;
+
+      border: none;
+      border-radius: 5px;
+
+      box-shadow: 0 0 2px 0;
+
+      @media (max-width: 500px) {
+        width: 100%;
+      }
     }
   `}
 `;
