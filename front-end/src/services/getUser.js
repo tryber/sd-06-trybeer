@@ -7,8 +7,8 @@ const fetchUser = async (email, password) => {
     const user = await axios.post(path, { email, password });
     return user.data;
   } catch (error) {
-    console.log('');
+    console.log('error', error);
   }
-};
+}; // tratar erro - retorno
 
 export default fetchUser;

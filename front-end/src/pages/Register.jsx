@@ -32,68 +32,71 @@ export default function Register() {
   };
 
   return (
-    <form>
+    <div className="main-container">
+
+    <form className="form-group">
       <fieldset>
         <label htmlFor="name">
           Nome
-          <input
+          <input className="form-control"
             id="name"
             data-testid="signup-name"
             type="text"
             value={ name }
             onChange={ setName }
-          />
+            />
         </label>
       </fieldset>
       <fieldset>
         <label htmlFor="email">
           Email
-          <input
+          <input className="form-control"
             id="email"
             data-testid="signup-email"
             type="text"
             value={ email }
             onChange={ setEmail }
-          />
+            />
         </label>
       </fieldset>
       <fieldset>
         <label htmlFor="password">
           Senha
-          <input
+          <input className="form-control"
             id="password"
             data-testid="signup-password"
-            type="text"
+            type="password" // estava como texto
             value={ password }
             onChange={ setPassword }
-          />
+            />
         </label>
       </fieldset>
-      <fieldset>
-        <label htmlFor="sell">
+      <fieldset class="form-check">
+        <label htmlFor="sell" >
           Quero Vender
-          <input
+          <input  className="form-check-label" 
             id="sell"
             data-testid="signup-seller"
             type="checkbox"
             onClick={ handleCheckbox }
-          />
+            />
         </label>
-        <button
+        <button className="form-control"
           id="signup"
           data-testid="signup-btn"
           type="button"
           disabled={ !(emailValidation(email)
             && passwordValidation(password) && nameValidation(name)) }
-          onClick={ (e) => {
-            e.preventDefault();
-            handleOnClik();
-          } }
-        >
+            onClick={ (e) => {
+              e.preventDefault();
+              handleOnClik();
+            } }
+            >
           Cadastrar
         </button>
       </fieldset>
       <span>{ emailAlreadyExists }</span>
     </form>
+  </div>
   );
 }

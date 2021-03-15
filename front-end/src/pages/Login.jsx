@@ -1,4 +1,6 @@
 import React from 'react';
+import '../styles/login.css';
+// import '../App.css';
 import { Link, useHistory } from 'react-router-dom';
 import useInput from '../hooks/useInput';
 import fetchUser from '../services/getUser';
@@ -11,7 +13,8 @@ export default function Login() {
   const handleOnClik = async () => {
     fetchUser(email, password)
       .then((response) => {
-        console.log(response);
+        if(!response) return; // mudei aqui
+        console.log(response); // fazer if pra quando for vazio
         localStorage.setItem('token', response[1]);
         if (response[0].role === 'client') {
           history.push('/products');
@@ -19,12 +22,12 @@ export default function Login() {
       });
   };
   return (
-    <div>
-      <form>
+    <div className="main-container">
+      <form className="login-form">
         <fieldset>
           <label htmlFor="email-input">
             Email
-            <input
+            <input className="form-control"
               id="email-input"
               value={ email }
               onChange={ setEmail }
@@ -33,10 +36,10 @@ export default function Login() {
             />
           </label>
         </fieldset>
-        <fieldset>
+        <div className="form-group">
           <label htmlFor="password-input">
             Senha
-            <input
+            <input className="form-control"
               id="password-input"
               value={ password }
               onChange={ setPassword }
@@ -44,8 +47,8 @@ export default function Login() {
               type="password"
             />
           </label>
-        </fieldset>
-        <button
+        </div>
+        <button className="form-group btn btn-primary btn-lg btn-block"
           onClick={ (e) => {
             e.preventDefault();
             handleOnClik();
@@ -56,7 +59,9 @@ export default function Login() {
         >
           ENTRAR
         </button>
-        <Link to="/register" data-testid="no-account-btn">Ainda não tenho conta</Link>
+        <div>
+        <Link to="/register" data-testid="no-account-btn" className="btn btn-outline-primary btn-sm">Ainda não tenho conta</Link>
+        </div>
       </form>
     </div>
   );
