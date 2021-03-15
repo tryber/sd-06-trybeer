@@ -1,20 +1,16 @@
-const {getByEmail} = require('../models/UsersService')
-async function validateLogin (req, res, next) {
-    const {email} = req.body.user
-    const [user] = await getByEmail(email)
-    if (user) {
-      res.locals.user = user
-      next();
-    }
-    else {
-      next({status: 404, message: 'not found'})
+const validatePassword = require('./validatePassword');
 
-    }
-    
-  
+const validateEmail = require('./validateEmail');
 
-  
-  
-}
+const validateLogin = async (req, res, next) => {
+  try {
+    await validateEmail(req, res);
+    const response = await validatePassword(req, res);
+    if (!response.valid) throw response;
+    next();
+  } catch (Err) {
+    next(Err);
+  }
+};
 
-module.exports = validateLogin
+module.exports = validateLogin;

@@ -1,7 +1,8 @@
 const { Router } = require('express');
 const jwt = require('jsonwebtoken');
-const { getAll, getById, createOne, getByEmail } = require('../models/UsersService');
-const validateLogin = require('../middlewares/validateLogin')
+const { getAll, getById } = require('../models/UsersService');
+const { validateLogin } = require('../middlewares');
+
 const routerLogin = Router();
 
 const jwtConfig = {
@@ -16,19 +17,19 @@ routerLogin.get('/', async (_req, res) => {
   res.send(users);
 });
 
-routerLogin.post('/', validateLogin,async (req, res) => {
+
+routerLogin.post('/', validateLogin, async (req, res) => {
   const { user } = req.body;
-  const { password, ...userWithouPassword } = user;
+  if (!res.locals.user) return next({ status: 404, message: 'not found' });
   const payload = {
     iss: 'Trybeer',
     aud: 'indentity',
-    userData: userWithouPassword,
+    userData: user.email,
   };
   const token = jwt.sign(payload, SECRET, jwtConfig);
-  console.log(res.locals.user)
-  const {name, email, role} = res.locals.user
+  const { name, email, role } = res.locals.user;
   res.status(201).json({
-    name, email, token , role    
+    name, email, token, role,    
     });
 });
 
@@ -38,7 +39,5 @@ routerLogin.get('/:id', async (req, res) => {
   const user = await getById(id);
   res.json(user);
   });
-
-  
 
 module.exports = routerLogin;
