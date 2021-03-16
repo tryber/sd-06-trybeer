@@ -7,3 +7,5 @@ coverage/*
 node_modules/
 reports/
 cypress/
+craco.config.js
+tailwind.config.js

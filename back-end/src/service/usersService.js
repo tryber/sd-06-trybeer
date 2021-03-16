@@ -10,7 +10,7 @@ const getAll = async () => {
 
 const loginUser = async (email, userPass) => {
   const userInfo = await Validations.loginValidation(email, userPass);
-  console.log(userInfo);
+
   if (userInfo.payload) return userInfo;
   const { id, name, role } = userInfo;
   const token = Utils.generateToken(id);
@@ -19,7 +19,8 @@ const loginUser = async (email, userPass) => {
     id,
     name,
     role,
-  }
+  };
+
   return result;
 };
 
@@ -28,7 +29,9 @@ const createUser = async (name, email, userPass, role) => {
 
   if (validation.payload) return validation;
 
-  const result = await usersModel.createUser(name, email, userPass, role);
+  const preResult = await usersModel.createUser(name, email, userPass, role);
+  const token = Utils.generateToken(preResult.id);
+  const result = { ...preResult, token };
   return result;
 };
 

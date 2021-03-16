@@ -4,6 +4,7 @@ const userModel = require('../../model/usersModel');
 const secret = 'secretToken';
 const UNAUTHORIZED = 401;
 const BAD_REQUEST = 400;
+const ALREADY_EXISTS = 200;
 
 const invalidEntries = {
   payload: { message: 'Invalid entries. Try again.' },
@@ -12,7 +13,7 @@ const invalidEntries = {
 
 const userAlredyRegistered = {
   payload: { message: 'A user with this email already exists.' },
-  status: BAD_REQUEST,
+  status: ALREADY_EXISTS,
 };
 
 const notAdmin = {
