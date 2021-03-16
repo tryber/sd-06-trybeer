@@ -16,7 +16,19 @@ const getUser = async (email, password) => {
   return user;
 };
 
+const addUser = async (name, email, password, role) => {
+  await connection.execute(
+    `INSERT INTO Trybeer.${coll} (name, email, password, role) VALUES(?, ?, ?, ?);`,
+    [name, email, password, role],
+  );
+
+  const user = await getUser(email, password);
+
+  return user;
+};
+
 module.exports = {
   getAll,
   getUser,
+  addUser,
 };

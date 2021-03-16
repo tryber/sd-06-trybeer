@@ -6,6 +6,7 @@ import UserContext from './UseContext';
 const Provider = ({ children }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [name, setName] = useState('');
   const [loginRequest, setLoginRequest] = useState('');
 
   // const api = async () => {
@@ -19,6 +20,8 @@ const Provider = ({ children }) => {
   // }, []);
 
   const contextValue = {
+    name,
+    setName,
     email,
     setEmail,
     password,
