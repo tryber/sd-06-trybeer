@@ -9,6 +9,7 @@ import loginValidation from '../../utils/loginValidation';
 
 function Login() {
   const history = useHistory();
+  console.log(history);
   const {
     loginEmail,
     loginPassword,
