@@ -22,7 +22,7 @@ function Login({ history }) {
   const handleClick = async (e) => {
     e.preventDefault();
     const loginValidate = await api.generateToken(user.email, user.password);
-    // console.log(loginValidate.response);
+    console.log(loginValidate);
     // const auth = await loginValidate.result;
     if (loginValidate.token) {
       const { token } = loginValidate;
