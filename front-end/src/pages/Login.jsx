@@ -22,14 +22,15 @@ function Login({ history }) {
   const handleClick = async (e) => {
     e.preventDefault();
     const loginValidate = await api.generateToken(user.email, user.password);
-    const userAdmin = user.email === 'tryber@trybe.com.br';
-    const userClient = user.email === 'bruno.batista@gmail.com';
-    if (loginValidate.response.token || userAdmin || userClient) {
-      const { token, role } = loginValidate.response;
+    // const userAdmin = user.email === 'tryber@trybe.com.br';
+    // const userClient = user.email === 'bruno.batista@gmail.com';
+    console.log(loginValidate.response);
+    if (loginValidate.result) {
+      // const { token, role } = loginValidate.response;
       setErrMsg(false);
-      if (role === 'administrator' || userAdmin)history.push('/admin/orders');
-      else history.push('/products');
-      localStorage.setItem('user', JSON.stringify({ email: user.email, token }));
+      history.push('/admin/orders');
+      // else history.push('/products');
+      // localStorage.setItem('user', JSON.stringify({ email: user.email, token }));
     } else {
       setDisplayErr(true);
       setErrMsg(loginValidate.response.message);
