@@ -27,7 +27,6 @@ const fetchRegister = async (name, email, password, check) => {
   return response;
 };
 
-<<<<<<< HEAD
 const fetchProducts = async () => {
   const response = await fetch('http://localhost:3001/products', {
     method: 'GET',
@@ -39,7 +38,8 @@ const fetchProducts = async () => {
 
   if (response.message) return false;
   return response;
-=======
+}
+
 const fetchChangeName = async (name, email) => {
   await fetch('http://localhost:3001/changeName', {
     method: 'PUT',
@@ -49,15 +49,11 @@ const fetchChangeName = async (name, email) => {
       email,
     }),
   });
->>>>>>> main-group-2
 };
 
 module.exports = {
   fetchLogin,
   fetchRegister,
-<<<<<<< HEAD
   fetchProducts,
-=======
   fetchChangeName,
->>>>>>> main-group-2
 };
