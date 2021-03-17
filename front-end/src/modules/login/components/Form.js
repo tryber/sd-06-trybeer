@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import * as API from '../../../utils';
+import Buttons from './Buttons';
+import EmailInput from './EmailInput';
+import PasswordInput from './PasswordInput';
 
 const patternEmail = /^[a-z0-9.]+@[a-z0-9]+\.[a-z]+(\.[a-z]+)?$/i;
 const patternPassword = /^[0-9]{6,}$/;
@@ -9,8 +12,9 @@ const patterns = { email: patternEmail, password: patternPassword };
 
 function Form() {
   const [form, setForm] = useState({ email: '', password: '' });
-  const [errorForm, setErrorForm] = useState({ email: '', password: '' });
+  const [errorForm, setErrorForm] = useState({ email: true, password: true });
   const [errorMsg, setErrorMsg] = useState('');
+  const [seePassword, setSeePassword] = useState(true);
   const history = useHistory();
 
   const handleChangeInput = ({ target }) => {
@@ -30,30 +34,13 @@ function Form() {
   };
 
   return (
-    <form onSubmit={ handleSubmit }>
-      <input
-        data-test-id="email-input"
-        name="email"
-        type="text"
-        value={ form.email }
-        onChange={ handleChangeInput }
-      />
-      <input
-        data-test-id="password-input"
-        name="password"
-        type="text"
-        value={ form.password }
-        onChange={ handleChangeInput }
-      />
-      <p>{ errorMsg }</p>
-      <button
-        data-test-id="signin-btn"
-        type="submit"
-        disabled={ errorForm.email || errorForm.password }
-      >
-        <p>Entrar ENTRAR (esconder)</p>
-        <p>Sign In</p>
-      </button>
+    <form className="flex flex-col mt-10" onSubmit={ handleSubmit }>
+      <div className="flex flex-col space-y-4">
+        { EmailInput(handleChangeInput, form.email) }
+        { PasswordInput(handleChangeInput, form.password,
+          seePassword, setSeePassword) }
+        { Buttons(errorMsg, errorForm) }
+      </div>
     </form>
   );
 }

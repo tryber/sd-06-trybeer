@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import { Redirect } from 'react-router-dom';
 import Buttons from '../components/Buttons';
 import api from '../../../axios';
-// import { Redirect } from 'react-router-dom';
 import PaperContainer from '../../../design-system/containers/PaperContainer';
 
 const Products = () => {
-  // const storage = JSON.parse(localStorage.getItem('user'));
-  // const existToken = storage ? storage.token : false;
+  const storage = JSON.parse(localStorage.getItem('user'));
+  const existToken = storage ? storage.token : false;
   const [prod, setProd] = useState('');
   const [rendering, setRendering] = useState(false);
   useEffect(() => {
@@ -32,7 +32,7 @@ const Products = () => {
 
   return (
     <PaperContainer>
-      {/* { !existToken && <Redirect to="/login" /> } */}
+      { !existToken && <Redirect to="/login" /> }
       {rendering ? getProducts() : <span>Waiting data</span>}
     </PaperContainer>
   );
