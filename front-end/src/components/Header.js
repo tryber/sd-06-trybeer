@@ -15,7 +15,7 @@ class Header extends React.Component {
     if (pathname === '/profile') {
       header.innerText = 'Meu perfil';
     }
-    if (pathname === '/admin/profile') {
+    else if (pathname === '/admin/profile') {
       header.innerText = 'Admin - Meu Perfil';
     }
   }

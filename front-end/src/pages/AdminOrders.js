@@ -1,7 +1,6 @@
-import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
-import { Header } from '../components';
+import SideBarAdmin from '../components/SideBarAdmin';
 
 class AdminOrders extends React.Component {
   constructor() {
@@ -10,18 +9,14 @@ class AdminOrders extends React.Component {
   }
 
   render() {
-    const { history } = this.props;
     return (
       <div>
-        <Header history={ history } />
-        <p>Orders</p>
+        <SideBarAdmin />
+        <p>Pedidos Pendentes</p>
       </div>
     );
   }
 }
 
-AdminOrders.propTypes = {
-  history: PropTypes.shape().isRequired,
-};
 
 export default connect(null, null)(AdminOrders);

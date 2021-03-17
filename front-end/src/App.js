@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import history from './utilities/history';
 import {
-  Login, Register, Profile, Products, Orders, AdminOrders, Home,
+  Login, Register, Profile, Products, Orders, AdminOrders, Home, AdminProfile,
 } from './pages';
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
         <Route exact path="/profile" component={ Profile } />
         <Route exact path="/orders" component={ Orders } />
         <Route exact path="/products" component={ Products } />
-        <Route exact path="/admin/profile" component={ AdminOrders } />
+        <Route exact path="/admin/profile" component={ AdminProfile } />
         <Route exact path="/admin/orders" component={ AdminOrders } />
       </Switch>
     </div>

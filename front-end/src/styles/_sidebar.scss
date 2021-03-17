@@ -1,0 +1,68 @@
+.sidebar-container {
+  background-color: $lightblue;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: none;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 20%;
+  h1 {
+    text-align: center;
+    width: 100%;
+    height: 10%;
+    margin: 0;
+    font-size: 40px;
+    padding-top: 15px;
+  }
+  .buttons {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+    button {
+      color: $lightblue;
+      background-color: $darkWhite;
+      width: 90%;
+      height: 35px;
+      font-size: 20px;
+      font-weight: 900;
+      margin: 10px;
+      border-radius: 7px;
+      border: none;
+      transition: 0.2s;
+      &:hover {
+        transition: 0.3s;
+        box-shadow: 0 0px 10px #9ecaed;
+      }
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+  .button-logout {
+    position: absolute;
+    top: 86.72%;
+    bottom: 9.18%;
+    width: 100%;
+    button {
+      color: $lightblue;
+      background-color: $darkWhite;
+      width: 90%;
+      height: 35px;
+      font-size: 20px;
+      font-weight: 900;
+      margin: 10px;
+      border-radius: 7px;
+      border: none;
+      transition: 0.2s;
+      &:hover {
+        transition: 0.3s;
+        box-shadow: 0 0px 10px #9ecaed;
+      }
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+}
