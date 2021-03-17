@@ -22,10 +22,10 @@ function Login({ history }) {
   const handleClick = async (e) => {
     e.preventDefault();
     const loginValidate = await api.generateToken(user.email, user.password);
-    console.log(loginValidate.response);
-    const auth = await loginValidate.result;
-    if (auth) {
-      const { token, role } = loginValidate.response;
+    // console.log(loginValidate.response);
+    // const auth = await loginValidate.result;
+    if (loginValidate.token) {
+      const { token, role } = loginValidate;
       setErrMsg(false);
       if (role === 'administrator') history.push('/admin/orders');
       else history.push('/products');
