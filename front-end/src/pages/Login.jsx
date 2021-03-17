@@ -22,15 +22,15 @@ function Login({ history }) {
   const handleClick = async (e) => {
     e.preventDefault();
     const loginValidate = await api.generateToken(user.email, user.password);
-    console.log(loginValidate.result);
-    if (loginValidate.result) {
-      const { token } = loginValidate.response;
+    console.log(loginValidate);
+    if (loginValidate) {
+      const { token } = loginValidate;
       setErrMsg(false);
       history.push('/admin/orders');
       localStorage.setItem('user', JSON.stringify({ email: user.email, token }));
     } else {
       setDisplayErr(true);
-      setErrMsg(loginValidate.response.message);
+      setErrMsg(loginValidate);
     }
   };
 
