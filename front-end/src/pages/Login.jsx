@@ -25,10 +25,10 @@ function Login({ history }) {
     // console.log(loginValidate.response);
     // const auth = await loginValidate.result;
     if (loginValidate.token) {
-      const { token, role } = loginValidate;
+      const { token } = loginValidate;
       setErrMsg(false);
-      if (role === 'administrator') history.push('/admin/orders');
-      else history.push('/products');
+      history.push('/admin/orders');
+      history.push('/products');
       localStorage.setItem('user', JSON.stringify({ email: user.email, token }));
     } else {
       setDisplayErr(true);
