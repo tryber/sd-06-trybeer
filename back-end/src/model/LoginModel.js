@@ -1,6 +1,6 @@
 const connection = require('./connection');
 
-const generateToken = async (email) => {
+const getUserByEmail = async (email) => {
   const [result] = await connection.execute(
     'SELECT id, name, email, role FROM Trybeer.users WHERE email=?', [email],
   );
@@ -9,5 +9,5 @@ const generateToken = async (email) => {
 };
 
 module.exports = {
-  generateToken,
+  getUserByEmail,
 };

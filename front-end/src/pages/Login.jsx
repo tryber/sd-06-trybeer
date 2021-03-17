@@ -24,10 +24,10 @@ function Login({ history }) {
     const userData = await api.generateToken(user.email, user.password);
     console.log(userData);
     if (userData.token) {
-      // const { role } = userData.response;
+      const { role } = userData.user;
       setErrMsg(false);
-      history.push('/admin/orders');
-      // else history.push('/products');
+      if (role === 'administrator') history.push('/admin/orders');
+      else history.push('/products');
       localStorage.user = JSON.stringify(userData.response);
     } else {
       setDisplayErr(true);

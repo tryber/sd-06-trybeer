@@ -1,11 +1,10 @@
-// const { LoginModel } = require('../model');
+const { LoginModel } = require('../model');
 const { generateNewToken } = require('../utils');
 
 const generateToken = async (email) => {
-  // const [user] = await LoginModel.generateToken(email);
-
+  const [user] = await LoginModel.getUserByEmail(email);
   const token = await generateNewToken(email);
-  const result = { token };
+  const result = { user, token };
 
   return result;
 };
