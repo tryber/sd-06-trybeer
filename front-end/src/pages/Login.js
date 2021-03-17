@@ -2,6 +2,13 @@ import React, { useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import TrybeerContext from '../context/TrybeerContext';
 
+import Input from '../components/Register/Input';
+
+const formsInputs = [
+  { title: 'Email', id: 'email-input', type: 'email', callback: '' },
+  { title: 'Senha', id: 'password-input', type: 'password', callback: '' },
+];
+
 const {
   userValidation, redirectPath, handleUserNotRegistered,
 } = require('../services/loginService');
@@ -13,29 +20,20 @@ function Login() {
 
   return (
     <form>
-      <div>
-        <label htmlFor="email-input">
-          Email
-          <input
-            id="email-input"
-            type="email"
-            name="email"
-            data-testid="email-input"
-            onChange={ () => userValidation(user, setUser, setEnableButton) }
+      {formsInputs.map((input, index) => {
+        const { title, id, type, callback } = input;
+        input.callback = () => userValidation(user, setUser, setEnableButton);
+
+        return (
+          <Input
+            key={ index }
+            title={ title }
+            id={ id }
+            type={ type }
+            callback={ callback }
           />
-        </label>
-      </div>
-      <div>
-        <label htmlFor="password-input">
-          Senha
-          <input
-            id="password-input"
-            type="password"
-            data-testid="password-input"
-            onChange={ () => userValidation(user, setUser, setEnableButton) }
-          />
-        </label>
-      </div>
+        );
+      })}
       <div>
         <button
           disabled={ enableButton }

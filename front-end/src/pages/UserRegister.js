@@ -1,14 +1,23 @@
 import React, { useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
+
 import TrybeerContext from '../context/TrybeerContext';
+
 import {
   validateNewUser,
   registerNewUSer,
 } from '../services/UserRegisterService';
+
 import Input from '../components/Register/Input';
 import AlreadyRegisterdMessage from '../components/Register/AlreadyRegisterdMessage';
-
 import TopBar from '../components/TopBar';
+
+const formsInputs = [
+  { title: 'Nome', id: 'signup-name', type: 'text', callback: '' },
+  { title: 'Email', id: 'signup-email', type: 'email', callback: '' },
+  { title: 'Senha', id: 'signup-password', type: 'password', callback: '' },
+  { title: 'Quero vender', id: 'signup-seller', type: 'checkbox', callback: '' },
+];
 
 function UserRegister() {
   const { newUser, setNewUser } = useContext(TrybeerContext);
@@ -23,30 +32,20 @@ function UserRegister() {
         <h1>User Register</h1>
       </div>
       <form>
-        <Input
-          title="Nome"
-          id="signup-name"
-          type="text"
-          callback={ () => validateNewUser(newUser, setNewUser, setEnableButton) }
-        />
-        <Input
-          title="Email"
-          id="signup-email"
-          type="email"
-          callback={ () => validateNewUser(newUser, setNewUser, setEnableButton) }
-        />
-        <Input
-          title="Senha"
-          id="signup-password"
-          type="password"
-          callback={ () => validateNewUser(newUser, setNewUser, setEnableButton) }
-        />
-        <Input
-          title="Quero vender"
-          id="signup-seller"
-          type="checkbox"
-          callback={ () => validateNewUser(newUser, setNewUser, setEnableButton) }
-        />
+        {formsInputs.map((input, index) => {
+          const { title, id, type, callback } = input;
+          input.callback = () => validateNewUser(newUser, setNewUser, setEnableButton);
+
+          return (
+            <Input
+              key={ index }
+              title={ title }
+              id={ id }
+              type={ type }
+              callback={ callback }
+            />
+          );
+        })}
         <button
           disabled={ enableButton }
           type="button"
