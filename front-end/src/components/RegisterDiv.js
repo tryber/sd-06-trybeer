@@ -12,34 +12,6 @@ class RegisterDiv extends React.Component {
     this.signUp = this.signUp.bind(this);
   }
 
-  async signUp({ target }) {
-    const { history } = this.props;
-    const name = target.parentNode.firstChild.childNodes[1].value;
-    const email = target.parentNode.firstChild.childNodes[2].childNodes[1].value;
-    const pass = target.parentNode.firstChild.childNodes[4].value;
-    const checked = target.parentNode.firstChild.childNodes[5].childNodes[0];
-    const spanMaxTime = 10000;
-    let role = 'client';
-    if (checked.checked) {
-      role = 'administrator';
-    }
-    const user = await create(name, email, pass, role);
-    if (user.statusText) {
-      const hiddenSpan = document.querySelector('.hidden-span');
-      hiddenSpan.style.display = 'inline-block';
-      hiddenSpan.innerHTML = user.message;
-      setTimeout(() => {
-        document.querySelector('.hidden-span').style.display = 'none';
-      }, spanMaxTime);
-      return null;
-    }
-    if (user.role === 'administrator') {
-      history.push('./admin/orders');
-    } else {
-      history.push('./products');
-    }
-  }
-
   handleChange({ target: { name, value } }) {
     const { dispatchRegName, dispatchRegEmail, dispatchRegPass } = this.props;
     if (name === 'email') {
@@ -69,6 +41,34 @@ class RegisterDiv extends React.Component {
       } else {
         dispatchRegName(false);
       }
+    }
+  }
+
+  async signUp({ target }) {
+    const { history } = this.props;
+    const name = target.parentNode.firstChild.childNodes[1].value;
+    const email = target.parentNode.firstChild.childNodes[2].childNodes[1].value;
+    const pass = target.parentNode.firstChild.childNodes[4].value;
+    const checked = target.parentNode.firstChild.childNodes[5].childNodes[0];
+    const spanMaxTime = 10000;
+    let role = 'client';
+    if (checked.checked) {
+      role = 'administrator';
+    }
+    const user = await create(name, email, pass, role);
+    if (user.statusText) {
+      const hiddenSpan = document.querySelector('.hidden-span');
+      hiddenSpan.style.display = 'inline-block';
+      hiddenSpan.innerHTML = user.message;
+      setTimeout(() => {
+        document.querySelector('.hidden-span').style.display = 'none';
+      }, spanMaxTime);
+      return null;
+    }
+    if (user.role === 'administrator') {
+      history.push('./admin/orders');
+    } else {
+      history.push('./products');
     }
   }
 

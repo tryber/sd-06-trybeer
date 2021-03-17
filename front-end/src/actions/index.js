@@ -7,6 +7,10 @@ export const PROFILE_NAME = 'PROFILE_NAME';
 export const USER_INFO = 'USER_INFO';
 export const CART_LIST = 'CART_LIST';
 export const PROD_LIST = 'PROD_LIST';
+export const ID = 'ID';
+export const QUANTITY = 'QUANTITY';
+export const REMOVE = 'REMOVE';
+export const PRICE = 'PRICE';
 
 export const validEmail = (boolean) => ({
   type: EMAIL,
@@ -51,4 +55,25 @@ export const prodList = (array) => ({
 export const cartList = (array) => ({
   type: CART_LIST,
   array,
+});
+
+export const globalID = (id) => ({
+  type: ID,
+  id,
+});
+
+export const globalQuantity = (quantity, id) => ({
+  type: QUANTITY,
+  quantity,
+  id,
+});
+
+export const removeCartItem = (array) => ({
+  type: REMOVE,
+  array,
+});
+
+export const updatePrice = (number) => ({
+  type: PRICE,
+  number,
 });

@@ -28,8 +28,9 @@ class Profile extends React.Component {
 
   async editUser({ target }) {
     const { stateActualUser } = this.props;
+    console.log(stateActualUser.name);
     let nextName = target.parentNode.childNodes[1].value;
-    const response = await edit(stateActualUser[0].name, nextName);
+    const response = await edit(stateActualUser.name, nextName);
     if (response.data.message) {
       nextName = '';
       const spanMaxTime = 6000;

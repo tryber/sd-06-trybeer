@@ -7,4 +7,14 @@ const validateLogin = async (email, password) => {
   return user;
 };
 
-module.exports = { validateLogin };
+const findUserByEmail = async (email) => {
+  const foundUser = await connection.execute(
+    'SELECT * FROM users WHERE email = ?', [email],
+  );
+  return foundUser;
+};
+
+module.exports = {
+  validateLogin,
+  findUserByEmail,
+};

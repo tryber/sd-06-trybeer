@@ -1,18 +1,34 @@
-import { PROD_LIST, CART_LIST } from '../actions';
+import { PROD_LIST, CART_LIST, ID, QUANTITY, REMOVE, PRICE } from '../actions';
 
 const INITIAL_STATE = {
+  price: 0,
+  globalID: [],
+  quantity: { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0, 9: 0, 10: 0, 11: 0 },
   cartList: [],
   products: [],
 };
 
-// eslint-disable-next-line import/no-anonymous-default-export
 export default function (state = INITIAL_STATE, action) {
   switch (action.type) {
+  case PRICE:
+    return { ...state, price: action.number };
   case PROD_LIST:
     return {
       ...state, products: action.array,
     };
   case CART_LIST:
+    return {
+      ...state, cartList: [...state.cartList, action.array],
+    };
+  case ID:
+    return {
+      ...state, globalID: [...state.globalID, action.id],
+    };
+  case QUANTITY:
+    return {
+      ...state, quantity: { ...state.quantity, [action.id]: action.quantity },
+    };
+  case REMOVE:
     return {
       ...state, cartList: action.array,
     };

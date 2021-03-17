@@ -36,12 +36,15 @@ class LoginDiv extends React.Component {
     const email = target.parentNode.parentNode.firstChild.childNodes[1].value;
     const password = target.parentNode.parentNode.firstChild.childNodes[3].value;
     const loginUser = await validate(email, password);
+    console.log(loginUser);
     dispatchUser(loginUser);
-    // isvalid pro Redux
-    if (loginUser[0].role === 'administrator') {
+
+    if (loginUser.role === 'administrator') {
       history.push('/admin/orders');
-    } else {
+    } else if (loginUser.role === 'client') {
       history.push('/products');
+    } else {
+      history.push('/register');
     }
   }
 
@@ -74,7 +77,7 @@ class LoginDiv extends React.Component {
             disabled={ !validRegEmail || !validRegPassword }
             onClick={ (event) => this.signIn(event) }
           >
-            ENTRAR
+            Entrar
           </button>
           <button
             type="button"
