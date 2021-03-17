@@ -6,10 +6,10 @@ const generateToken = async (email, password) => axios.post(`${url}/login`, {
   email,
   password,
 })
-  .then((res) => res.data)
+  .then((res) => ({ response: res.data, result: true }))
   .catch((err) => {
     if (err.response) {
-      return err.response.data;
+      return { response: err.response.data, result: false };
     }
   });
 

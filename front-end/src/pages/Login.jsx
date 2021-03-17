@@ -22,15 +22,17 @@ function Login({ history }) {
   const handleClick = async (e) => {
     e.preventDefault();
     const loginValidate = await api.generateToken(user.email, user.password);
-    console.log(loginValidate);
-    if (loginValidate) {
-      const { token } = loginValidate;
+    console.log(loginValidate.response);
+    const auth = await loginValidate.result;
+    if (auth) {
+      const { token, role } = loginValidate.response;
       setErrMsg(false);
-      history.push('/admin/orders');
+      if (role === 'administrator') history.push('/admin/orders');
+      else history.push('/products');
       localStorage.setItem('user', JSON.stringify({ email: user.email, token }));
     } else {
       setDisplayErr(true);
-      setErrMsg(loginValidate);
+      setErrMsg(loginValidate.response.message);
     }
   };
 
