@@ -3,6 +3,8 @@ import { Redirect } from 'react-router-dom';
 import Buttons from '../components/Buttons';
 import api from '../../../axios';
 import PaperContainer from '../../../design-system/containers/PaperContainer';
+import BodyContainer from '../../../design-system/containers/BodyContainer';
+import PageMenu from '../../../design-system/side_menu/PageMenu';
 
 const Products = () => {
   const storage = JSON.parse(localStorage.getItem('user'));
@@ -31,10 +33,13 @@ const Products = () => {
   }
 
   return (
-    <PaperContainer>
-      { !existToken && <Redirect to="/login" /> }
-      {rendering ? getProducts() : <span>Waiting data</span>}
-    </PaperContainer>
+    <BodyContainer>
+      <PageMenu pageName="Produtos" />
+      <PaperContainer>
+        { !existToken && <Redirect to="/login" /> }
+        {rendering ? getProducts() : <span>Waiting data</span>}
+      </PaperContainer>
+    </BodyContainer>
   );
 };
 
