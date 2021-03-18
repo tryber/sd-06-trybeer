@@ -22,13 +22,13 @@ function Login({ history }) {
   const handleClick = async (e) => {
     e.preventDefault();
     const userData = await api.generateToken(user.email, user.password);
-    console.log(userData);
+    const dataUser = userData.user;
     if (userData.token) {
-      const { role } = userData.user;
+      const { role, token } = userData.user;
       setErrMsg(false);
       if (role === 'administrator') history.push('/admin/orders');
       else history.push('/products');
-      localStorage.user = JSON.stringify(userData.response);
+      localStorage.user = JSON.stringify(dataUser);
     } else {
       setDisplayErr(true);
       setErrMsg(userData.message);
