@@ -20,9 +20,10 @@ const registerUser = async (name, email, password, role) => axios
   .then((res) => ({ response: res.data, result: true }))
   .catch((err) => ({ response: err.response.data, result: false }));
 
-const updateNameOfUser = async (name) => axios
-  .put(`${url}/user`, {
+const updateNameOfUser = async (name, email) => axios
+  .put(`${url}/profile`, {
     name,
+    email,
   })
   .then((res) => res.data)
   .catch((err) => err.response.data);

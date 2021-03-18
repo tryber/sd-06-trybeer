@@ -22,7 +22,8 @@ function Profile() {
   const handleClick = () => {
     const updateUser = { ...JSON.parse(localStorage.user), name };
     localStorage.user = JSON.stringify(updateUser);
-    api.updateNameOfUser(updateUser);
+    api.updateNameOfUser(updateUser.name, updateUser.email);
+    console.log(updateUser, '', updateUser.name, '', updateUser.email);
     setUpdateName(true);
   };
 
