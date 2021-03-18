@@ -6,7 +6,7 @@ module.exports = (email) => {
     expiresIn: '10d',
     algorithm: 'HS256',
   };
-  const secret = 'cabeça'
+  const secret = 'cabeça';
   const token = jwt.sign({ data: email }, process.env.TOKEN_SECRET || secret, jwtConfig);
   return token;
 };
