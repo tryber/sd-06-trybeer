@@ -7,6 +7,7 @@ function SideBar() {
 
   return (
     <div className="side-menu-container">
+
       <button
         type="button"
         data-testid="side-menu-item-products"

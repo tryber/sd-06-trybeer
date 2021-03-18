@@ -1,22 +1,27 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
-import { loadStorage, saveStorage } from '../service/localStorage';
-
-const seila = (element) => {
-  const productQuantity = loadStorage('productQuantity', []);
-  const objQuantity = productQuantity
-    .find((objStoraged) => objStoraged.id === element.id);
-  if (objQuantity) return objQuantity.qnt;
-  return 0;
-};
+import BeersAppContext from '../context/BeersAppContext';
 
 function ProductsCard({ element, index }) {
-  const [qnt, setQnt] = useState(seila(element));
+  const {
+    productQuantity,
+    setProductQuantity,
+  } = useContext(BeersAppContext);
+
+  const storageInitialState = () => {
+    const objQuantity = productQuantity
+      .find((objStoraged) => objStoraged.id === element.id);
+    if (objQuantity) return objQuantity.qnt;
+    return 0;
+  };
+
+  const [qnt, setQnt] = useState(storageInitialState());
 
   useEffect(() => {
-    const des = loadStorage('productQuantity', [])
+    const ola = productQuantity
       .filter((objStoraged) => objStoraged.id !== element.id);
-    saveStorage('productQuantity', [...des, { id: element.id, qnt }]);
+    if (qnt !== 0) setProductQuantity([...ola, { id: element.id, qnt }]);
+    else setProductQuantity(ola);
   }, [qnt]);
 
   const { name, url_image, price } = element;

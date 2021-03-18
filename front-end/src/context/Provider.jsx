@@ -4,14 +4,24 @@ import BeersAppContext from './BeersAppContext';
 
 function Provider({ children }) {
   const [user, setUser] = useState(loadStorage('user', {}));
+  const [
+    productQuantity,
+    setProductQuantity,
+  ] = useState(loadStorage('productQuantity', []));
 
   useEffect(() => {
-    saveStorage('user', user)
-  }, [user])
+    saveStorage('productQuantity', productQuantity);
+  }, [productQuantity]);
+
+  useEffect(() => {
+    saveStorage('user', user);
+  }, [user]);
 
   const contextValue = {
     user,
     setUser,
+    productQuantity,
+    setProductQuantity,
   };
 
   return (

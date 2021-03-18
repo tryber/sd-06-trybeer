@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 
 import BeersAppContext from '../context/BeersAppContext';
 import fetchApiJsonBody from '../service/fetchApi';
@@ -122,5 +123,9 @@ function Signup({ history }) {
     </div>
   );
 }
+
+Signup.propTypes = {
+  history: PropTypes.func.isRequired,
+};
 
 export default Signup;
