@@ -10,7 +10,7 @@ const Orders = () => {
   return (
     <div>
       { !existToken && <Redirect to="/login" /> }
-      <PageMenu />
+      <PageMenu pageName="Meus Pedidos" />
       <PaperContainer>
         <p>Produtos</p>
       </PaperContainer>

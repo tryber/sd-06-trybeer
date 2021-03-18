@@ -18,7 +18,12 @@ function BoxMenu({ pageName }) {
       >
         <i className="fas fa-bars fa-2x" />
       </button>
-      <p className="text-2xl flex">{ pageName }</p>
+      <p
+        className="text-2xl flex"
+        data-testid="top-title"
+      >
+        { pageName }
+      </p>
     </nav>
   );
 }

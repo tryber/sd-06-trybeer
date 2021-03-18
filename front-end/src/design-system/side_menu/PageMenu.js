@@ -10,7 +10,7 @@ function PageMenu({ pageName }) {
   return (
     <nav className="fixed flex flex-col top-0 left-0 p-3 w-full">
       <BoxMenu pageName={ pageName } />
-      { menuStatus && <MenuList /> }
+      { !menuStatus && <MenuList /> }
     </nav>
   );
 }
