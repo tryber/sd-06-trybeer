@@ -4,9 +4,11 @@ import SidebarMenu from '../components/SideBarMenu';
 import TopMenu from '../components/TopMenu';
 import fetchFunctions from '../api/fetchFunctions';
 import TrybeerContext from '../context/TrybeerContext';
+// import { verifyToken } from '../utils/verifications';
 
-function Profile(props) {
+function Profile({ history }) {
   const { user } = useContext(TrybeerContext);
+  // const { dataFromLocalStorage } = useContext(TrybeerContext);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [disabled, setDisabled] = useState(true);
@@ -29,10 +31,13 @@ function Profile(props) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     await fetchFunctions.put('register', { name: e.target.form[0].value, email });
-    const { history } = props;
     setIsUpdated(true);
     setTimeout(() => history.push('/login'), TIME_TO_REDIRECT);
   };
+
+  // useEffect(() => {
+  //   verifyToken('login', dataFromLocalStorage, history);
+  // }, []);
 
   useEffect(() => { setConfig(); }, [isUpdated, setConfig]);
 

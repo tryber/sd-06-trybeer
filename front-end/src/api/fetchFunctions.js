@@ -1,25 +1,40 @@
-const options = (method, body = null) => ({
-  method,
-  headers: {
-    Accept: 'application/json',
-    'Content-Type': 'application/json',
-  },
-  body: body ? JSON.stringify(body) : undefined,
-});
-
 const urlBase = 'http://localhost:3001';
+const Accept = 'application/json';
 
-const get = (endpoint) => fetch(`${urlBase}/${endpoint}`)
-  .then((e) => e.json());
-
-const post = async (endpoint, user) => fetch(`${urlBase}/${endpoint}`,
-  options('POST', user))
+const get = (endpoint, authorization) => fetch(`${urlBase}/${endpoint}`,
+  {
+    method: 'GET',
+    headers: {
+      Accept,
+      'Content-Type': Accept,
+      authorization,
+    },
+  })
   .then((e) => e.json())
-  .catch((e) => console.log(e.message));
+  .catch((e) => e.message);
 
-const put = async (endpoint, user) => fetch(`${urlBase}/${endpoint}`,
-  options('PUT', user))
+const post = async (endpoint, body) => fetch(`${urlBase}/${endpoint}`,
+  {
+    method: 'POST',
+    headers: {
+      Accept,
+      'Content-Type': Accept,
+    },
+    body: body ? JSON.stringify(body) : undefined,
+  })
   .then((e) => e.json())
-  .catch((e) => console.log(e.message));
+  .catch((e) => e.message);
+
+const put = async (endpoint, body) => fetch(`${urlBase}/${endpoint}`,
+  {
+    method: 'PUT',
+    headers: {
+      Accept,
+      'Content-Type': Accept,
+    },
+    body: body ? JSON.stringify(body) : undefined,
+  })
+  .then((e) => e.json())
+  .catch((e) => e.message);
 
 module.exports = { get, post, put };

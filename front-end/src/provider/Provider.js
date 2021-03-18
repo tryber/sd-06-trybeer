@@ -6,12 +6,22 @@ function TrybeerProvider({ children }) {
   const [cart, setCart] = useState([]);
   const [user, setUser] = useState({});
 
-  useEffect(() => {
-    const cartFromLocalStorage = JSON.parse(localStorage.getItem('cart'));
-    const userFromLocalStorage = JSON.parse(localStorage.getItem('user'));
+  const dataFromLocalStorage = (data) => {
+    const foundData = JSON.parse(localStorage.getItem(data));
 
-    if (cartFromLocalStorage) setCart(cartFromLocalStorage);
-    if (userFromLocalStorage) setUser(userFromLocalStorage);
+    if (!foundData) return null;
+
+    if (data === 'user') {
+      setUser(foundData);
+      return foundData;
+    }
+    setCart(foundData);
+    return foundData;
+  };
+
+  useEffect(() => {
+    dataFromLocalStorage('user');
+    dataFromLocalStorage('cart');
   }, []);
 
   // const updateUserName = (name) => {
@@ -28,8 +38,9 @@ function TrybeerProvider({ children }) {
     const product = { id, quantity, price };
     const cartWithoutProduct = cart.filter((item) => item.id !== id);
     const newCart = [...cartWithoutProduct, product];
-    setCart(newCart);
-    localStorage.setItem('cart', JSON.stringify(newCart));
+    const cartBiggerThanZero = newCart.filter((item) => item.quantity > 0);
+    setCart(cartBiggerThanZero);
+    localStorage.setItem('cart', JSON.stringify(cartBiggerThanZero));
   };
 
   const contextValue = {
@@ -40,6 +51,7 @@ function TrybeerProvider({ children }) {
     user,
     setUser,
     setUserLogged,
+    dataFromLocalStorage,
   };
 
   return (

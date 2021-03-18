@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
-import verifyEmailAndPassword from '../utils/verifyEmailAndPassword';
+import { verifyEmailAndPassword } from '../utils/verifications';
 import fetchFunctions from '../api/fetchFunctions';
 import TrybeerContext from '../context/TrybeerContext';
 

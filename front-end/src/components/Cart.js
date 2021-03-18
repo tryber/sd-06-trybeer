@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useCallback } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import TrybeerContext from '../context/TrybeerContext';
 
@@ -6,14 +6,14 @@ const Cart = () => {
   const { cart } = useContext(TrybeerContext);
   const history = useHistory();
 
-  const totalCart = useCallback(() => {
+  const totalCart = () => {
     if (cart.length > 0) {
       const total = cart
         .reduce((result, product) => result + (product.quantity * product.price), 0);
       return total;
     }
     return 0;
-  });
+  };
 
   const disabledButton = totalCart() === null || totalCart() === 0;
 
