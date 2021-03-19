@@ -31,9 +31,7 @@ const fetchUser = async (setEmail, setName) => {
 const Profile = () => {
   const history = useHistory();
   const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [status, setStatus] = useState('');
-  const [disabled, setDisabled] = useState(false);
+  const [email] = useState('');
   useEffect(() => {
     if (!localStorage.token || localStorage.token === '') history.push('/');
   }, [history]);
@@ -52,25 +50,25 @@ const Profile = () => {
       <Input
         name="Nome"
         type="text"
-        onChange={ handleName }
+        onChange={handleName}
         dataTestId="profile-name-input"
-        value={ name }
+        value={name}
       />
       <Input
         readonly
         name="Email"
         type="email"
         dataTestId="profile-email-input"
-        value={ email }
+        value={email}
       />
       <Button
         dataTestId="profile-save-btn"
-        onClick={ () => updateUser(name, email, setStatus) }
-        disabled={ !disabled }
+        onClick={() => updateUser(name, email, setStatus)}
+        disabled={!disabled}
       >
         Salvar
       </Button>
-      <h2>{ status }</h2>
+      <h2>{status}</h2>
     </S.Container>
   );
 };

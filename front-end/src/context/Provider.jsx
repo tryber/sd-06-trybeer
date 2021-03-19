@@ -10,6 +10,7 @@ function Provider({ children }) {
   const [validRegister, setValidRegister] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [products, setProducts] = useState([]);
   useEffect(() => {
     const maxLength = 5;
     function validateForm(emailInput, passwordInput) {
@@ -21,7 +22,6 @@ function Provider({ children }) {
     }
     validateForm(email, password);
   }, [email, password]);
-
   const validateRegister = (name, emailInput, passwordInput) => {
     // const emailReg = /\S+@\S+\.\S+/;
     const nameReg = /^[A-Za-z ]{2,30}$/;
@@ -33,7 +33,6 @@ function Provider({ children }) {
     && passwordInput.length >= maxlengthPass) return setValidRegister(true);
     setValidRegister(false);
   };
-
   const contextValue = {
     validForm,
     setValidForm,
@@ -45,6 +44,8 @@ function Provider({ children }) {
     validRegister,
     register,
     setRegister,
+    products,
+    setProducts,
   };
 
   return (
