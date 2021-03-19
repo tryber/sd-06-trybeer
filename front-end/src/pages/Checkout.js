@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Header } from '../components';
-import { cartList, globalID, globalQuantity, removeCartItem } from '../actions';
+import {
+  addCart, globalID, globalQuantity, removeCartItem, updatePrice } from '../actions';
 
 class Checkout extends React.Component {
   constructor() {
@@ -10,13 +11,28 @@ class Checkout extends React.Component {
     this.state = {
       validAdress: false,
       validNumber: false,
+      localCart: [],
     };
     this.handleChange = this.handleChange.bind(this);
     this.exclude = this.exclude.bind(this);
+    this.storageToRedux = this.storageToRedux.bind(this);
   }
 
   componentDidMount() {
+    const { history } = this.props;
     this.storageToRedux();
+    this.handleSetState();
+    if (!localStorage.token) {
+      history.push('./login');
+    }
+  }
+
+  handleSetState() {
+    const { stateCart, statePrice } = this.props;
+    this.setState({
+      localCart: stateCart,
+      localPrice: statePrice,
+    });
   }
 
   handleChange({ target: { name, value } }) {
@@ -37,28 +53,36 @@ class Checkout extends React.Component {
     }
   }
 
-  async storageToRedux() {
-    const { stateQuantity, dispatchQtd, dispatchCart, dispatchID } = this.props;
+  storageToRedux() {
+    const { stateQuantity, dispatchCart, dispatchID, dispatchPrice } = this.props;
     if (!localStorage.getItem('stateQuantity')) {
-      await localStorage.setItem('stateQuantity', JSON.stringify(stateQuantity));
-    }
-    if (localStorage.getItem('stateQuantity')) {
-      const localStorageQtd = JSON.parse(localStorage.getItem('stateQuantity'));
-      const qtdLength = 12;
-      for (let index = 1; index < qtdLength; index += 1) {
-        dispatchQtd(localStorageQtd[index], index);
-      }
+      localStorage.setItem('stateQuantity', JSON.stringify(stateQuantity));
     }
     if (localStorage.getItem('stateCart')) {
       const localStorageCart = JSON.parse(localStorage.getItem('stateCart'));
       for (let index = 0; index < localStorageCart.length; index += 1) {
-        dispatchCart(localStorageCart[index]);
-        dispatchID(localStorageCart[index].id);
+        const { stateCart } = this.props;
+        const contains = stateCart.filter(
+          (element) => element.name === localStorageCart[index].name,
+        );
+        if (contains.length < 1) {
+          dispatchCart(
+            localStorageCart[index].id,
+            localStorageCart[index].name,
+            localStorageCart[index].price,
+            localStorageCart[index].quantity,
+            localStorageCart[index].imgUrl,
+          );
+          dispatchID(localStorageCart[index].id);
+        }
       }
+    }
+    if (localStorage.getItem('price')) {
+      dispatchPrice(JSON.parse(localStorage.getItem('price')));
     }
   }
 
-  async exclude(id) {
+  async exclude({ id, price }) {
     const { dispatchRemoved, stateCart, stateID } = this.props;
     // Atualização Valor total do Carrinho após Excluir item
     const itemToExclude = stateCart.filter((element) => element.id === id)[0];
@@ -77,11 +101,16 @@ class Checkout extends React.Component {
     localStorage.setItem('stateCart', JSON.stringify(newCart));
     const indexToBeRemoved = stateID.indexOf(id);
     stateID.splice(indexToBeRemoved, 1);
+    const { localPrice } = this.state;
+    const updatedPrice = localPrice - Number(price.split(' ')[1].replace(',', '.'));
+    localStorage.setItem('price', JSON.stringify(updatedPrice));
+    this.setState({ localCart: newCart, localPrice: updatedPrice });
   }
 
   render() {
-    const { history, stateCart } = this.props;
+    const { history } = this.props;
     const { validAdress, validNumber } = this.state;
+    const { localCart, localPrice } = this.state;
     return (
       <div className="checkout-container">
         <Header history={ history } />
@@ -91,7 +120,7 @@ class Checkout extends React.Component {
             { stateCart && stateCart.length ? stateCart.map((element, index) => (
               <div
                 className="cart-item"
-                key={ element.name }
+                key={ index }
                 data-testid={ `${index}-product-price` }
               >
                 <img src={ element.imgUrl } alt={ `product-${index}` } />
@@ -108,7 +137,7 @@ class Checkout extends React.Component {
                 <button
                   type="button"
                   data-testid={ `${index}-removal-button` }
-                  onClick={ () => this.exclude(element.id) }
+                  onClick={ () => this.exclude(element, index) }
                 >
                   <i className="fas fa-times" />
                 </button>
@@ -117,10 +146,10 @@ class Checkout extends React.Component {
           </div>
           <div className="total-div">
             <h4 data-testid="order-total-value">
-              { localStorage.price
+              { localPrice
                 ? `Total: R$
-                ${parseFloat(localStorage.price).toFixed(2).replace('.', ',')}`
-                : null }
+                ${localPrice.toFixed(2).toString().replace('.', ',')}`
+                : 'Total: R$ 0,00' }
             </h4>
           </div>
           <div className="adress-div">
@@ -142,6 +171,7 @@ class Checkout extends React.Component {
             <button
               type="button"
               data-testid="checkout-finish-btn"
+              onClick={ () => history.push('/products', { purchase: true }) }
               disabled={ !validAdress || !validNumber }
             >
               Finalizar Pedido
@@ -157,24 +187,29 @@ const mapStateToProps = (state) => ({
   stateCart: state.products.cartList,
   stateID: state.products.globalID,
   stateQuantity: state.products.quantity,
+  statePrice: state.products.price,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   dispatchID: (id) => dispatch(globalID(id)),
-  dispatchCart: (array) => dispatch(cartList(array)),
+  dispatchCart: ({ id, name, price, qtd, url }) => dispatch(
+    addCart(id, name, price, qtd, url),
+  ),
   dispatchQtd: (qtd, id) => dispatch(globalQuantity(qtd, id)),
+  dispatchPrice: (number) => dispatch(updatePrice(number)),
   dispatchRemoved: (array) => dispatch(removeCartItem(array)),
 });
 
 Checkout.propTypes = {
   dispatchID: PropTypes.func.isRequired,
   dispatchCart: PropTypes.func.isRequired,
+  dispatchPrice: PropTypes.func.isRequired,
   history: PropTypes.shape().isRequired,
-  dispatchQtd: PropTypes.func.isRequired,
   stateCart: PropTypes.arrayOf(PropTypes.object).isRequired,
   dispatchRemoved: PropTypes.func.isRequired,
   stateID: PropTypes.arrayOf(PropTypes.string).isRequired,
   stateQuantity: PropTypes.objectOf(PropTypes.number).isRequired,
+  statePrice: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Checkout);

@@ -10,7 +10,6 @@ class ToogleMenu extends React.Component {
 
   render() {
     const { history } = this.props;
-    console.log(history);
     return (
       <div className="side-menu-container">
         <div className="buttons-div">

@@ -52,9 +52,13 @@ export const prodList = (array) => ({
   array,
 });
 
-export const cartList = (array) => ({
+export const addCart = ({ id, name, price, quantity, url }) => ({
   type: CART_LIST,
-  array,
+  id,
+  name,
+  price,
+  quantity,
+  url,
 });
 
 export const globalID = (id) => ({

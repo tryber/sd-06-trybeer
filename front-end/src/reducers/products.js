@@ -18,7 +18,14 @@ export default function (state = INITIAL_STATE, action) {
     };
   case CART_LIST:
     return {
-      ...state, cartList: [...state.cartList, action.array],
+      ...state,
+      cartList: [...state.cartList, {
+        id: action.id,
+        name: action.name,
+        price: action.price,
+        quantity: action.quantity,
+        imgUrl: action.url,
+      }],
     };
   case ID:
     return {
