@@ -1,3 +1,4 @@
+/* eslint-disable max-lines-per-function */
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
 import PropTypes from 'prop-types';
@@ -7,7 +8,6 @@ import * as S from './style';
 const CardProduct = ({ products, setProducts }) => {
   const history = useHistory();
   const [cartDisabled, SetCartDisabled] = useState(true);
-
   useEffect(() => {
     const productsAmount = products.reduce((acc, product) => acc + product
       .productQuantity, 0);
