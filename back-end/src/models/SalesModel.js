@@ -21,6 +21,12 @@ const createSale = async (payload) => {
   return response;
 };
 
+const getAllSales = async () => {
+  const [sales] = await connection.execute('SELECT * FROM sales');
+  return sales;
+};
+
 module.exports = {
+  getAllSales,
   createSale,
 };
