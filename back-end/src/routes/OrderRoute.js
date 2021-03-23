@@ -5,11 +5,10 @@ const { authorization } = require('../middleware');
 
 const OrderRoute = Router();
 
-OrderRoute.get('/:id',
-  authorization,
+OrderRoute.post('/client',
   OrderController.getOrdersById);
 
-OrderRoute.get('/:id',
+OrderRoute.get('/',
   authorization,
   OrderController.getAllOrders);
 
