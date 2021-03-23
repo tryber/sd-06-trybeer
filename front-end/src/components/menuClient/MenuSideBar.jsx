@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../Menu.css';
+import '../../styles/Menu.css';
 import { useHistory } from 'react-router';
 import { FiMenu } from 'react-icons/fi';
 

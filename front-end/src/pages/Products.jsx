@@ -3,12 +3,13 @@ import PropTypes from 'prop-types';
 
 import ProductsList from '../components/products/ProductsList';
 import CheckoutCart from '../components/checkout/CheckoutCart';
-import MenuTop from '../components/menu/MenuTop';
+import MenuTop from '../components/menuClient/MenuTop';
 
 import ProductsContext from '../context/ProductsContext';
 import CartContext from '../context/CartContext';
 
 import api from '../services/api';
+// import axios from 'axios';
 
 function Products({ history }) {
   const initialCart = JSON.parse(localStorage.cart || []);
@@ -17,12 +18,13 @@ function Products({ history }) {
 
   useEffect(() => {
     async function fetchProducts() {
-      // const { token } = JSON.parse(localStorage.user);
-      const response = await api.getAllProducts();
+      const user = JSON.parse(localStorage.user);
+      const response = await api.getAllProducts(user.token);
+      if (response.message) return history.push('/login');
       setProducts(response);
     }
     fetchProducts();
-  }, []);
+  }, [history]);
 
   return (
     <ProductsContext.Provider value={ { products } }>

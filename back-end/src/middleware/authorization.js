@@ -13,6 +13,8 @@ module.exports = (req, res, next) => {
 
   try {
     jwt.verify(authorization, secret, (err, email) => { 
+      if (err) return res.status(401).json({ message: 'jwt malformed' });
+      
       req.email = email;
       next();
     });

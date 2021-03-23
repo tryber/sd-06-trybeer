@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
-import MenuTop from '../components/menu/MenuTop';
+import MenuTop from '../components/menuClient/MenuTop';
 
 import api from '../services/api';
 

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import '../../Menu.css';
+import '../../styles/Menu.css';
 import { FiMenu } from 'react-icons/fi';
 import MenuSideBar from './MenuSideBar';
 

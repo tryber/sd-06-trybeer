@@ -30,6 +30,7 @@ function Login({ history }) {
   const handleClick = async (e) => {
     e.preventDefault();
     const userData = await api.generateToken(user.email, user.password);
+
     if (userData.result) {
       const { role } = userData.response;
       setErrMsg(false);

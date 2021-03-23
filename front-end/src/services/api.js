@@ -31,7 +31,7 @@ const updateNameOfUser = async (name, email) => axios
 const getAllProducts = async (token) => axios
   .get(`${baseUrl}/products`, {
     headers: {
-      authorization: `Bearer ${token}`,
+      authorization: token,
     },
   })
   .then((res) => res.data)
