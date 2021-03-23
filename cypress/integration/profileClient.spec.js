@@ -26,6 +26,7 @@ describe('Criar tela de perfil do cliente', () => {
     cy.visit(Cypress.config().baseUrl);
     login(Cypress.env('login'), Cypress.env('password'));
     accessProfileClient();
+    // cy.visit(`${Cypress.config().baseUrl}/profile`) //Bypass p/ cypress
   });
 
   it('Será validado que é possível acessar a tela de perfil do cliente', () => {

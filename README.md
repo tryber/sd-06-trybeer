@@ -932,9 +932,9 @@ url - http://localhost:3000/orders/1
 
 - O nome do produto deverá conter a tag `data-testid="0-product-name"`
 
-- O valor total do produto deverá conter a tag `data-testid="0-product-total-value"`
+- O valor total do produto deverá conter a tag `data-testid="0-product-total-value"`*
 
-- O valor total da compra deverá conter a tag `data-testid="order-total-value"`
+- O valor total da compra deverá conter a tag `data-testid="order-total-value"` *
 
 **[OBS: os campos data-testid deverão ser implementado um index para cada produto sempre comecando pelo index 0, para cada um dessas tags veja os exemplo abaixo:]**
 

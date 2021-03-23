@@ -14,7 +14,6 @@ describe('Criar tela de pedidos de admin', () => {
   beforeEach( () => {
     createAndInsertsDataBase();
     cy.visit(Cypress.config().baseUrl);
- 
   });
 
   afterEach(() => {

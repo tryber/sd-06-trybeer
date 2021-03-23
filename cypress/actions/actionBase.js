@@ -4,6 +4,9 @@ export function verifyContainsText(text) {
 
 export function verifyElementContainsText(element, text) {
   cy.get(element).contains(text);
+  // console.log('Elemento: ', element )
+  // console.log('Texto: ', text )
+  // console.log(cy.get(element).contains(text));
 }
 
 export function verifyElementContainsAttribute(element, attribute) {
