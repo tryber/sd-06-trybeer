@@ -28,11 +28,14 @@ function Register({ history }) {
     e.preventDefault();
     const { name, email, senha, tipo } = newUser;
     const registerUser = await api.registerUser(name, email, senha, tipo);
+
+    const token = await api.generateToken(email, senha);
+
     if (registerUser.result) {
       setDisplayErr(false);
       if (newUser.tipo === 'administrator') history.push('/admin/orders');
       else history.push('/products');
-      localStorage.user = JSON.stringify(registerUser.response);
+      localStorage.user = JSON.stringify(token.response);
     } else {
       setErrMsg(registerUser.response.message);
       setDisplayErr(true);

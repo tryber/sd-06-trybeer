@@ -37,32 +37,46 @@ const getAllProducts = async (token) => axios
   .then((res) => res.data)
   .catch((err) => err.response.data);
 
-const regSalesProducts = async (params) => axios
-  .post(`${baseUrl}/sales/products`, {
-    idSale: params.idSale,
-    idProduct: params.idProduct,
-    quantity: params.quantity,
+const getAllOrders = async (token) => axios
+  .get(`${baseUrl}/admin/orders`, {
+    headers: {
+      authorization: token,
+    },
   })
-  .then((res) => ({ response: res.data, result: true }))
-  .catch((err) => ({ response: err.response.data, result: false }));
+  .then((res) => res.data)
+  .catch((err) => err.response.data);
 
-const registerSales = async (params) => axios
-  .post(`${baseUrl}/sales`, {
-    userId: params.userId,
-    total: params.total,
-    address: params.address,
-    adNumber: params.adNumber,
-    date: params.date,
-    status: params.status,
+const getOrdersById = async (id) => axios
+  .post(`${baseUrl}/orders/client`, {
+    id,
   })
-  .then((res) => ({ response: res.data, result: true }))
-  .catch((err) => ({ response: err.response, result: false }));
+  .then((res) => res.data)
+  .catch((err) => err.response.data);
+
+const regSalesProducts = async (params) => {
+  const { idSale, idProduct, quantity } = params;
+  return axios.post(`${baseUrl}/sales/products`, {
+    idSale, idProduct, quantity })
+    .then((res) => ({ response: res.data, result: true }))
+    .catch((err) => ({ response: err.response.data, result: false }));
+};
+
+const registerSales = async (params) => {
+  const { userId, total, address, adNumber, date, status } = params;
+  return axios.post(`${baseUrl}/sales`, {
+    userId, total, address, adNumber, date, status,
+  })
+    .then((res) => ({ response: res.data, result: true }))
+    .catch((err) => ({ response: err.response, result: false }));
+};
 
 module.exports = {
   generateToken,
   registerUser,
   updateNameOfUser,
   getAllProducts,
+  getAllOrders,
   regSalesProducts,
   registerSales,
+  getOrdersById,
 };

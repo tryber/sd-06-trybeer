@@ -9,7 +9,6 @@ import ProductsContext from '../context/ProductsContext';
 import CartContext from '../context/CartContext';
 
 import api from '../services/api';
-// import axios from 'axios';
 
 function Products({ history }) {
   const initialCart = JSON.parse(localStorage.cart || []);

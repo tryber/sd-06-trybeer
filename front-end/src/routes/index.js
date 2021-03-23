@@ -9,10 +9,11 @@ import Products from '../pages/Products';
 import Register from '../pages/Register';
 import Profile from '../pages/Profile';
 import Login from '../pages/Login';
-import Checkout from '../pages/Checkout';
 import PedidosAdmin from '../pages/PedidosAdmin';
 import ProfileAdmin from '../pages/ProfileAdmin';
 import DetalhesPedidosAdmin from '../pages/DetalhesPedidosAdmin';
+import Checkout from '../pages/Checkout';
+import OrdersClient from '../pages/OrdersClient';
 
 const Routes = () => (
   <Router>
@@ -28,6 +29,7 @@ const Routes = () => (
       <Route path="/products" component={ Products } />
       <Route path="/profile" component={ Profile } />
       <Route path="/checkout" component={ Checkout } />
+      <Route path="/orders" component={ OrdersClient } />
 
     </Switch>
   </Router>
