@@ -1,23 +1,25 @@
 import React, { useEffect, useContext } from 'react';
-import PropTypes from 'prop-types';
+import { useHistory } from 'react-router';
 
 import AppContext from '../context/AppContext';
 
 import api from '../services/api';
 
-function OrdersUser({ history }) {
+function OrdersUser() {
   const { orders, setOrders } = useContext(AppContext);
+  const history = useHistory();
 
   useEffect(() => {
-    const dataUser = JSON.parse(localStorage.user); async function getOrders() {
+    const buildOrRedirect = async () => {
+      const dataUser = JSON.parse(localStorage.user);
       const { token, id } = dataUser;
       const getAllOrders = await api.getOrdersByIdUser(id, token);
-      setOrders(getAllOrders);
-    }
-    if (dataUser.token) getOrders();
-    else history.push('/login');
-  },
-  [history, setOrders]);
+      if (dataUser.token) setOrders(getAllOrders);
+      else history.push('/login');
+    };
+    buildOrRedirect();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div>
@@ -41,9 +43,5 @@ function OrdersUser({ history }) {
     </div>
   );
 }
-
-OrdersUser.propTypes = {
-  history: PropTypes.objectOf(Object).isRequired,
-};
 
 export default OrdersUser;

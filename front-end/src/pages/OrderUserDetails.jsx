@@ -17,7 +17,8 @@ function OrdersUserDetails() {
     }
     if (dataUser.token) getOrderClient();
     else history.push('/login');
-  }, [history, id]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const multValues = (valueA, valueB) => {
     const mult = (Number(valueA) * parseFloat(valueB)).toFixed(2);
