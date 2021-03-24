@@ -8,10 +8,10 @@ function ButtonCheckout() {
 
   const generateData = () => {
     const data = new Date().toLocaleDateString('zh-Hans-CN');
-    let dataFormart = data.replace('/', '-');
-    dataFormart = data.replace('/', '-');
+    const dataFormart = data.replace(/[/]/g, '-');
     const hora = new Date().toLocaleTimeString();
     const dateTime = `${dataFormart} ${hora}`;
+    console.log(dataFormart);
     return dateTime;
   };
 

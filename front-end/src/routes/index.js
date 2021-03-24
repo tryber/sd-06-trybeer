@@ -13,7 +13,8 @@ import PedidosAdmin from '../pages/PedidosAdmin';
 import ProfileAdmin from '../pages/ProfileAdmin';
 import DetalhesPedidosAdmin from '../pages/DetalhesPedidosAdmin';
 import Checkout from '../pages/Checkout';
-import OrdersClient from '../pages/OrdersClient';
+import OrdersClient from '../pages/OrdersUser';
+import OrdersUserForId from '../pages/OrderUserDetails';
 
 const Routes = () => (
   <Router>
@@ -22,6 +23,7 @@ const Routes = () => (
         <Redirect from="/" to="/login" />
       </Route>
       <Route path="/admin/orders/:id" component={ DetalhesPedidosAdmin } />
+      <Route path="/orders/:id" component={ OrdersUserForId } />
       <Route path="/admin/orders" component={ PedidosAdmin } />
       <Route path="/admin/profile" component={ ProfileAdmin } />
       <Route path="/login" component={ Login } />

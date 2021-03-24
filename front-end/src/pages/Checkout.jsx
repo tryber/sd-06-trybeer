@@ -7,24 +7,9 @@ import FormCheckout from '../components/pageCheckout/FormCheckout';
 import { checkoutUtils } from '../utils';
 
 function Checkout() {
-  // const produtos = [
-  //   {
-  //     idProduct: 1,
-  //     idUser: localStorage.user.id,
-  //     quantity: 1,
-  //     name: 'Bavaria',
-  //     totalValue: 4.99,
-  //     price: 4.99,
-  //   },
-
-  // ];
   const productsList = JSON.parse(localStorage.cart);
-  const newlist = productsList.map((item) => {
-    item.totalValue = (item.quantity * item.price);
-    return item;
-  });
   const [address, setEndereco] = useState({ rua: '', numero: '' });
-  const [products, setProdutos] = useState(newlist);
+  const [products, setProdutos] = useState(productsList);
   const [able, setAble] = useState(true);
   const [sumTotal, setSumTotal] = useState(0);
   const history = useHistory();
@@ -34,12 +19,11 @@ function Checkout() {
   };
 
   useEffect(() => {
+    const dataUser = JSON.parse(localStorage.user);
     checkoutUtils.valueTotal(products, setSumTotal);
-  }, [products]);
-
-  useEffect(() => {
     checkoutUtils.disable(setAble, products, address);
-  }, [address, products]);
+    if (!dataUser.token) history.push('/login');
+  }, [address, history, products]);
 
   return (
     <CheckoutContext.Provider

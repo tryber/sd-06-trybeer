@@ -15,6 +15,11 @@ function ProductCard() {
     return sumTotalValue.replace('.', ',');
   };
 
+  const multValues = (valueA, valueB) => {
+    const mult = (parseFloat(valueA * valueB)).toFixed(2);
+    return String(mult).replace('.', ',');
+  };
+
   const formatTotalCall = formatSumTotal(sumTotal);
 
   return (
@@ -29,7 +34,7 @@ function ProductCard() {
 
           <p data-testid={ `${index}-product-total-value` }>
             {
-              `R$ ${formatSumTotal(item.totalValue)}`
+              `R$ ${multValues(item.price, item.quantity)}`
             }
           </p>
           <p data-testid={ `${index}-product-unit-price` }>

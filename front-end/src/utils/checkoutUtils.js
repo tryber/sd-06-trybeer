@@ -12,7 +12,7 @@ const valueTotal = (list, callBack) => {
   const reducer = (acc, curr) => acc + curr;
   const noValue = '0,00';
   if (list.length > 0) {
-    const totalValue = list.map((item) => item.totalValue).reduce(reducer);
+    const totalValue = list.map((item) => item.price * item.quantity).reduce(reducer);
     callBack(totalValue.toFixed(2));
     return totalValue;
   }
