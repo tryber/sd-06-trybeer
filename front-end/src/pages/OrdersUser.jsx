@@ -1,20 +1,18 @@
 import React, { useEffect, useContext } from 'react';
-import { useHistory } from 'react-router';
+import PropTypes from 'prop-types';
+
 import AppContext from '../context/AppContext';
 
 import api from '../services/api';
 
-function OrdersUser() {
-  const history = useHistory();
+function OrdersUser({ history }) {
   const { orders, setOrders } = useContext(AppContext);
 
   useEffect(() => {
-    const dataUser = JSON.parse(localStorage.user);
-    async function getOrders() {
+    const dataUser = JSON.parse(localStorage.user); async function getOrders() {
       const { token, id } = dataUser;
-      const test = await api.getOrdersByIdUser(id, token);
-      setOrders(test);
-      console.log(test);
+      const getAllOrders = await api.getOrdersByIdUser(id, token);
+      setOrders(getAllOrders);
     }
     if (dataUser.token) getOrders();
     else history.push('/login');
@@ -43,5 +41,9 @@ function OrdersUser() {
     </div>
   );
 }
+
+OrdersUser.propTypes = {
+  history: PropTypes.objectOf(Object).isRequired,
+};
 
 export default OrdersUser;
