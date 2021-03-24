@@ -1,15 +1,14 @@
 const { Router } = require('express');
 
 const { OrderController } = require('../controller');
-const { authorization } = require('../middleware');
+//  { authorization } = require('../middleware');
 
 const OrderRoute = Router();
 
-OrderRoute.post('/client',
-  OrderController.getOrdersById);
+OrderRoute.get('/:id', 
+  OrderController.getOrdersByIdSale);
 
-OrderRoute.get('/',
-  authorization,
-  OrderController.getAllOrders);
+OrderRoute.get('/all/:id',  
+  OrderController.getAllOrdersUserById);
 
 module.exports = OrderRoute;
