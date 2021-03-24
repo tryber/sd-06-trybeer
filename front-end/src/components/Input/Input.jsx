@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './Input.scss';
 
 /**
  * Renders default input
@@ -9,8 +10,10 @@ import PropTypes from 'prop-types';
  * @see www.gmail.com
  */
 const Input = ({ title, type, testId, onChange, value, placeholder, isReadOnly }) => (
-  <label htmlFor={ title }>
-    {title}
+  <div className="defaultInput">
+    <label htmlFor={ title }>
+      {title}
+    </label>
     <input
       id={ title }
       type={ type }
@@ -20,7 +23,7 @@ const Input = ({ title, type, testId, onChange, value, placeholder, isReadOnly }
       readOnly={ isReadOnly }
       placeholder={ placeholder }
     />
-  </label>
+  </div>
 );
 
 Input.propTypes = {
