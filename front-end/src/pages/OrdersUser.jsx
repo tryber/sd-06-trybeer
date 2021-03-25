@@ -8,13 +8,12 @@ function OrdersUser() {
   const history = useHistory();
 
   useEffect(() => {
+    const data = JSON.parse(localStorage.user);
     const buildOrRedirect = async () => {
-      const dataUser = JSON.parse(localStorage.user);
-      const { token, id } = dataUser;
-      const getAllOrders = await api.getOrdersByIdUser(id, token);
-      if (dataUser.token) setOrders(getAllOrders);
-      else history.push('/login');
+      const list = await api.getOrdersByIdUser(data.id, data.token);
+      setOrders(list);
     };
+    if (!data.token) history.push('/login');
     buildOrRedirect();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -22,7 +21,7 @@ function OrdersUser() {
   return (
     <div>
       <h1 data-testid="top-title">Meus Pedidos</h1>
-      {orders.length > 0 ? orders.map((order, index) => (
+      {orders ? orders.map((order, index) => (
         <div
           key={ index }
           data-testid={ `${index}-card-container` }
