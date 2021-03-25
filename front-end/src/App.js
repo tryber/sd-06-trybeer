@@ -10,8 +10,8 @@ import Products from './Pages/Products';
 import Orders from './Pages/Orders';
 import Checkout from './Pages/Checkout';
 import OrderDetail from './Pages/OrderDetail';
+import AdminProfile from './Pages/AdmProfile';
 import AdminOrders from './Pages/AdminOrders';
-import AdminProfile from './Pages/AdminProfile';
 
 function App() {
   return (

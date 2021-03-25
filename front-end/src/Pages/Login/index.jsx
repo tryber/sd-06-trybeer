@@ -13,6 +13,7 @@ const Login = () => {
     const body = { email, password };
     const response = await axios.post('http://localhost:3001/login', body); // headers apos ,
     const data = await response.data;
+
     localStorage.setItem('token', data.userLogin.token);
     if (data.userLogin.role === 'client') return history.push('/products');
     if (data.userLogin.role === 'administrator') return history.push('/admin/orders');
@@ -23,28 +24,28 @@ const Login = () => {
     <S.Container>
       <S.Title color="#6665DD">Login</S.Title>
       <Input
-        value={ email }
-        onChange={ ({ target }) => setEmail(target.value) }
+        value={email}
+        onChange={({ target }) => setEmail(target.value)}
         dataTestId="email-input"
       />
       <Input
-        value={ password }
+        value={password}
         type="password"
-        onChange={ ({ target }) => setPassword(target.value) }
+        onChange={({ target }) => setPassword(target.value)}
         name="Senha"
         dataTestId="password-input"
       />
       <S.Buttons>
         <Button
-          disabled={ !validForm }
+          disabled={!validForm}
           dataTestId="signin-btn"
-          onClick={ fetchApi }
+          onClick={fetchApi}
         >
           Entrar
         </Button>
         <Button
           dataTestId="no-account-btn"
-          onClick={ () => history.push('/register') }
+          onClick={() => history.push('/register')}
         >
           Ainda não tenho conta
         </Button>
