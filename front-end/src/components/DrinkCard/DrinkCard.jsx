@@ -61,41 +61,48 @@ export default function DrinkCard({ product, index, setCartSum }) {
   }, [cartItem, id, setCartSum]);
 
   return (
-    <div>
-      <p
-        className="price-tag"
-        data-testid={ `${index}-product-price` }
-      >
-        {parseCartPrice(price)}
-      </p>
-      <img
-        className="card-img"
-        data-testid={ `${index}-product-img` }
-        alt={ `${name} product card` }
-        src={ urlImage }
-      />
-      <p className="name-tag" data-testid={ `${index}-product-name` }>{name}</p>
-      <div>
-        <button
-          type="button"
-          className="plus-button"
-          data-testid={ `${index}-product-plus` }
-          onClick={ () => addItem(cartItem, setCartItem) }
-        >
-          +
-        </button>
-        <div data-testid={ `${index}-product-qtd` }>{cartItem.quantity}</div>
-        <button
-          type="button"
-          className="minus-button"
-          data-testid={ `${index}-product-minus` }
-          //  VOLTAR PRO SUBTRACT ITEM
-          onClick={ () => subtractItem(cartItem, setCartItem) }
-        >
-          -
-        </button>
+    <div className="card-body">
+      <div className="card">
+        <div className="card-img">
+          <img
+            className="img"
+            data-testid={ `${index}-product-img` }
+            alt={ `${name} product card` }
+            src={ urlImage }
+          />
+          <p
+            className="price-tag"
+            data-testid={ `${index}-product-price` }
+          >
+            {parseCartPrice(price)}
+          </p>
+          <p className="name-tag" data-testid={ `${index}-product-name` }>{name}</p>
+        </div>
+        <div className="content">
+          <div className="btn">
+            <button
+              type="button"
+              className="minus-button"
+              data-testid={ `${index}-product-minus` }
+              //  VOLTAR PRO SUBTRACT ITEM
+              onClick={ () => subtractItem(cartItem, setCartItem) }
+            >
+              -
+            </button>
+            <button
+              type="button"
+              className="plus-button"
+              data-testid={ `${index}-product-plus` }
+              onClick={ () => addItem(cartItem, setCartItem) }
+            >
+              +
+            </button>
+          </div>
+          <div className="quantity">
+            <div data-testid={ `${index}-product-qtd` }>{cartItem.quantity}</div>
+          </div>
+        </div>
       </div>
-
     </div>
   );
 }

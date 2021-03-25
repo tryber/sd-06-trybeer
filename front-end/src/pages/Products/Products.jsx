@@ -5,6 +5,7 @@ import { getProducts } from '../../services/Products';
 import DrinkCard from '../../components/DrinkCard/DrinkCard';
 import { verifyUser } from '../../store/LocalStorage/actions';
 import { getFullCartPrice, getCart } from '../../store/LocalStorage/provider';
+import './Products.css';
 
 // O botão 'Ver Carrinho' deverá conter a tag data-testid="checkout-bottom-btn"
 
@@ -34,27 +35,34 @@ export default function Products() {
   };
 
   return (
-    <div>
-      <Header title="TryBeer" user="client" />
-      {products.map((product, index) => (
-        <DrinkCard
-          product={ product }
-          key={ product.id }
-          index={ index }
-          setCartSum={ setCartSum }
-        />
-      ))}
-      <button
-        data-testid="checkout-bottom-btn"
-        onClick={ handleRedirect }
-        type="button"
-        disabled={ !getCart() || !getCart().length }
-      >
-        Ver Carrinho
-        <p data-testid="checkout-bottom-btn-value">
-          {cartSum || 'R$ 0,00'}
-        </p>
-      </button>
+    <div className="container">
+      <div className="head">
+        <Header title="TryBeer" user="client" />
+      </div>
+      <div className="main">
+        {products.map((product, index) => (
+          <DrinkCard
+            product={ product }
+            key={ product.id }
+            index={ index }
+            setCartSum={ setCartSum }
+          />
+        ))}
+      </div>
+      <div className="footer">
+        <button
+          className="btnCarrinho"
+          data-testid="checkout-bottom-btn"
+          onClick={ handleRedirect }
+          type="button"
+          disabled={ !getCart() || !getCart().length }
+        >
+          Ver Carrinho
+          <p data-testid="checkout-bottom-btn-value">
+            {cartSum || 'R$ 0,00'}
+          </p>
+        </button>
+      </div>
     </div>
   );
 }
