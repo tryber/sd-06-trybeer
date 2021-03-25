@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import api from '../services/api';
 
-function OrdersUser() {
+function OrdersUser({ history }) {
   const [orders, setOrders] = useState([]);
-  const history = useHistory();
-
   useEffect(() => {
     const data = JSON.parse(localStorage.user);
     const buildOrRedirect = async () => {
@@ -15,8 +13,7 @@ function OrdersUser() {
     };
     if (!data.token) history.push('/login');
     buildOrRedirect();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [history]);
 
   return (
     <div>
@@ -39,5 +36,9 @@ function OrdersUser() {
     </div>
   );
 }
+
+OrdersUser.propTypes = {
+  history: PropTypes.objectOf(Object).isRequired,
+};
 
 export default OrdersUser;
