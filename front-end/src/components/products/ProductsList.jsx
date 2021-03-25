@@ -1,5 +1,4 @@
 import React, { useContext, useEffect } from 'react';
-
 import ProductsContext from '../../context/ProductsContext';
 import CartContext from '../../context/CartContext';
 import ProductCard from './ProductCard';

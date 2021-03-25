@@ -9,18 +9,17 @@ function OrdersUser({ history }) {
   useEffect(() => {
     const data = JSON.parse(localStorage.user);
     const buildOrRedirect = async () => {
-      const list = await api.getOrdersByIdUser(data.id, data.token);
+      const list = await api.getOrdersByIdUser(2, data.token);
       setOrders(list);
     };
     if (!data.token) return history.push('/login');
     buildOrRedirect();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <div>
       <h1 data-testid="top-title">Meus Pedidos</h1>
-      {orders.map((order, index) => (
+      {orders ? orders.map((order, index) => (
         <div
           key={ index }
           data-testid={ `${index}-card-container` }
@@ -33,7 +32,7 @@ function OrdersUser({ history }) {
             </p>
           </Link>
         </div>
-      )) }
+      )) : <span>Não há pedidos</span>}
 
     </div>
   );
