@@ -5,10 +5,10 @@ const { OrderController } = require('../controller');
 
 const OrderRoute = Router();
 
-OrderRoute.get('/:id', 
+OrderRoute.get('/', 
   OrderController.getOrdersByIdSale);
 
-OrderRoute.get('/all/:id',
+OrderRoute.get('/:id',
   OrderController.getAllOrdersUserById);
 
 module.exports = OrderRoute;
