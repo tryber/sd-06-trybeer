@@ -19,7 +19,7 @@ function ProviderGeneral({ children }) {
 }
 
 ProviderGeneral.propTypes = {
-  children: PropTypes.shape(Object).isRequired,
+  children: PropTypes.node.isRequired,
 };
 
 export default ProviderGeneral;

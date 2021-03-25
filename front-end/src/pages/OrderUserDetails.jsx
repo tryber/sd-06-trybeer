@@ -9,13 +9,13 @@ function OrdersUserDetails() {
   const [order, setOrder] = useState([]);
 
   useEffect(() => {
-    const dataUser = JSON.parse(localStorage.user);
+    const data = JSON.parse(localStorage.user);
     async function getOrderClient() {
-      const getOrder = await api.getOrderById(id);
+      const getOrder = await api.getOrderById(id, data.token);
       setOrder(getOrder);
       console.log(getOrder);
     }
-    if (dataUser.token) getOrderClient();
+    if (data.token) getOrderClient();
     else history.push('/login');
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

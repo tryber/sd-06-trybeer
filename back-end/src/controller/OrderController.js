@@ -4,7 +4,7 @@ const { OrderService } = require('../service');
 
 const getAllOrdersUserById = rescue(async (req, res) => {
  const { id } = req.params;
-  console.log(id);
+  // console.log(id);
   const [orders] = await OrderService.getAllOrdersUserById(id); 
 
   return res
@@ -13,7 +13,8 @@ const getAllOrdersUserById = rescue(async (req, res) => {
 });
 
 const getOrdersByIdSale = rescue(async (req, res) => {
-  const { id } = req.params; 
+  const { id } = req.params;
+console.log(id);
   const [orders] = await OrderService.getOrdersByIdSale(id);  
   return res
     .status(200)
