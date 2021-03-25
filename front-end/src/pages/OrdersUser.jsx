@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-// git import api from '../services/api';
+import api from '../services/api';
 import MenuTop from '../components/menuClient/MenuTop';
 import OrdersCard from '../components/pageOrders/OrdersCard';
 
 function OrdersUser({ history }) {
-  const [orders, setOrders] = useState([]);
+  const test = [{ id: 1, saleDate: '25/03', total_price: '2.20' }];
+  const [orders, setOrders] = useState(test);
 
   useEffect(() => {
     const data = JSON.parse(localStorage.user);
     const buildOrRedirect = async () => {
-      // const list = await api.getOrdersByIdUser(2, data.token);
-      const test = [{ id: 1, saleDate: '25/03', total_price: '2.20' }];
-      setOrders(test);
+      const list = await api.getOrdersByIdUser(2, data.token);
+
+      setOrders(list);
     };
     if (!data.token) return history.push('/login');
     buildOrRedirect();
