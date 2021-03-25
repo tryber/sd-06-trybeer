@@ -13,9 +13,10 @@ function OrdersUser({ history }) {
     const buildOrRedirect = async () => {
       const list = await api.getOrdersByIdUser(data.id, data.token);
       const test = [{ id: 1, saleDate: '25/03', total_price: '2.20' }];
-      setOrders(test);
-      setOr(list);
+      setOrders(list);
+      setOr(test);
     };
+    // depois vou passar como paramento da func
     if (!data.token) return history.push('/login');
     buildOrRedirect();
     console.log('mount');

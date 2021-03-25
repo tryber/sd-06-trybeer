@@ -44,7 +44,6 @@ function ButtonCheckout() {
           quantity: element.quantity,
         };
         console.log(objtProd);
-
         api.regSalesProducts(objtProd);
       });
     }
