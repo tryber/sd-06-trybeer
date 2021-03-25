@@ -1,9 +1,9 @@
 const connection = require('./connection');
 
 const getAllOrdersUserById = async (idUser) => {
-console.log(idUser);
-const total = 'total_price';
-   const orders = [{ id: 1, saleDate: '25/03', [total]: '2.20' }];
+  const [orders] = await connection.execute(
+    'SELECT  id, sale_date, total_price FROM Trybeer.sales WHERE user_id=?', [idUser],
+  );
   return orders;
 };
 
