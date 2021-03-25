@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import api from '../services/api';
+// git import api from '../services/api';
 import MenuTop from '../components/menuClient/MenuTop';
 import OrdersCard from '../components/pageOrders/OrdersCard';
 
