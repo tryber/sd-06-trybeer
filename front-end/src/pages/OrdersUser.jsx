@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import api from '../services/api';
+import MenuTop from '../components/menuClient/MenuTop';
+import OrdersCard from '../components/pageOrders/OrdersCard';
 
 function OrdersUser({ history }) {
   const [orders, setOrders] = useState([]);
@@ -20,22 +21,8 @@ function OrdersUser({ history }) {
 
   return (
     <div>
-      <h1 data-testid="top-title">Meus Pedidos</h1>
-      {orders ? orders.map((order, index) => (
-        <div
-          key={ index }
-          data-testid={ `${index}-card-container` }
-        >
-          <Link to={ `/orders/${order.id}` }>
-            <p data-testid={ `${index}-order-number` }>{`Pedido ${order.id}`}</p>
-            <p data-testid={ `${index}-order-date` }>{`${order.saleDate}`}</p>
-            <p data-testid={ `${index}-order-total-value` }>
-              {`R$ ${(order.total_price).replace('.', ',')}`}
-            </p>
-          </Link>
-        </div>
-      )) : <span>Não há pedidos</span>}
-
+      <MenuTop name="Meus pedidos" />
+      <OrdersCard orders={ orders } />
     </div>
   );
 }
