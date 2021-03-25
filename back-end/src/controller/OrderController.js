@@ -2,10 +2,10 @@ const rescue = require('express-rescue');
 
 const { OrderService } = require('../service');
 
-const getAllOrdersUserById = rescue(async (req, res) => {
- const { id } = req.params;
-  console.log(id);
-  const orders = await OrderService.getAllOrdersUserById(id); 
+const getAllOrdersUserById = rescue(async (_req, res) => {
+//  const { id } = req.params;
+//   console.log(id);
+  const orders = await OrderService.getAllOrdersUserById(); 
 console.log(orders);
   return res
     .status(200)
