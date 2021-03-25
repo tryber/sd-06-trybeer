@@ -1,8 +1,8 @@
 const connection = require('./connection');
 
-const getAllOrdersUserById = async () => {
-  const [orders] = await connection.execute(
-    'SELECT * FROM Trybeer.sales ', [],
+const getAllOrders = async () => {
+  const orders = connection.execute(
+    'SELECT * FROM Trybeer.sales;',
   );
   return orders;
 };
@@ -22,6 +22,6 @@ WHERE S.id=?`, [idSale],
 };
 
 module.exports = {
- getAllOrdersUserById,
+ getAllOrders,
   getOrdersByIdSale,
 };

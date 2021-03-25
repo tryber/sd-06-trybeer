@@ -11,7 +11,7 @@ function OrdersUserDetails() {
   useEffect(() => {
     const data = JSON.parse(localStorage.user);
     async function getOrderClient() {
-      const getOrder = await api.getOrderById(id, data.token);
+      const getOrder = await api.getOrderById(id);
       setOrder(getOrder);
       console.log(getOrder);
     }
