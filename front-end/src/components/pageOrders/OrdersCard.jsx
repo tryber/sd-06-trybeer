@@ -24,7 +24,7 @@ function OrdersCard({ orders }) {
 }
 
 OrdersCard.propTypes = {
-  orders: PropTypes.objectOf(Object).isRequired,
+  orders: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default OrdersCard;

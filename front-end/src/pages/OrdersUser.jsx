@@ -10,8 +10,9 @@ function OrdersUser({ history }) {
   useEffect(() => {
     const data = JSON.parse(localStorage.user);
     const buildOrRedirect = async () => {
-      const list = await api.getOrdersByIdUser(2, data.token);
-      setOrders(list);
+      // const list = await api.getOrdersByIdUser(2, data.token);
+      const test = [{ id: 1, saleDate: '25/03', total_price: '2.20' }];
+      setOrders(test);
     };
     if (!data.token) return history.push('/login');
     buildOrRedirect();
