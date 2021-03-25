@@ -22,7 +22,7 @@ function MenuTop({ name }) {
         >
           <FiMenu />
         </button>
-        <span data-testid="top-title">{ name }</span>
+        <h1 data-testid="top-title">{ name }</h1>
         {showSideBar && <MenuSideBar />}
       </div>
     </header>
