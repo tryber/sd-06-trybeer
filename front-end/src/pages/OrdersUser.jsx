@@ -5,6 +5,7 @@ import api from '../services/api';
 
 function OrdersUser({ history }) {
   const [orders, setOrders] = useState([]);
+
   useEffect(() => {
     const data = JSON.parse(localStorage.user);
     const buildOrRedirect = async () => {

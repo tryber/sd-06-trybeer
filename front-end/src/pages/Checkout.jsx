@@ -21,12 +21,15 @@ function Checkout() {
   useEffect(() => {
     const dataUser = JSON.parse(localStorage.user);
     if (!dataUser.token) history.push('/login');
+    console.log('did-mount');
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     checkoutUtils.valueTotal(products, setSumTotal);
     checkoutUtils.disable(setAble, products, address);
+    localStorage.cart = JSON.stringify(products);
+    console.log('did-up');
   }, [address, history, products]);
 
   return (
