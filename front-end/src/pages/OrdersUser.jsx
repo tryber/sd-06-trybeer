@@ -14,6 +14,8 @@ function OrdersUser({ history }) {
     };
     if (!data.token) return history.push('/login');
     buildOrRedirect();
+    console.log('mount');
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
