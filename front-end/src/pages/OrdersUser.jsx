@@ -5,14 +5,15 @@ import MenuTop from '../components/menuClient/MenuTop';
 import OrdersCard from '../components/pageOrders/OrdersCard';
 
 function OrdersUser({ history }) {
-  const test = [{ id: 1, saleDate: '25/03', total_price: '2.20' }];
-  const [orders] = useState(test);
+  const [orders, setOrders] = useState([]);
   const [or, setOr] = useState([]);
 
   useEffect(() => {
     const data = JSON.parse(localStorage.user);
     const buildOrRedirect = async () => {
-      const list = await api.getOrdersByIdUser(2, data.token);
+      const list = await api.getOrdersByIdUser(data.id, data.token);
+      const test = [{ id: 1, saleDate: '25/03', total_price: '2.20' }];
+      setOrders(test);
       setOr(list);
     };
     if (!data.token) return history.push('/login');
