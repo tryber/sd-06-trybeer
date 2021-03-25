@@ -1,12 +1,10 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
-
-import AppContext from '../context/AppContext';
 
 import api from '../services/api';
 
 function OrdersUser() {
-  const { orders, setOrders } = useContext(AppContext);
+  const [orders, setOrders] = useState([]);
   const history = useHistory();
 
   useEffect(() => {
