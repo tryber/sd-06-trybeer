@@ -1,7 +1,7 @@
 const connection = require('./connection');
 
 const getAllOrdersUserById = async (idUser) => {
-  const orders = await connection.execute(
+  const orders = connection.execute(
     `SELECT  id, date_format(sale_date, '%d/%m') AS saleDate,
  total_price FROM Trybeer.sales WHERE user_id=?`, [idUser],
   );
@@ -10,7 +10,7 @@ const getAllOrdersUserById = async (idUser) => {
 };
 
 const getOrdersByIdSale = async (idSale) => {
-  const orders = await connection.execute(
+  const orders = connection.execute(
     `SELECT S.id AS saleId, P.name AS productName,
 SP.quantity AS productQuantity,  P.price AS productPrice, 
 S.total_price AS totalPrice, date_format(S.sale_date, '%d/%m') AS saleDate
