@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 function OrdersCard({ orders }) {
@@ -21,5 +22,9 @@ function OrdersCard({ orders }) {
     </div>
   );
 }
+
+OrdersCard.propTypes = {
+  orders: PropTypes.objectOf(Object).isRequired,
+};
 
 export default OrdersCard;

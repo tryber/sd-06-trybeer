@@ -21,7 +21,7 @@ function OrdersUser({ history }) {
 
   return (
     <div>
-      <MenuTop name="Meus pedidos" />
+      <MenuTop name="Meus Pedidos" />
       <OrdersCard orders={ orders } />
     </div>
   );
