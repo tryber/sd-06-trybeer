@@ -10,6 +10,7 @@ function ButtonCheckout() {
     const data = new Date();
     const dataFormart = `${data.getFullYear()}-${data.getMonth() + 1}-${data.getDate()}`;
     const hora = new Date().toLocaleTimeString('pt-BR', { hour12: false });
+
     const dateTime = `${dataFormart} ${hora}`;
     return dateTime;
   };

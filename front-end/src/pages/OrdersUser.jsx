@@ -7,11 +7,12 @@ import OrdersCard from '../components/pageOrders/OrdersCard';
 function OrdersUser({ history }) {
   const [orders, setOrders] = useState([]);
   // const [or, setOr] = useState([]);
+  const data = new Date().toLocaleDateString('zh-Hans-CN');
 
   useEffect(() => {
     async function fetchOrders() {
       const user = JSON.parse(localStorage.user);
-      const response = await api.getAllOrdersByIdUser(user.id, user.token);
+      const response = await api.getAllOrdersByIdUser(user.id, data);
       if (!user.token) return history.push('/login');
       setOrders(response);
     }

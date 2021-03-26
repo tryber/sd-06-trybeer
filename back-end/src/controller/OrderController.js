@@ -4,6 +4,7 @@ const { OrderService } = require('../service');
 
 const getAllOrdersByIdUser = rescue(async (req, res) => {
   const { id } = req.params;
+  console.log(req.headers.authorization);
   const orders = await OrderService.getAllOrdersByIdUser(id);  
   return res
     .status(200)
