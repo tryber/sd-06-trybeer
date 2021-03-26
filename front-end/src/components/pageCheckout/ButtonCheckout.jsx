@@ -30,7 +30,7 @@ function ButtonCheckout() {
 
   const handleClick = async () => {
     const timeout = 2000;
-    const sale = await generateSale();
+    const sale = generateSale();
     setTimeout(() => history.push('/products'), timeout);
     setMessage(true);
     const result = await api.registerSales(sale);
