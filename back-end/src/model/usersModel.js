@@ -1,38 +1,37 @@
 const connection = require('./connection');
 
-const getAll = async () => {
-  const [users] = await connection.execute('SELECT * FROM Trybeer.users');
-
-  return users;
-};
+// const getAll = async () => {
+//   const query = 'SELECT * FROM Trybeer.users';
+//   const [users] = await connection.execute(query);
+//   return users;
+// };
 
 const getById = async (id) => {
-  const [users] = await connection.execute('SELECT * FROM Trybeer.users WHERE id=?', [id]);
-
+  const query = 'SELECT * FROM Trybeer.users WHERE id=?';
+  const [users] = await connection.execute(query, [id]);
   return users;
 };
 
 const getUserByEmail = async (email) => {
-  const [users] = await connection.execute('SELECT * FROM Trybeer.users WHERE email=?', [email]);
-
+  const query = 'SELECT * FROM Trybeer.users WHERE email=?';
+  const [users] = await connection.execute(query, [email]);
   return users;
 };
 
-const createUser = async (name, email, userPass, role) => {
-  const [{ insertId }] = await connection
-    .execute('INSERT INTO users (name, email, password, role) VALUES (?,?,?,?)',
-      [name, email, userPass, role]);
+const createUser = async ({ name, email, password, role }) => {
+  const query = 'INSERT INTO users (name, email, password, role) VALUES (?,?,?,?)';
+  const [{ insertId }] = await connection.execute(query, [name, email, password, role]);
 
   return {
     id: insertId,
     name,
-    email,
     role,
   };
 };
 
-const updateUser = async (name, email) => {
-  await connection.execute('UPDATE users SET name=? WHERE email=?', [name, email]);
+const updateUser = async ({ name, email }) => {
+  const query = 'UPDATE users SET name=? WHERE email=?';
+  await connection.execute(query, [name, email]);
 
   return {
     name,
@@ -40,7 +39,7 @@ const updateUser = async (name, email) => {
 };
 
 module.exports = {
-  getAll,
+  // getAll,
   getUserByEmail,
   createUser,
   updateUser,

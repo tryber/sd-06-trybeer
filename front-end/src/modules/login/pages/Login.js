@@ -2,11 +2,11 @@ import React from 'react';
 import Form from '../components/Form';
 import PaperContainer from '../../../design-system/containers/PaperContainer';
 
-const Login = () => (
+const Login = (props) => (
   <div>
     <PaperContainer>
       <p>Login</p>
-      <Form />
+      <Form match={ props } />
     </PaperContainer>
   </div>
 );

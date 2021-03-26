@@ -13,10 +13,10 @@ function Form() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const response = await API.post('/login', form);
+    const response = await API.post('/users/login', form);
     if (response.message) return setErrorMsg(response.message);
     localStorage.setItem('user', JSON.stringify({ ...response, email: form.email }));
-    const delay = 500;
+    const delay = 50;
     setTimeout(() => setToken(true), delay);
   };
 

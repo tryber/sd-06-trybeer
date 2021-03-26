@@ -10,7 +10,7 @@ import OrdersClient from './modules/orders/pages/OrdersClient';
 import OrdersAdmin from './modules/orders/pages/OrdersAdmin';
 import ProfileClient from './modules/profile/pages/ProfileClient';
 import ProfileAdmin from './modules/profile/pages/ProfileAdmin';
-import Checkout from './modules/products/pages/Checkout';
+import Checkout from './modules/checkout/pages/Checkout';
 import DetailedOrder from './modules/orders/pages/DetailedOrder';
 
 const Routes = () => {
@@ -20,7 +20,10 @@ const Routes = () => {
   const role = storage ? storage.role : 'client';
   const tokenFromStorage = storage ? storage.token : false;
   const existToken = storage ? tokenFromStorage : token;
-  let baseRoute = role === 'client' ? '/products' : '/admin/orders';
+  const adminOrdersRoute = '/admin/orders';
+  const productRoute = '/products';
+
+  let baseRoute = role === 'client' ? productRoute : adminOrdersRoute;
   baseRoute = existToken ? baseRoute : '/login';
 
   return (
@@ -33,9 +36,21 @@ const Routes = () => {
           <Route exact path="/register" component={ Register } />
         </BodyContainer>
       </Route>
+      {/* ROTAS PRIVADAS - USUÁRIO ADMIN */}
+      <Route path={ [adminOrdersRoute, '/admin/profile'] }>
+        { !existToken && <Redirect to="/" /> }
+        { role === 'client' && <Redirect to="/" /> }
+        <Menu />
+        <BodyContainer>
+          <Route path="/admin/profile" component={ ProfileAdmin } />
+          <Route exact path="/admin/orders/:id" component={ DetailedOrder } />
+          <Route exact path={ adminOrdersRoute } component={ OrdersAdmin } />
+        </BodyContainer>
+      </Route>
       {/* ROTAS PRIVADAS - USUÁRIO CLIENT */}
       <Route path={ ['/profile', '/products', '/orders', '/checkout'] }>
         { !existToken && <Redirect to="/" /> }
+        { !role === 'client' && <Redirect to="/" /> }
         <Menu />
         <BodyContainer>
           <Route path="/profile" component={ ProfileClient } />
@@ -51,6 +66,7 @@ const Routes = () => {
         <Menu />
         <BodyContainer>
           <Route path="/admin/profile" component={ ProfileAdmin } />
+          <Route path="/admin/orders/:id" component={ DetailedOrder } />
           <Route exact path="/admin/orders" component={ OrdersAdmin } />
         </BodyContainer>
       </Route>

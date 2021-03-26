@@ -1,0 +1,29 @@
+PRODUCTS
+------------------------------------------------------
+GET /sales
+inputs
+headers => { authorization }
+
+outputs
+[{ id, createdAt, total, address, number, status }, ...]
+
+------------------------------------------------------
+GET /sales/:id
+inputs
+headers => { authorization }
+
+outputs
+{ id, createdAt, total, address, number, status, customerId,
+  products: [{ id, name, quantity, price, photo}, ...] }
+
+------------------------------------------------------
+POST /sales
+inputs
+body => { total, address, number, customerId, products: [{ id, quantity }...]}
+headers => { authorization }
+
+outputs
+{ id, createdAt, total, address, number, status, customerId,
+  products: [{ id, name, quantity, price, photo}, ...] }
+
+------------------------------------------------------

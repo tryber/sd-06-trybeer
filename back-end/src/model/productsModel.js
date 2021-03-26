@@ -1,9 +1,17 @@
 const connection = require('./connection');
 
 const getAll = async () => {
-  const [products] = await connection.execute('SELECT * FROM Trybeer.products');
+  const query = 'SELECT * FROM Trybeer.products';
+  const [products] = await connection.execute(query);
 
-  return products;
+  const result = products.map((product) => ({
+    id: product.id,
+    name: product.name,
+    price: product.price,
+    photo: product.url_image,
+  }));
+
+  return result;
 };
 
 module.exports = {

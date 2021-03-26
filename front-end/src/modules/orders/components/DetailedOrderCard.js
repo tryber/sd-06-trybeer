@@ -2,38 +2,75 @@ import React, { useState, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import api from '../../../axios';
+import { update } from '../../../utils';
 
 function DetailedOrderCard(props) {
   const [order, setOrder] = useState();
+  const [saleStatus, setSaleStatus] = useState(false);
   const { match: { params: { id } } } = props;
 
   useEffect(() => {
     api.get(`/sales/${id}`).then((resp) => setOrder(resp.data));
-  }, []);
+  }, [saleStatus]);
+
+  let date = '';
+  let orderStatus = '';
+  if (order && order.createdAt) {
+    const { status, createdAt } = order;
+    date = new Date(createdAt).toLocaleDateString();
+    date = date.split('/');
+    date = `${date[0]}/${date[1]}`;
+    orderStatus = status;
+  }
+
+  const handleClick = () => {
+    update(`/sales/${id}`).then((resp) => setSaleStatus(resp.message));
+  };
+
+  const renderButton = () => {
+    const button = (
+      <button
+        type="button"
+        data-testid="mark-as-delivered-btn"
+        onClick={ () => handleClick() }
+      >
+        Marcar como entregue
+      </button>
+    );
+
+    if (orderStatus === 'pending') return button;
+  };
 
   return (
     <div className="flex flex-col">
       <p
         className="flex items-center space-x-2"
         data-testid="order-number"
+        to={ `/orders/${id}` }
       >
-        Número do pedido:
-        { order ? order.saleNumber : '' }
+        <span className="hidden">{ `Pedido ${id}` }</span>
+        <span>{ `Order N. ${id}` }</span>
       </p>
       <p
         className="flex items-center space-x-2"
         data-testid="order-date"
       >
-        Data do pedido:
-        { order ? order.createdAt : '' }
+        Order date:
+        { date }
       </p>
       <p
         className="flex items-center space-x-2"
         data-testid="order-total-value"
       >
-        Total do pedido:
-        { order ? order.totalPrice : '' }
+        Total:
+        { order ? `R$ ${order.total.replace('.', ',')}` : '' }
       </p>
+      <p data-testid="order-status">
+        { orderStatus === 'pending' ? 'Pendente' : 'Entregue' }
+      </p>
+      {
+        renderButton()
+      }
       { order && order.products.map((product, index) => (
         <div
           key={ index }
@@ -48,8 +85,8 @@ function DetailedOrderCard(props) {
             />
           </div>
           <div className="flex flex-col">
-            <p>
-              <strong>{ `R$ ${product.price.replace('.', ',')}` }</strong>
+            <p data-testid={ `${index}-order-unit-price` }>
+              <strong>{ `(R$ ${product.price.replace('.', ',')})` }</strong>
             </p>
             <p data-testid={ `${index}-product-name` }>
               { product.name }
@@ -57,7 +94,11 @@ function DetailedOrderCard(props) {
             <p data-testid={ `${index}-product-qtd` }>
               { product.quantity }
             </p>
+            <p data-testid={ `${index}-product-total-value` }>
+              { `R$ ${(product.price * product.quantity).toFixed(2).replace('.', ',')}` }
+            </p>
           </div>
+
         </div>
       ))}
     </div>
