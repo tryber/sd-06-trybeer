@@ -3,12 +3,8 @@ const connection = require('./connection');
 const getAllOrders = async () => {
   const orders = await connection.execute(
     'SELECT * FROM Trybeer.sales;',
-  );
-  console.log(orders);
-const saled = 'sale_date';
-const total = 'total_price';
-  const lista = [{ id: 1, [saled]: '2021-03-26 11:28:46', [total]: '2.20' }];
-  return lista;
+  ); 
+  return orders;
 };
 
 const getOrdersByIdSale = async (idSale) => {
