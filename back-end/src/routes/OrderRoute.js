@@ -8,7 +8,7 @@ const OrderRoute = Router();
 OrderRoute.get('/:id', 
   OrderController.getOrdersByIdSale);
 
-OrderRoute.get('/',
-  OrderController.getAllOrders);
+OrderRoute.get('/client/:id',
+  OrderController.getAllOrdersByIdUser);
 
 module.exports = OrderRoute;

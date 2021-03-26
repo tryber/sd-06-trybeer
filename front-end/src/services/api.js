@@ -37,8 +37,8 @@ const getAllProducts = async (token) => axios
   .then((res) => res.data)
   .catch((err) => err.response.data);
 
-const getAllOrders = async (token) => axios
-  .get(`${baseUrl}/orders`, {
+const getAllOrdersByIdUser = async (id, token) => axios
+  .get(`${baseUrl}/orders/client/${id}`, {
     headers: {
       authorization: token,
     },
@@ -84,7 +84,7 @@ module.exports = {
   registerUser,
   updateNameOfUser,
   getAllProducts,
-  getAllOrders,
+  getAllOrdersByIdUser,
   regSalesProducts,
   registerSales,
   getOrdersByIdUser,

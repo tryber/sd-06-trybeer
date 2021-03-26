@@ -3,15 +3,9 @@ const rescue = require('express-rescue');
 const { OrderService } = require('../service');
 const { OrderModel } = require('../model');
 
-const getAllOrders = rescue(async (_req, res) => {
-  const orders = await OrderModel.getAllOrders();
-  const id = 1;
-  const prod = await OrderService.getOrdersByIdSale(id);
-  console.log(prod);
-// const saled = 'sale_date';
-// const total = 'total_price';
-// const lista = [{ id: 1, [saled]: '2021-03-26 11:28:46', [total]: '2.20' }];
- console.log(orders);
+const getAllOrdersByIdUser = rescue(async (req, res) => {
+  const { id } = req.params;
+  const orders = await OrderModel.getAllOrdersByIdUser(id);  
   return res
     .status(200)
     .json(orders);
@@ -29,5 +23,5 @@ console.log(orders);
 
 module.exports = {
   getOrdersByIdSale,
-  getAllOrders,
+ getAllOrdersByIdUser,
 };

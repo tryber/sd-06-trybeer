@@ -1,8 +1,9 @@
 const connection = require('./connection');
 
-const getAllOrders = async () => {
+const getAllOrdersByIdUser = async (idUser) => {
   const [orders] = await connection.execute(
-    'SELECT * FROM sales',
+    `SELECT id, total_price, date_format(sale_date, '%d/%m') AS sale_date
+FROM sales WHERE  user_id =?`, [idUser],
   );
   return orders;
 };
@@ -11,7 +12,7 @@ const getOrdersByDetails = async (id) => {
   const [orders] = await connection.execute(
     `SELECT 
       SP.sale_id AS saleId,
-      S.sale_date AS saleDate,
+      date_format(S.sale_date, '%d/%m')  AS saleDate,
       SP.quantity AS productQuantity,
       P.name AS productName,
       P.price AS productPrice,
@@ -26,6 +27,6 @@ const getOrdersByDetails = async (id) => {
 };
 
 module.exports = {
-  getAllOrders,
+ getAllOrdersByIdUser,
   getOrdersByDetails,
 };

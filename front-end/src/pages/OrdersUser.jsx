@@ -11,12 +11,13 @@ function OrdersUser({ history }) {
   useEffect(() => {
     async function fetchOrders() {
       const user = JSON.parse(localStorage.user);
-      const response = await api.getAllOrders(user.token);
+      const response = await api.getAllOrdersByIdUser(user.id, user.token);
       if (!user.token) return history.push('/login');
       setOrders(response);
     }
     fetchOrders();
-  }, [history]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div>
