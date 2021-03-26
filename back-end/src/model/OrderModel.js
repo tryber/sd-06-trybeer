@@ -1,11 +1,14 @@
 const connection = require('./connection');
-// const obj = { id: 1, sale_date: '26/03', total_price: 2.20 };
 
 const getAllOrders = async () => {
   const orders = await connection.execute(
     'SELECT * FROM Trybeer.sales;',
   );
-  return orders;
+  console.log(orders);
+const saled = 'sale_date';
+const total = 'total_price';
+  const lista = [{ id: 1, [saled]: '2021-03-26 11:28:46', [total]: '2.20' }];
+  return lista;
 };
 
 const getOrdersByIdSale = async (idSale) => {

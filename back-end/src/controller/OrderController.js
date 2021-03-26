@@ -3,8 +3,8 @@ const rescue = require('express-rescue');
 const { OrderService } = require('../service');
 
 const getAllOrders = rescue(async (req, res) => {
-  const [orders] = await OrderService.getAllOrders();
-  console.log(req.headers);
+  const orders = await OrderService.getAllOrders();
+  // console.log(req.headers);
   return res
     .status(200)
     .json(orders);

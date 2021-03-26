@@ -12,7 +12,7 @@ function OrdersUser({ history }) {
     async function fetchOrders() {
       const user = JSON.parse(localStorage.user);
       const response = await api.getAllOrders(user.token);
-      if (response.message) return history.push('/login');
+      if (!user.token) return history.push('/login');
       setOrders(response);
     }
     fetchOrders();
