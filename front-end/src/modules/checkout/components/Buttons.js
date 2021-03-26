@@ -1,20 +1,32 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import PropTypes from 'prop-types';
 import GlobalContext from '../../../context/Context';
+import RemoveConfirmation from './RemoveConfirmation';
 
-const Buttons = ({ index, product }) => {
-  const { name, price, id, photo } = product;
-
+const Buttons = ({ index, item }) => {
+  const { name, price, id, photo } = item;
   const { cartItems, setCartItems } = useContext(GlobalContext);
+  const [open, setOpen] = useState(false);
 
   const initialValue = -1;
 
-  const position = cartItems.reduce((acc, item, idx) => {
-    if (item.id === id) return idx;
+  const position = cartItems.reduce((acc, product, idx) => {
+    if (product.id === id) return idx;
     return acc;
   }, initialValue);
 
   const quantity = (position === initialValue) ? 0 : cartItems[position].quantity;
+
+  function handleRemove() {
+    return setCartItems((prev) => (
+      [
+        ...prev.slice(0, position),
+        ...prev.slice(position + 1),
+      ]
+    ));
+  }
+
+  // const handleRemoveConfirmation = () => setOpen(true);
 
   const handleClick = (type) => {
     const operationsIncrements = {
@@ -24,7 +36,7 @@ const Buttons = ({ index, product }) => {
 
     const increment = operationsIncrements[type];
 
-    if (position === initialValue && type === 'increment') {
+    if (position === initialValue) {
       return setCartItems((prev) => (
         [
           ...prev,
@@ -33,15 +45,9 @@ const Buttons = ({ index, product }) => {
       ));
     }
 
-    if (position === initialValue && type === 'decrement') return true;
-
     if (cartItems[position].quantity === 1 && type === 'decrement') {
-      return setCartItems((prev) => (
-        [
-          ...prev.slice(0, position),
-          ...prev.slice(position + 1),
-        ]
-      ));
+      // return handleRemoveConfirmation();
+      return handleRemove();
     }
 
     return setCartItems((prev) => (
@@ -57,17 +63,23 @@ const Buttons = ({ index, product }) => {
 
   return (
     <div className="flex items-center space-x-1">
+      <RemoveConfirmation
+        item={ item }
+        open={ open }
+        setOpen={ setOpen }
+        handleRemove={ handleRemove }
+      />
       <button
         data-testid={ `${index}-product-minus` }
         className="bg-gray-200 mr-2 w-6 h-6 flex items-center justify-center rounded-full"
         type="button"
         name="decrement"
         onClick={ ({ target }) => handleClick(target.name) }
-        // disabled={ quantity === 0 }
+        disabled={ quantity === 0 }
       >
         -
       </button>
-      <p data-testid={ `${index}-product-qtd` } className="mr-2">
+      <p data-testid={ `${index}-product-qtd-input` } className="mr-2">
         { quantity }
       </p>
       <button
@@ -85,7 +97,7 @@ const Buttons = ({ index, product }) => {
 
 Buttons.propTypes = {
   index: PropTypes.number.isRequired,
-  product: PropTypes.shape({
+  item: PropTypes.shape({
     price: PropTypes.number,
     name: PropTypes.string,
     photo: PropTypes.string,

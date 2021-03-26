@@ -5,7 +5,7 @@ import GlobalContext from '../../context/Context';
 
 function Menu(props) {
   const [menuStatus, setMenuStatus] = useState(false);
-  const { setToken } = useContext(GlobalContext);
+  const { userData, setUserData, setCartItems } = useContext(GlobalContext);
 
   const { match: { path } } = props;
 
@@ -32,12 +32,6 @@ function Menu(props) {
 
   const linksAdmin = [
     {
-      to: '/products',
-      name: 'Products',
-      nameSpec: 'Produtos',
-      testId: 'side-menu-item-products',
-    },
-    {
       to: '/admin/orders',
       name: 'Orders',
       nameSpec: 'Pedidos',
@@ -51,7 +45,7 @@ function Menu(props) {
     },
   ];
 
-  const storage = JSON.parse(localStorage.getItem('user'));
+  const storage = userData;
   const role = storage ? storage.role : 'client';
   const links = role === 'client' ? linksClient : linksAdmin;
   const classToTest = role === 'admin'
@@ -64,7 +58,8 @@ function Menu(props) {
   const logout = () => {
     localStorage.removeItem('user');
     localStorage.removeItem('cart');
-    setToken(false);
+    setUserData({});
+    setCartItems([]);
   };
 
   return (

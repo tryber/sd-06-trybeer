@@ -4,7 +4,7 @@ function PasswordInput(setError, setInputValue, inputValue) {
   const [errorLabel, setErrorLabel] = useState(false);
   const [seePassword, setSeePassword] = useState(true);
   const pattern = /^[0-9]{6,}$/;
-  const delay = 500;
+  const delay = 0;
 
   const useDebounce = (value, delayValue) => {
     const [debouncedValue, setDebouncedValue] = useState(value);

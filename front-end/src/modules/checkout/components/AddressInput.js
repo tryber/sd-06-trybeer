@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 
-function EmailInput(setError, setInputValue, inputValue) {
+function AddressInput(setError, setInputValue, inputValue) {
   const [errorLabel, setErrorLabel] = useState();
-  const pattern = /\S+@\S+\.\S+/;
-  const delay = 0;
+  const pattern = /.+/;
+  const delay = 500;
 
   const useDebounce = (value, delayValue) => {
     const [debouncedValue, setDebouncedValue] = useState(value);
@@ -33,27 +33,27 @@ function EmailInput(setError, setInputValue, inputValue) {
 
   return (
     <div className="flex flex-col space-y-2">
-      <label htmlFor="email-ipt" className="flex flex-col space-y-2">
-        <p>Email*</p>
+      <label htmlFor="address-ipt" className="flex flex-col space-y-2">
+        <p>Address*</p>
         <input
-          id="email-ipt"
-          data-testid="signup-email"
-          name="email"
+          id="address-ipt"
+          data-testid="checkout-street-input"
+          name="address"
           type="text"
           value={ inputValue }
           onChange={ handleChange }
           className="border rounded-md p-2 focus:outline-none
           focus:border-secondary-dark"
-          placeholder="Enter your email..."
+          placeholder="Enter your address..."
           required
           onKeyUp={ () => setErrorLabel(false) }
         />
       </label>
       <p className={ errorLabel ? 'text-xs text-red-500' : 'hidden' }>
-        Email should be like name@domain.com
+        Address should contains street and city
       </p>
     </div>
   );
 }
 
-export default EmailInput;
+export default AddressInput;

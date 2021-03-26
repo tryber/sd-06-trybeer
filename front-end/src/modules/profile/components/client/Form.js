@@ -1,16 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import * as API from '../../../../utils';
 import Buttons from './Buttons';
 import EmailInput from './EmailInput';
 import NameInput from './NameInput';
+import GlobalContext from '../../../../context/Context';
 
 function Form() {
   const [form, setForm] = useState({ email: '', name: '' });
   const [errorForm, setErrorForm] = useState({ name: true, email: false });
   const [msg, setMsg] = useState({ error: '', success: '' });
+  const { userData, setUserData } = useContext(GlobalContext);
 
   useEffect(() => {
-    const storage = JSON.parse(localStorage.getItem('user'));
+    const storage = userData;
     if (storage) setForm({ email: storage.email, name: storage.name });
   }, []);
 
@@ -20,8 +22,8 @@ function Form() {
     if (response.message) {
       return setMsg((prev) => ({ ...prev, error: 'Fail to update user name.' }));
     }
-    const storage = JSON.parse(localStorage.getItem('user'));
-    localStorage.setItem('user', JSON.stringify({ ...storage, name: response.name }));
+
+    setUserData((prev) => ({ ...prev, name: response.name }));
     setMsg((prev) => ({ ...prev, success: 'User updated with success.' }));
   };
 

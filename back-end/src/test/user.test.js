@@ -10,7 +10,7 @@ const {
 const BAD_REQUEST = 400;
 const SUCCESS = 200;
 const apiUrl = 'http://localhost:3001';
-const loginEndpoint = '/login';
+const loginEndpoint = '/users/login';
 const productsEndpoint = '/products';
 const salesEndpoint = '/sales';
 

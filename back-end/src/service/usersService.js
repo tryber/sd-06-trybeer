@@ -2,47 +2,49 @@ const usersModel = require('../model/usersModel');
 const Validations = require('./validations');
 const Utils = require('./utils');
 
+// GET ALL USERS ON DB---------------------------------------------------------
 const getAll = async () => {
   const result = await usersModel.getAll();
-
   return result;
 };
 
-const loginUser = async (email, userPass) => {
-  const userInfo = await Validations.loginValidation(email, userPass);
-  console.log(userInfo);
+// LOGIN-----------------------------------------------------------------------
+const loginUser = async ({ email, password }) => {
+  const userInfo = await Validations.loginValidation({ email, password });
+
   if (userInfo.payload) return userInfo;
   const { id, name, role } = userInfo;
-  const token = Utils.generateToken(id);
-  const result = {
-    token,
-    id,
-    name,
-    role,
-  };
-  
-  return result;
+  const token = Utils.generateToken({ id, role });
+
+  return ({ id, name, role, token });
 };
 
-const createUser = async (name, email, userPass, role) => {
-  const validation = await Validations.newUserValidation(email);
+// CREATE USER-----------------------------------------------------------------
+const createUser = async ({ name, email, password, role }) => {
+  const validation = await Validations.newUserValidation({
+    name, email, role,
+  });
 
   if (validation.payload) return validation;
 
-  const result = await usersModel.createUser(name, email, userPass, role);
+  const result = await usersModel.createUser({ name, email, password, role });
 
-  const token = Utils.generateToken(result.id);
+  const { id: responseId, name: responseName, role: responseRole } = result;
+  const token = Utils.generateToken({ id: responseId, role: responseRole });
 
-  return ({ ...result, token });
+  return ({ id: responseId, name: responseName, role: responseRole, token });
 };
 
-const updateUser = async (name, email, token) => {
+// UPDATE USER-----------------------------------------------------------------
+const updateUser = async ({ name, email, token }) => {
   const tokenStatus = await Validations.tokenValidation(token);
 
   if (tokenStatus.payload) return tokenStatus;
 
-  const result = await usersModel.updateUser(name, email);
-  return result;
+  const result = await usersModel.updateUser({ name, email });
+  const { name: responseName } = result;
+
+  return ({ name: responseName });
 };
 
 module.exports = {

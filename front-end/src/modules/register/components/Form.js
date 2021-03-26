@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import * as API from '../../../utils';
 import Buttons from './Buttons';
 import EmailInput from './EmailInput';
@@ -11,16 +11,23 @@ function Form() {
   const [form, setForm] = useState({ email: '', password: '', name: '', role: 'client' });
   const [errorForm, setErrorForm] = useState({ email: true, password: true, name: true });
   const [errorMsg, setErrorMsg] = useState('');
-  const { setToken } = useContext(GlobalContext);
+  const { setUserData } = useContext(GlobalContext);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     const response = await API.post('/users', form);
     if (response.message) return setErrorMsg('E-mail already in database.');
-    localStorage.setItem('user', JSON.stringify(response));
-    const delay = 1000;
-    setTimeout(() => setToken(true), delay);
+    // setUserData({ ...response, email: form.email });
+    // localStorage.setItem('user', JSON.stringify(response));
+    const delay = 500;
+    // setTimeout(() => setToken(true), delay);
+    setTimeout(() => setUserData({ ...response, email: form.email }), delay);
   };
+
+  useEffect(() => {
+    const clear = () => clearTimeout(handleSubmit);
+    return clear;
+  }, []);
 
   return (
     <form className="flex flex-col mt-10" onSubmit={ handleSubmit }>

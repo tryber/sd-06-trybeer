@@ -1,0 +1,32 @@
+USERS
+-----------------------------------------------------
+POST /users/login
+
+inputs
+body => { email, password }
+
+outputs
+{ id, name, role, token }
+
+------------------------------------------------------
+
+POST /users
+
+inputs
+body => { email, name, password }
+
+outputs
+{ id, name, role, token }
+
+------------------------------------------------------
+
+PUT /users
+
+inputs
+body => { email, name }
+headers => { authorization }
+
+outputs
+{ id, name, role, token }
+
+------------------------------------------------------

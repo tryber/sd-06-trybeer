@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
+import GlobalContext from '../../../../context/Context';
 import EmailInput from './EmailInput';
 import NameInput from './NameInput';
 
 function Form() {
   const [form, setForm] = useState({ email: '', name: '' });
+  const { userData } = useContext(GlobalContext);
 
   useEffect(() => {
-    const storage = JSON.parse(localStorage.getItem('user'));
+    const storage = userData;
     if (storage) setForm({ email: storage.email, name: storage.name });
   }, []);
 
