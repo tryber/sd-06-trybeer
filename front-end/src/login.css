@@ -1,3 +1,13 @@
+.image-container {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+img {
+  border-radius: 80%;
+  width: 150px;
+}
+
 .main-container {
   display: flex;
   flex-direction: column;
@@ -9,6 +19,19 @@
   margin: auto;
   margin-top: 90px;
   padding: 30px 15px;
+  background: url('../src/images/login-cover.png');
+}
+
+.login-aside {
+  align-items: center;
+  background-color: rgb(255,255,255, 0.4);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  position: relative;
+  width: 30%;
 }
 
 .form-container {

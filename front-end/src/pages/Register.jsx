@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import Checkbox from '@material-ui/core/Checkbox';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { useHistory } from 'react-router-dom';
 import useInput from '../hooks/useInput';
 import { nameValidation,
@@ -78,16 +80,17 @@ export default function Register() {
           </label>
         </fieldset>
         <fieldset className="form-check">
-          <label htmlFor="sell">
-            Quero vender
-            <input
-              className="form-check-label"
-              id="sell"
-              data-testid="signup-seller"
-              type="checkbox"
-              onClick={ handleCheckbox }
-            />
-          </label>
+          <FormControlLabel
+            control={
+              <Checkbox
+                data-testid="signup-seller"
+                onChange={ handleCheckbox }
+                color="primary"
+                name="sell-checkbox"
+              />
+            }
+            label="Quero vender"
+          />
           <button
             className="form-control btn btn-secondary"
             id="signup"

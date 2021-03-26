@@ -21,9 +21,29 @@ const isTheNewNameDifferent = (oldName, newName) => {
   return true;
 };
 
+const isTotalNotPriceZero = (total) => {
+  if (total === '0,00') {
+    return false;
+  }
+  return true;
+};
+
+const streetValidation = (userStreet) => {
+  const isStreetFilled = userStreet.length > 0;
+  return isStreetFilled;
+};
+
+const houseNumberValidation = (number) => {
+  const ishouseNumberFilled = number.length > 0;
+  return ishouseNumberFilled;
+};
+
 module.exports = {
   emailValidation,
   passwordValidation,
   nameValidation,
   isTheNewNameDifferent,
+  isTotalNotPriceZero,
+  streetValidation,
+  houseNumberValidation,
 };

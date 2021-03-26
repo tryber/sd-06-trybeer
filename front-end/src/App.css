@@ -3,8 +3,10 @@ app.css
 margin: 0;
 padding: 0;
 }
-body{
+body {
 background-size: cover;
-color: rgb(59, 49, 49);
+background-color: #F4F4F4;
+color: #32325B;
+font-size: large;
 font-family: 'Montserrat', sans-serif;
 }

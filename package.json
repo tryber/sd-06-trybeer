@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/betrybe/sd-0x-trybeer#readme",
   "dependencies": {
+    "@material-ui/core": "^4.11.3",
     "mysql2": "2.1.0",
     "sequelize": "6.3.4"
   },

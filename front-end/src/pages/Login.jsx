@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import '../login.css';
+import logo from '../images/let-it-beer-logo.png';
 import useInput from '../hooks/useInput';
 import fetches from '../services/fetches';
 import { emailValidation, passwordValidation } from '../utils/validations';
@@ -22,6 +23,9 @@ export default function Login() {
 
   return (
     <div className="main-container">
+      <div className="image-container">
+        <img src={ logo } alt="let-it-beer logo" />
+      </div>
       <form>
         <fieldset className="form-group">
           <label htmlFor="email-input">
