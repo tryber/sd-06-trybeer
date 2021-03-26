@@ -1,21 +1,25 @@
 const connection = require('./connection');
 
 const getAllOrders = async () => {
-  const orders = await connection.execute(
-    'SELECT * FROM Trybeer.sales;',
-  ); 
+  const [orders] = await connection.execute(
+    'SELECT * FROM sales',
+  );
   return orders;
 };
 
-const getOrdersByIdSale = async (idSale) => {
+const getOrdersByDetails = async (id) => {
   const [orders] = await connection.execute(
-    `SELECT S.id AS saleId, P.name AS productName,
-SP.quantity AS productQuantity,  P.price AS productPrice, 
-S.total_price AS totalPrice, date_format(S.sale_date, '%d/%m') AS saleDate
-FROM Trybeer.sales AS S
-INNER JOIN Trybeer.sales_products AS SP ON S.id = SP.sale_id
-INNER JOIN Trybeer.products AS P ON P.id = SP.product_id
-WHERE S.id=?`, [idSale],
+    `SELECT 
+      SP.sale_id AS saleId,
+      S.sale_date AS saleDate,
+      SP.quantity AS productQuantity,
+      P.name AS productName,
+      P.price AS productPrice,
+      S.total_price AS totalPrice
+    FROM Trybeer.sales AS S
+    INNER JOIN Trybeer.sales_products AS SP ON S.id = SP.sale_id
+    INNER JOIN Trybeer.products AS P ON P.id = SP.product_id
+    WHERE SP.sale_id=?`, [id],
   );
 
   return orders;
@@ -23,5 +27,5 @@ WHERE S.id=?`, [idSale],
 
 module.exports = {
   getAllOrders,
-  getOrdersByIdSale,
+  getOrdersByDetails,
 };

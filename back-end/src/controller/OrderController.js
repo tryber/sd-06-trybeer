@@ -4,8 +4,9 @@ const { OrderService } = require('../service');
 const { OrderModel } = require('../model');
 
 const getAllOrders = rescue(async (_req, res) => {
-  const [orders] = await OrderModel.getAllOrders();
-  const [prod] = await OrderService.getOrdersByIdSale(1);
+  const orders = await OrderModel.getAllOrders();
+  const id = 1;
+  const prod = await OrderService.getOrdersByIdSale(id);
   console.log(prod);
 // const saled = 'sale_date';
 // const total = 'total_price';
