@@ -7,11 +7,10 @@ function ButtonCheckout() {
   const [message, setMessage] = useState(false);
 
   const generateData = () => {
-    const data = new Date().toLocaleDateString('zh-Hans-CN');
-    const dataFormart = data.replace(/[/]/g, '-');
-    const hora = new Date().toLocaleTimeString();
+    const data = new Date();
+    const dataFormart = `${data.getFullYear()}-${data.getMonth() + 1}-${data.getDate()}`;
+    const hora = new Date().toLocaleTimeString('pt-BR', { hour12: false });
     const dateTime = `${dataFormart} ${hora}`;
-    console.log(dataFormart);
     return dateTime;
   };
 
