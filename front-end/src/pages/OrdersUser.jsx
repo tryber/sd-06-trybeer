@@ -7,7 +7,7 @@ import OrdersCard from '../components/pageOrders/OrdersCard';
 function OrdersUser({ history }) {
   const [orders, setOrders] = useState([]);
   // const [or, setOr] = useState([]);
-  const data = new Date().toLocaleDateString('zh-Hans-CN');
+  const data = new Date().toLocaleTimeString();
 
   useEffect(() => {
     async function fetchOrders() {
