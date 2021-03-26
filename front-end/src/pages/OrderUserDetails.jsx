@@ -28,7 +28,7 @@ function OrdersUserDetails() {
   return (
     <div>
       <h1 data-testid="top-title">Detalhes do Pedido</h1>
-      {order.length > 0 ? (
+      {order.length > 0 && (
         <div>
           <p data-testid="order-number">{`Pedido ${order[0].saleId}`}</p>
           <p data-testid="order-date">{`${order[0].saleDate}`}</p>
@@ -43,8 +43,7 @@ function OrdersUserDetails() {
           <p data-testid="order-total-value">
             {`R$ ${order[0].totalPrice}`.replace('.', ',')}
           </p>
-        </div>)
-        : <span>Não há pedidos</span>}
+        </div>)}
     </div>
   );
 }
