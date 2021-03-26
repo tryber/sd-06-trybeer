@@ -38,7 +38,7 @@ const getAllProducts = async (token) => axios
   .catch((err) => err.response.data);
 
 const getAllOrders = async (token) => axios
-  .get(`${baseUrl}/admin/orders`, {
+  .get(`${baseUrl}/orders`, {
     headers: {
       authorization: token,
     },

@@ -6,27 +6,22 @@ import OrdersCard from '../components/pageOrders/OrdersCard';
 
 function OrdersUser({ history }) {
   const [orders, setOrders] = useState([]);
-  const [or, setOr] = useState([]);
+  // const [or, setOr] = useState([]);
 
   useEffect(() => {
-    const data = JSON.parse(localStorage.user);
-    const buildOrRedirect = async () => {
-      const list = await api.getOrdersByIdUser(data.id, data.token);
-      const test = [{ id: 1, saleDate: '25/03', total_price: '2.20' }];
-      setOrders(list);
-      setOr(test);
-    };
-    // depois vou passar como paramento da func
-    if (!data.token) return history.push('/login');
-    buildOrRedirect();
-    console.log('mount');
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    async function fetchOrders() {
+      const user = JSON.parse(localStorage.user);
+      const response = await api.getAllOrders(user.token);
+      if (response.message) return history.push('/login');
+      setOrders(response);
+    }
+    fetchOrders();
+  }, [history]);
 
   return (
     <div>
       <MenuTop name="Meus Pedidos" />
-      <OrdersCard orders={ orders } or={ or } />
+      <OrdersCard orders={ orders } />
     </div>
   );
 }

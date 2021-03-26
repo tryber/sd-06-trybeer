@@ -11,6 +11,7 @@ function OrdersCard({ orders }) {
     const formatDate = `${day}/${month}`;
     return formatDate;
   };
+  console.log(orders);
   return (
     <div>
       {orders.length > 0 ? orders.map((order, index) => (
