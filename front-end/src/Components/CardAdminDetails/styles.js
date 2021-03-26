@@ -118,11 +118,14 @@ const ContentRight = styled.div`
         font-size: 16px;  
         font-weight: 400;
       }
+<<<<<<< HEAD
 
       @media (max-width: 480px) {
         display: flex;
         flex-direction: column;
       }
+=======
+>>>>>>> 1f2b860... :memo: add req 12
     }
   `}
 `;
