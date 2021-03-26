@@ -4,6 +4,7 @@ const { OrderService } = require('../service');
 
 const getAllOrders = rescue(async (req, res) => {
   const [orders] = await OrderService.getAllOrders();
+  console.log(req.headers);
   return res
     .status(200)
     .json(orders);
@@ -21,5 +22,5 @@ console.log(orders);
 
 module.exports = {
   getOrdersByIdSale,
-getAllOrders,
+  getAllOrders,
 };

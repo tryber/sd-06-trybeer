@@ -13,7 +13,7 @@ import PedidosAdmin from '../pages/PedidosAdmin';
 import ProfileAdmin from '../pages/ProfileAdmin';
 import DetalhesPedidosAdmin from '../pages/DetalhesPedidosAdmin';
 import Checkout from '../pages/Checkout';
-import OrdersClient from '../pages/OrdersUser';
+import OrdersUser from '../pages/OrdersUser';
 import OrderUserDetails from '../pages/OrderUserDetails';
 
 const Routes = () => (
@@ -31,7 +31,7 @@ const Routes = () => (
       <Route path="/products" component={ Products } />
       <Route path="/profile" component={ Profile } />
       <Route path="/checkout" component={ Checkout } />
-      <Route path="/orders" component={ OrdersClient } />
+      <Route exact path="/orders" component={ OrdersUser } />
 
     </Switch>
   </Router>

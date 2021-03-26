@@ -1,7 +1,8 @@
 const connection = require('./connection');
+// const obj = { id: 1, sale_date: '26/03', total_price: 2.20 };
 
 const getAllOrders = async () => {
-  const orders = connection.execute(
+  const orders = await connection.execute(
     'SELECT * FROM Trybeer.sales;',
   );
   return orders;
@@ -22,6 +23,6 @@ WHERE S.id=?`, [idSale],
 };
 
 module.exports = {
- getAllOrders,
+  getAllOrders,
   getOrdersByIdSale,
 };

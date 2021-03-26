@@ -14,7 +14,7 @@ function OrdersCard({ orders }) {
   console.log(orders);
   return (
     <div>
-      {orders.length > 0 ? orders.map((order, index) => (
+      {orders ? orders.map((order, index) => (
         <div
           key={ index }
           data-testid={ `${index}-card-container` }
