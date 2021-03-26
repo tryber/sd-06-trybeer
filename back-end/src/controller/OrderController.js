@@ -5,10 +5,11 @@ const { OrderModel } = require('../model');
 
 const getAllOrders = rescue(async (_req, res) => {
   const [orders] = await OrderModel.getAllOrders();
-  console.log(orders);
-// const saled = 'sale_date';
-// const total = 'total_price';
-// const lista = [{ id: 1, [saled]: '2021-03-26 11:28:46', [total]: '2.20' }];
+ 
+const saled = 'sale_date';
+const total = 'total_price';
+const lista = [{ id: 1, [saled]: '2021-03-26 11:28:46', [total]: '2.20' }];
+ console.log(lista);
   return res
     .status(200)
     .json(orders);
