@@ -15,14 +15,14 @@ function ButtonCheckout() {
     return dateTime;
   };
 
-  const generateSale = async () => {
+  const generateSale = () => {
     const userId = JSON.parse(localStorage.user);
     const params = {
       userId: userId.id || 1,
       total: sumTotal,
       address: address.rua,
       adNumber: address.numero,
-      date: await generateData(),
+      date: generateData(),
       status: 'Pendente',
     };
     return params;
