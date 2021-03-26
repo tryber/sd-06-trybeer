@@ -17,7 +17,6 @@ const Orders = ({ history }) => {
     }
     fetchOrders();
   }, [history]);
-
   return (
     <div>
       <MenuTop name="Meus Pedidos" />
