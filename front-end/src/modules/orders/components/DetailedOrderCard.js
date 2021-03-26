@@ -5,27 +5,39 @@ import api from '../../../axios';
 import { update } from '../../../utils';
 
 function DetailedOrderCard(props) {
-  const [order, setOrder] = useState();
-  const [saleStatus, setSaleStatus] = useState(false);
+  const [order, setOrder] = useState({});
+  // const [saleStatus, setSaleStatus] = useState('pending');
   const { match: { params: { id } } } = props;
 
   // Get Sales
   useEffect(() => {
     api.get(`/sales/${id}`).then((resp) => setOrder(resp.data));
-  }, [saleStatus]);
+  }, []);
 
-  let date = '';
-  let orderStatus = '';
-  if (order && order.createdAt) {
-    const { status, createdAt } = order;
-    date = new Date(createdAt).toLocaleDateString();
-    date = date.split('/');
-    date = `${date[0]}/${date[1]}`;
-    orderStatus = status;
-  }
+  // let orderStatus = '';
+
+  // useEffect(() => {
+  //   if (order && order.createdAt) {
+  //     const { status, createdAt } = order;
+  //     date = new Date(createdAt).toLocaleDateString();
+  //     date = date.split('/');
+  //     date = `${date[0]}/${date[1]}`;
+  //     orderStatus = status;
+  //   }
+  // });
+
+  const renderDate = () => {
+    if (order && order.createdAt) {
+      let date = new Date(order.createdAt).toLocaleDateString();
+      date = date.split('/');
+      date = `${date[0]}/${date[1]}`;
+
+      return date;
+    }
+  };
 
   const handleClick = () => {
-    update(`/sales/${id}`).then((resp) => setSaleStatus(resp.message));
+    update(`/sales/${id}`).then(() => setOrder({ ...order, status: 'entregue' }));
   };
 
   const renderButton = () => {
@@ -39,7 +51,7 @@ function DetailedOrderCard(props) {
       </button>
     );
 
-    if (orderStatus === 'pending') return button;
+    if (order.status === 'pending') return button;
   };
 
   return (
@@ -57,22 +69,22 @@ function DetailedOrderCard(props) {
         data-testid="order-date"
       >
         Order date:
-        { date }
+        { renderDate() }
       </p>
       <p
         className="flex items-center space-x-2"
         data-testid="order-total-value"
       >
         Total:
-        { order ? `R$ ${order.total.replace('.', ',')}` : '' }
+        { order && order.total && `R$ ${order.total.replace('.', ',')}` }
       </p>
       <p data-testid="order-status">
-        { orderStatus === 'pending' ? 'Pendente' : 'Entregue' }
+        { order && order.status === 'pending' ? 'Pendente' : 'Entregue' }
       </p>
       {
         renderButton()
       }
-      { order && order.products.map((product, index) => (
+      { order && order.products && order.products.map((product, index) => (
         <div
           key={ index }
           className="border rounded-md border-primary p-2 flex flex-col items-center"
