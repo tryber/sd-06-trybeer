@@ -1,11 +1,12 @@
 const rescue = require('express-rescue');
 
 const { OrderService } = require('../service');
-const { OrderModel } = require('../model');
+const { OrderModel, ProductsModel } = require('../model');
 
 const getAllOrders = rescue(async (_req, res) => {
   const [orders] = await OrderModel.getAllOrders();
- 
+  const [prod] = await ProductsModel.getAllProducts();
+  console.log(prod);
 const saled = 'sale_date';
 const total = 'total_price';
 const lista = [{ id: 1, [saled]: '2021-03-26 11:28:46', [total]: '2.20' }];
