@@ -89,6 +89,9 @@ export default function DrinkCard({ product, index, setCartSum }) {
             >
               -
             </button>
+            <div className="quantity">
+              <div data-testid={ `${index}-product-qtd` }>{cartItem.quantity}</div>
+            </div>
             <button
               type="button"
               className="plus-button"
@@ -97,9 +100,6 @@ export default function DrinkCard({ product, index, setCartSum }) {
             >
               +
             </button>
-          </div>
-          <div className="quantity">
-            <div data-testid={ `${index}-product-qtd` }>{cartItem.quantity}</div>
           </div>
         </div>
       </div>

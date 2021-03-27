@@ -19,6 +19,7 @@
   padding: 20px 15px;
   display: flex;
   flex-direction: column;
+  transition: 0.3s ease-in-out;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.76);
 }
 
@@ -46,22 +47,26 @@
 
 .card .content {
   position: relative;
-  margin-top: -50px;
+  margin-top: 50px;
   width: 100rf;
   height: 100%;
   color: #111;
   text-align: center;
   visibility: hidden;
   opacity: 0;
-  transition: 0.3s ease-out;
+  transition: 0.3s ease-in-out;
   display: flex;
   flex-direction: column;
+}
+.card:hover .card-img img{
+  width: 100%;
+  height: 60%;
 }
 
 .card:hover .content {
   visibility: visible;
   opacity: 1;
-  margin-top: -248px;
+  margin-top: -60px;
 }
 
 .texto {
@@ -97,7 +102,6 @@
 .quantity {
   font-size: 46px;
   align-items: flex-end;
-  margin-top: 3rem;
   text-shadow: 0 5px 25px rgb(167, 167, 167);
 }
 
