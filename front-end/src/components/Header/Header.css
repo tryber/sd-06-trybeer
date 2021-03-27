@@ -1,0 +1,121 @@
+.isAdmin {
+    /* border: 1px solid blue; */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 80px;
+    background-color: #255923;
+}
+
+.isAdmin aside {
+  /* position: relative; */
+  position: fixed;
+  top: 78px;
+  width: 200px;
+  /* border: 1px solid red; */
+  background-color: #255923;
+  height: 100vh;
+  /* left: -90vw; */
+  /* transition: 2s ease; */
+  /* visibility: hidden; */
+}
+
+.spacer-admin {
+  width: 200px;
+  height: 200px;
+  background-color: white;
+  border: 1px solid red;
+  z-index: 100;
+  position: relative;
+}
+
+.isAdmin aside ul {
+  height: 100vh;
+  padding-left: 0;
+  list-style-type: none;
+  /* border: 1px solid; */
+  display: flex;
+  flex-direction: column;
+}
+
+.isAdmin aside li:first-child {
+  margin-top: 10vh;
+}
+
+.isAdmin aside li:last-child {
+  margin-top: 50vh;
+}
+
+.isAdmin aside button {
+  width: 100%;
+  background-color: #488C18;
+  border: 0;
+  color: white;
+  font-size: 2.5em;
+}
+
+.isAdmin h1 {
+  width: 100%;
+  text-align: center;
+  color: white;
+}
+
+/* ----- User ----- */
+.isUser {
+  /* border: 1px solid blue; */
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 80px;
+  background-color: #255923;
+  transition: 1s ease;
+}
+
+.isUser aside {
+  background-color: #255923;
+  height: 100vh;
+  left: -100vw;
+  position: fixed;
+  top: 78px;
+  width: 100vw;
+  transition: 1s ease;
+}
+
+.move-menu {
+  transform: translateX(100vw);
+  transition: 1s ease;
+}
+
+.isUser aside ul {
+  height: 100vh;
+  padding-left: 0;
+  list-style-type: none;
+  /* border: 1px solid; */
+  display: flex;
+  flex-direction: column;
+}
+
+.isUser aside li:first-child {
+  margin-top: 10vh;
+}
+
+.isUser aside li:last-child {
+  margin-top: 50vh;
+}
+
+.isUser aside button {
+  width: 100vw;
+  background-color: #488C18;
+  border: 0;
+  color: white;
+  font-size: 2.5em;
+}
+
+.isUser h1 {
+  width: 100%;
+  text-align: center;
+  color: white;
+}

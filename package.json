@@ -23,7 +23,10 @@
   },
   "homepage": "https://github.com/betrybe/sd-0x-trybeer#readme",
   "dependencies": {
-    "mysql2": "2.1.0",
+    "@fortawesome/fontawesome-svg-core": "^1.2.35",
+    "@fortawesome/free-solid-svg-icons": "^5.15.3",
+    "@fortawesome/react-fontawesome": "^0.1.14",
+    "mysql2": "^2.1.0",
     "sequelize": "6.3.4"
   },
   "devDependencies": {
