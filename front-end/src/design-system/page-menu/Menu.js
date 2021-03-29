@@ -6,9 +6,7 @@ import GlobalContext from '../../context/Context';
 function Menu(props) {
   const [menuStatus, setMenuStatus] = useState(false);
   const { setToken } = useContext(GlobalContext);
-
   const { match: { path } } = props;
-
   const linksClient = [
     {
       to: '/products',
@@ -29,7 +27,6 @@ function Menu(props) {
       testId: 'side-menu-item-my-profile',
     },
   ];
-
   const linksAdmin = [
     {
       to: '/products',
@@ -50,23 +47,19 @@ function Menu(props) {
       testId: 'side-menu-item-profile',
     },
   ];
-
   const storage = JSON.parse(localStorage.getItem('user'));
   const role = storage ? storage.role : 'client';
   const links = role === 'client' ? linksClient : linksAdmin;
   const classToTest = role === 'admin'
     ? 'admin-side-bar-container' : 'side-menu-container';
-
   const handleMenu = () => {
     setMenuStatus((prev) => !prev);
   };
-
   const logout = () => {
     localStorage.removeItem('user');
     localStorage.removeItem('cart');
     setToken(false);
   };
-
   return (
     <nav className="top-0 left-0 w-full bg-primary md:flex ">
       <button
@@ -81,11 +74,20 @@ function Menu(props) {
         </p>
       </button>
       <div
+        style={ { display: `${menuStatus ? 'flex' : 'hidden'}` } }
         className={ `${menuStatus ? '' : 'hidden'} w-full bg-primary-light
           md:bg-transparent absolute z-10 h-full md:relative md:flex
           md:justify-end md:px-2` }
       >
-        <div className={ `${classToTest} h-1 w-1 ${menuStatus ? '' : 'hidden'}` } />
+        <div
+          clasName={ classToTest }
+          style={
+            {
+              display: `${menuStatus ? 'flex' : 'hidden'}`,
+              width: '100px',
+              height: '100px' }
+          }
+        />
         { links.map((link, index) => (
           <Link
             key={ index }
@@ -112,11 +114,9 @@ function Menu(props) {
     </nav>
   );
 }
-
 Menu.propTypes = {
   match: PropTypes.shape({
     path: PropTypes.string.isRequired,
   }).isRequired,
 };
-
 export default withRouter(Menu);
