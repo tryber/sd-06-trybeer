@@ -8,7 +8,6 @@ require('dotenv').config();
 
 const error = require('./src/middlewares/error.js');
 const loginRouter = require('./src/controllers/loginController.js');
-const registerRouter = require('./src/controllers/registerController');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -23,7 +22,7 @@ app.use(morgan('dev'));
 
 app.use('/login', loginRouter);
 
-app.use('/register', registerRouter);
+// app.use('/register');
 
 // app.use('/products');
 
