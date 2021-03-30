@@ -27,6 +27,7 @@
     "sequelize": "6.3.4"
   },
   "devDependencies": {
+    "autoprefixer": "^10.2.5",
     "cypress": "5.0.0",
     "cypress-multi-reporters": "1.2.3",
     "dotenv": "8.2.0",
@@ -35,6 +36,7 @@
     "mochawesome": "4.1.0",
     "mochawesome-merge": "4.0.0",
     "mochawesome-report-generator": "4.1.0",
+    "postcss": "^8.2.8",
     "sequelize-cli": "6.2.0"
   }
 }
