@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import '../css/ProductCardAdmin.css';
+import '../css/ProductCardAdmin.css';
 
 function ProductCardAdmin(props) {
   const { product, index } = props;
@@ -8,22 +8,25 @@ function ProductCardAdmin(props) {
   const productTotal = parseFloat(productPrice) * parseFloat(quantity);
 
   return (
-    <div className="card-container">
-      <section className="product-info">
-        <span data-testid={ `${index}-product-qtd` }>{ quantity }</span>
-        <spam data-testid={ `${index}-product-name` }>{ ` - ${productName}` }</spam>
-        <spam
-          data-testid={ `${index}-product-total-value` }
-        >
-          {`R$ ${productTotal.toFixed(2).toString().replace('.', ',')}`}
-        </spam>
+    <div className="admin-container-card">
+      <section className="admin-product-info">
+        <div>
+          <span data-testid={ `${index}-product-qtd` }>{ quantity }</span>
+          <span data-testid={ `${index}-product-name` }>{ ` - ${productName}` }</span>
+        </div>
+        <div>
+          <span
+            data-testid={ `${index}-product-total-value` }
+          >
+            {`R$ ${productTotal.toFixed(2).toString().replace('.', ',')}`}
+          </span>
 
-        <spam
-          data-testid={ `${index}-order-unit-price` }
-        >
-          {`(R$ ${productPrice.replace('.', ',')})`}
-        </spam>
-
+          <span
+            data-testid={ `${index}-order-unit-price` }
+          >
+            {`(R$ ${productPrice.replace('.', ',')})`}
+          </span>
+        </div>
       </section>
     </div>
   );

@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
-import '../css/CheckoutCard.css';
+import '../css/OrderCard.css';
 import { Link } from 'react-router-dom';
 import BeerContext from '../context/BeerContext';
 import { getproductsBySaleId } from '../api/index';
@@ -34,7 +34,7 @@ function CheckoutCard(props) {
 
   return (
     <div
-      className="checkout-card-container"
+      className="order-card-container"
       data-testid={ `${index}-order-card-container` }
     >
       <Link to={ `orders/${order.id}` }>

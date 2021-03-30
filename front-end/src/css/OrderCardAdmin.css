@@ -16,12 +16,15 @@
   text-decoration: none;
 }
 
+.admin-order-card a,
 .admin-order-card a > div {
   color: #004370;
-  min-width: 250%;
+  width: 100%;
 }
 
 .admin-order-number {
+  color: blue;
+  text-decoration: underline;
   width: 100%;
 }
 

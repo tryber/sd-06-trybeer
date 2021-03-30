@@ -4,7 +4,6 @@ import BeerContext from '../context/BeerContext';
 import ControllerHeader from '../components/Header-SideBar/ControllerHeader';
 import CardClientDetailsOrder from '../components/ClientDetailsOrder/CardClientOrder';
 import { tokenExists } from '../services/index';
-import '../css/General.css';
 import '../css/ClientDetailsOrder.css';
 
 function ClientDetailsOrder() {
@@ -25,16 +24,21 @@ function ClientDetailsOrder() {
   return (
     <div>
       <ControllerHeader />
-      <section className="client-order-details-container">
-        <p data-testid="order-number">{`Pedido ${saleIdOrder}`}</p>
-        <p data-testid="order-date">{`Data: ${dateOrder}`}</p>
-        <p data-testid="order-total-value">{`Total: R$ ${totalPriceOrder}`}</p>
-        <section className="list">
+      <section className="order-card-container">
+        <p
+          data-testid="order-number"
+          className="larger-text"
+        >
+          {`Pedido ${saleIdOrder}`}
+        </p>
+        <section className="client-card-list">
           { products && products
             .map((obj, index) => (
               <CardClientDetailsOrder key={ index } product={ obj } index={ index } />
             ))}
         </section>
+        <p data-testid="order-date">{`Data: ${dateOrder}`}</p>
+        <p data-testid="order-total-value">{`Total: R$ ${totalPriceOrder}`}</p>
       </section>
     </div>
   );

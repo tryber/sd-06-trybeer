@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { profile } from '../api/index';
 import AdminSideBar from '../components/AdminSideBar';
+import '../css/AdminProfile.css';
 
 function AdminOrders() {
   const [name, setName] = useState('');
@@ -21,15 +22,17 @@ function AdminOrders() {
   return (
     <div>
       <AdminSideBar />
-      <h1>Perfil</h1>
-      <p data-testid="profile-name">
-        Nome:
-        {name}
-      </p>
-      <p data-testid="profile-email">
-        Email:
-        {email}
-      </p>
+      <section className="admin-profile-container">
+        <h1>Perfil de adminstrador</h1>
+        <div>
+          <p data-testid="profile-name">
+            {`Nome: ${name} `}
+          </p>
+          <p data-testid="profile-email">
+            {`Email: ${email}`}
+          </p>
+        </div>
+      </section>
     </div>
   );
 }

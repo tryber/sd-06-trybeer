@@ -3,6 +3,7 @@ import { handleUpdate } from '../services/index';
 import { profile } from '../api/index';
 import ControllerHeader from '../components/Header-SideBar/ControllerHeader';
 import '../css/General.css';
+import '../css/ProfileClient.css';
 
 function ProfileClient() {
   const [user, setUser] = useState({ name: '', email: '' });
@@ -43,39 +44,41 @@ function ProfileClient() {
   }, [showMessage]);
 
   return (
-    <div>
+    <div className="client-profile-container">
       <ControllerHeader title="Meu perfil" />
-      <label htmlFor="name">
-        Name
-        <input
-          name="name"
-          data-testid="profile-name-input"
-          value={ user.name }
-          onChange={ ({ target }) => handleChange(target) }
-        />
-      </label>
-      <label htmlFor="email">
-        Email
-        <input
-          name="email"
-          value={ user.email }
-          data-testid="profile-email-input"
-          readOnly
-        />
-      </label>
-      <button
-        type="submit"
-        disabled={ !activeBtn }
-        data-testid="profile-save-btn"
-        onClick={ () => handleUpdate(user.name, setShowMessage) }
-      >
-        Salvar
-      </button>
-      <span
-        className={ showMessage ? 'show' : 'no-show' }
-      >
-        Atualização concluída com sucesso
-      </span>
+      <section className="client-profile-content">
+        <label htmlFor="name">
+          Nome:
+          <input
+            name="name"
+            data-testid="profile-name-input"
+            value={ user.name }
+            onChange={ ({ target }) => handleChange(target) }
+          />
+        </label>
+        <label htmlFor="email">
+          Email:
+          <input
+            name="email"
+            value={ user.email }
+            data-testid="profile-email-input"
+            readOnly
+          />
+        </label>
+        <button
+          type="submit"
+          disabled={ !activeBtn }
+          data-testid="profile-save-btn"
+          onClick={ () => handleUpdate(user.name, setShowMessage) }
+        >
+          Salvar
+        </button>
+        <span
+          className={ showMessage ? 'show' : 'no-show' }
+        >
+          Atualização concluída com sucesso
+        </span>
+      </section>
     </div>
   );
 }

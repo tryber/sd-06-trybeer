@@ -13,6 +13,12 @@ function AdminSideBar() {
       <h3>Trybeer</h3>
       <button
         type="button"
+        onClick={ () => history.push('/products') }
+      >
+        Produtos
+      </button>
+      <button
+        type="button"
         data-testid="side-menu-item-orders"
         onClick={ () => history.push('/admin/orders') }
       >

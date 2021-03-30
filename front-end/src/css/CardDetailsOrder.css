@@ -8,9 +8,8 @@
   flex-flow: row wrap;
   font-size: large;
   margin: 30px auto;
-  max-width: 50%; 
   padding: 10px;
-  width: 25%; 
+  width: 80%;
   }
 
 .client-details-card p {
@@ -19,4 +18,13 @@
 
 .client-details-card h1 {
   margin: auto;
+}
+
+.client-details-card {
+  display: flex;
+  flex-flow: column;
+}
+
+.client-details-card div p {
+  margin: auto 10px;
 }

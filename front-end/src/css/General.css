@@ -14,3 +14,7 @@ body {
 .no-show {
   display: none;
 }
+
+.larger-text {
+  font-size: x-large;
+}

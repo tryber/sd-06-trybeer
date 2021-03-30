@@ -3,6 +3,7 @@ import AdminSideBar from '../components/AdminSideBar';
 import { getOrders } from '../api/index';
 import OrderCardAdmin from '../components/OrderCardAdmin';
 import '../css/AdminOrders.css';
+import '../css/General.css';
 
 function AdminOrders() {
   const [orders, setOrders] = useState(false);
@@ -13,8 +14,8 @@ function AdminOrders() {
 
   return (
     <div className="admin-container">
-      <h1>Pedidos</h1>
       <div>
+        <h1>Pedidos</h1>
         <AdminSideBar />
         <section className="admin-orders-list">
           { orders && orders.map((order, index) => (<OrderCardAdmin

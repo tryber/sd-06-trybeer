@@ -23,7 +23,7 @@ function OrderCardAdmin(props) {
         href="/admin/orders/:id"
         onClick={ () => handleClick() }
       >
-        <div data-testid={ `${index}-order-card-container` }>
+        <div data-testid={ `${index}-order-card-container` } className="lol">
           <p
             data-testid={ `${index}-order-number` }
             className="admin-order-number"
