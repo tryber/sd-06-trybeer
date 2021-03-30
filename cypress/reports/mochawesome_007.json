@@ -1,0 +1,205 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2021-03-26T14:07:10.241Z",
+    "end": "2021-03-26T14:07:30.608Z",
+    "duration": 20367,
+    "testsRegistered": 6,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 1,
+    "hasOther": true,
+    "skipped": 5,
+    "hasSkipped": true
+  },
+  "results": [
+    {
+      "uuid": "db250a44-56bc-4a70-8b81-9c9f67843138",
+      "title": "",
+      "fullFile": "cypress/integration/productDetailsClient.spec.js",
+      "file": "cypress/integration/productDetailsClient.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "9748428f-adef-42be-a44e-eb57d0152d0e",
+          "title": "Criar tela de detalhes pedidos",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Será validado que é possível acessar a tela do detalhe do pedido",
+              "fullTitle": "Criar tela de detalhes pedidos Será validado que é possível acessar a tela do detalhe do pedido",
+              "timedOut": null,
+              "duration": 10030,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "(0, _actionBase.login)(Cypress.env('login'), Cypress.env('password'));\n(0, _actionBase.buyOneProduct)();\n(0, _actionBase.accessOrdersClient)();\n(0, _actionBase.clickButton)('[data-testid=\"0-order-number\"]');\n(0, _actionBase.verifyContainsUrl)(\"\".concat(Cypress.config().baseUrl, \"/orders/1\"));",
+              "err": {
+                "message": "CypressError: Cypress command timeout of `10000ms` exceeded.\n\nBecause this error occurred during a `after each` hook we are skipping the remaining tests in the current suite: `Criar tela de detalhes pedidos`",
+                "estack": "CypressError: Cypress command timeout of `10000ms` exceeded.\n\nBecause this error occurred during a `after each` hook we are skipping the remaining tests in the current suite: `Criar tela de detalhes pedidos`\n    at cypressErr (http://localhost:3000/__cypress/runner/cypress_runner.js:172713:18)\n    at Object.errByPath (http://localhost:3000/__cypress/runner/cypress_runner.js:172764:10)\n    at http://localhost:3000/__cypress/runner/cypress_runner.js:174378:29",
+                "diff": null
+              },
+              "uuid": "24beacd2-3de3-4937-a44e-7e6de2f49847",
+              "parentUUID": "9748428f-adef-42be-a44e-eb57d0152d0e",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Será validado que contém os atributos descritos no protótipo",
+              "fullTitle": "Criar tela de detalhes pedidos Será validado que contém os atributos descritos no protótipo",
+              "timedOut": null,
+              "duration": 0,
+              "state": "skipped",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "(0, _actionBase.login)(Cypress.env('login'), Cypress.env('password'));\n(0, _actionBase.buyOneProduct)();\n(0, _actionBase.accessOrdersClient)();\n(0, _actionBase.clickButton)('[data-testid=\"0-order-number\"]');\n(0, _actionBase.verifyElementVisible)('[data-testid=\"top-title\"]');\n(0, _actionBase.verifyElementVisible)('[data-testid=\"order-number\"]');\n(0, _actionBase.verifyElementVisible)('[data-testid=\"order-date\"]');\n(0, _actionBase.verifyElementVisible)('[data-testid=\"0-product-qtd\"]');\n(0, _actionBase.verifyElementVisible)('[data-testid=\"0-product-name\"]');\n(0, _actionBase.verifyElementVisible)('[data-testid=\"0-product-total-value\"]');\n(0, _actionBase.verifyElementVisible)('[data-testid=\"order-total-value\"]');",
+              "err": {},
+              "uuid": "5ce5ed3c-5781-4b68-97c1-8f6997cd69b8",
+              "parentUUID": "9748428f-adef-42be-a44e-eb57d0152d0e",
+              "isHook": false,
+              "skipped": true
+            },
+            {
+              "title": "Será validado que é possível ver que tem número do pedido e a data da compra",
+              "fullTitle": "Criar tela de detalhes pedidos Será validado que é possível ver que tem número do pedido e a data da compra",
+              "timedOut": null,
+              "duration": 0,
+              "state": "skipped",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "var date = (0, _actionBase.getDateAndMonth)();\n(0, _actionBase.login)(Cypress.env('login'), Cypress.env('password'));\n(0, _actionBase.buyOneProduct)();\n(0, _actionBase.accessOrdersClient)();\n(0, _actionBase.clickButton)('[data-testid=\"0-order-number\"]');\n(0, _actionBase.verifyElementContainsText)('[data-testid=\"order-number\"]', 'Pedido 1');\n(0, _actionBase.verifyElementContainsText)('[data-testid=\"order-date\"]', date);",
+              "err": {},
+              "uuid": "35eaf375-cc0c-4256-ad03-213196e8268b",
+              "parentUUID": "9748428f-adef-42be-a44e-eb57d0152d0e",
+              "isHook": false,
+              "skipped": true
+            },
+            {
+              "title": "Será validado que é possível ver que o produto tem quantidade, nome e valor total do produto",
+              "fullTitle": "Criar tela de detalhes pedidos Será validado que é possível ver que o produto tem quantidade, nome e valor total do produto",
+              "timedOut": null,
+              "duration": 0,
+              "state": "skipped",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "(0, _actionBase.login)(Cypress.env('login'), Cypress.env('password'));\n(0, _actionBase.buyOneProduct)();\n(0, _actionBase.accessOrdersClient)();\n(0, _actionBase.clickButton)('[data-testid=\"0-order-number\"]');\n(0, _actionBase.verifyElementContainsText)('[data-testid=\"0-product-qtd\"]', '1');\n(0, _actionBase.verifyElementContainsText)('[data-testid=\"0-product-name\"]', 'Skol Lata 250ml');\n(0, _actionBase.verifyElementContainsText)('[data-testid=\"0-product-total-value\"]', 'R$ 2,20');",
+              "err": {},
+              "uuid": "f663d613-40de-45af-9775-390618607a8d",
+              "parentUUID": "9748428f-adef-42be-a44e-eb57d0152d0e",
+              "isHook": false,
+              "skipped": true
+            },
+            {
+              "title": "Será validado que é possível ver o valor total do pedido",
+              "fullTitle": "Criar tela de detalhes pedidos Será validado que é possível ver o valor total do pedido",
+              "timedOut": null,
+              "duration": 0,
+              "state": "skipped",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "(0, _actionBase.login)(Cypress.env('login'), Cypress.env('password'));\n(0, _actionBase.buyProducts)();\n(0, _actionBase.accessOrdersClient)();\n(0, _actionBase.clickButton)('[data-testid=\"0-order-number\"]');\n(0, _actionBase.verifyElementContainsText)('[data-testid=\"0-product-qtd\"]', '2');\n(0, _actionBase.verifyElementContainsText)('[data-testid=\"0-product-name\"]', 'Skol Lata 250ml');\n(0, _actionBase.verifyElementContainsText)('[data-testid=\"order-total-value\"]', 'R$ 4,40');",
+              "err": {},
+              "uuid": "c10a9444-9e17-42a3-80e5-19abfd2d8497",
+              "parentUUID": "9748428f-adef-42be-a44e-eb57d0152d0e",
+              "isHook": false,
+              "skipped": true
+            },
+            {
+              "title": "Será validado que não é possível acessar a tela de meus pedidos sem estar logado e será redirecionado para tela de login",
+              "fullTitle": "Criar tela de detalhes pedidos Será validado que não é possível acessar a tela de meus pedidos sem estar logado e será redirecionado para tela de login",
+              "timedOut": null,
+              "duration": 0,
+              "state": "skipped",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit(\"\".concat(Cypress.config().baseUrl, \"/orders/1\"));\n(0, _actionBase.verifyContainsUrl)(\"\".concat(Cypress.config().baseUrl, \"/login\"));",
+              "err": {},
+              "uuid": "e6d2fd48-07e7-45aa-a2f7-4abcd424c07e",
+              "parentUUID": "9748428f-adef-42be-a44e-eb57d0152d0e",
+              "isHook": false,
+              "skipped": true
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "24beacd2-3de3-4937-a44e-7e6de2f49847"
+          ],
+          "pending": [],
+          "skipped": [
+            "5ce5ed3c-5781-4b68-97c1-8f6997cd69b8",
+            "35eaf375-cc0c-4256-ad03-213196e8268b",
+            "f663d613-40de-45af-9775-390618607a8d",
+            "c10a9444-9e17-42a3-80e5-19abfd2d8497",
+            "e6d2fd48-07e7-45aa-a2f7-4abcd424c07e"
+          ],
+          "duration": 10030,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false
+      },
+      "version": "4.1.0"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "4.1.0"
+    }
+  }
+}

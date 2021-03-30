@@ -1,0 +1,178 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 4,
+    "passes": 0,
+    "pending": 0,
+    "failures": 4,
+    "start": "2021-03-26T14:04:28.981Z",
+    "end": "2021-03-26T14:05:20.768Z",
+    "duration": 51787,
+    "testsRegistered": 4,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "ba138d0c-4582-4efd-9ce5-3e868b6056ab",
+      "title": "",
+      "fullFile": "cypress/integration/ordersAdmin.spec.js",
+      "file": "cypress/integration/ordersAdmin.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "f9e552d2-a509-42cd-a2ff-2caa3f7b17e4",
+          "title": "Criar tela de pedidos de admin",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Será validado que é possível acessar a tela do pedidos do administrador",
+              "fullTitle": "Criar tela de pedidos de admin Será validado que é possível acessar a tela do pedidos do administrador",
+              "timedOut": null,
+              "duration": 15194,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "(0, _actionBase.loginClientAndBuyProduct)();\n(0, _actionBase.logout)();\n(0, _actionBase.login)(Cypress.env('loginAdmin'), Cypress.env('passwordAdmin'));\n(0, _actionBase.clickButton)('[data-testid=\"side-menu-item-orders\"]');\n(0, _actionBase.verifyContainsUrl)(\"\".concat(Cypress.config().baseUrl, \"/admin/orders\"));",
+              "err": {
+                "message": "CypressError: Timed out retrying: `cy.click()` failed because this element is `disabled`:\n\n`<button data-testid=\"signin-btn\" class=\"rounded-md w-full p-2 bg-gray-300\n          focus:outline-none\" type=\"submit\" disabled=\"\">...</button>`\n\nFix this problem, or use `{force: true}` to disable error checking.\n\nhttps://on.cypress.io/element-cannot-be-interacted-with",
+                "estack": "CypressError: Timed out retrying: `cy.click()` failed because this element is `disabled`:\n\n`<button data-testid=\"signin-btn\" class=\"rounded-md w-full p-2 bg-gray-300\n          focus:outline-none\" type=\"submit\" disabled=\"\">...</button>`\n\nFix this problem, or use `{force: true}` to disable error checking.\n\nhttps://on.cypress.io/element-cannot-be-interacted-with\n    at $Cy.ensureNotDisabled (http://localhost:3000/__cypress/runner/cypress_runner.js:161122:24)\n    at runAllChecks (http://localhost:3000/__cypress/runner/cypress_runner.js:150107:14)\n    at retryActionability (http://localhost:3000/__cypress/runner/cypress_runner.js:150163:16)\n    at tryCatcher (http://localhost:3000/__cypress/runner/cypress_runner.js:10325:23)\n    at Function.Promise.attempt.Promise.try (http://localhost:3000/__cypress/runner/cypress_runner.js:7599:29)\n    at tryFn (http://localhost:3000/__cypress/runner/cypress_runner.js:165556:21)\n    at whenStable (http://localhost:3000/__cypress/runner/cypress_runner.js:165594:12)\n    at http://localhost:3000/__cypress/runner/cypress_runner.js:165089:16\n    at tryCatcher (http://localhost:3000/__cypress/runner/cypress_runner.js:10325:23)\n    at Promise._settlePromiseFromHandler (http://localhost:3000/__cypress/runner/cypress_runner.js:8260:31)\n    at Promise._settlePromise (http://localhost:3000/__cypress/runner/cypress_runner.js:8317:18)\n    at Promise._settlePromise0 (http://localhost:3000/__cypress/runner/cypress_runner.js:8362:10)\n    at Promise._settlePromises (http://localhost:3000/__cypress/runner/cypress_runner.js:8442:18)\n    at Promise._fulfill (http://localhost:3000/__cypress/runner/cypress_runner.js:8386:18)\n    at http://localhost:3000/__cypress/runner/cypress_runner.js:10000:46\nFrom Your Spec Code:\n    at clickButton (http://localhost:3000/__cypress/tests?p=cypress/integration/ordersAdmin.spec.js:167:19)\n    at login (http://localhost:3000/__cypress/tests?p=cypress/integration/ordersAdmin.spec.js:201:3)\n    at Context.eval (http://localhost:3000/__cypress/tests?p=cypress/integration/ordersAdmin.spec.js:348:27)",
+                "diff": null
+              },
+              "uuid": "1270abdd-39e0-4417-8162-0aac1c16191d",
+              "parentUUID": "f9e552d2-a509-42cd-a2ff-2caa3f7b17e4",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Será validado que a tela de pedidos contém os atributos descritos no protótipo",
+              "fullTitle": "Criar tela de pedidos de admin Será validado que a tela de pedidos contém os atributos descritos no protótipo",
+              "timedOut": null,
+              "duration": 14971,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "(0, _actionBase.loginClientAndBuyProduct)();\n(0, _actionBase.logout)();\n(0, _actionBase.login)(Cypress.env('loginAdmin'), Cypress.env('passwordAdmin'));\n(0, _actionBase.verifyElementVisible)('[data-testid=\"0-order-number\"]');\n(0, _actionBase.verifyElementVisible)('[data-testid=\"0-order-address\"]');\n(0, _actionBase.verifyElementVisible)('[data-testid=\"0-order-total-value\"]');\n(0, _actionBase.verifyElementVisible)('[data-testid=\"0-order-status\"]');",
+              "err": {
+                "message": "CypressError: Timed out retrying: `cy.click()` failed because this element is `disabled`:\n\n`<button data-testid=\"signin-btn\" class=\"rounded-md w-full p-2 bg-gray-300\n          focus:outline-none\" type=\"submit\" disabled=\"\">...</button>`\n\nFix this problem, or use `{force: true}` to disable error checking.\n\nhttps://on.cypress.io/element-cannot-be-interacted-with",
+                "estack": "CypressError: Timed out retrying: `cy.click()` failed because this element is `disabled`:\n\n`<button data-testid=\"signin-btn\" class=\"rounded-md w-full p-2 bg-gray-300\n          focus:outline-none\" type=\"submit\" disabled=\"\">...</button>`\n\nFix this problem, or use `{force: true}` to disable error checking.\n\nhttps://on.cypress.io/element-cannot-be-interacted-with\n    at $Cy.ensureNotDisabled (http://localhost:3000/__cypress/runner/cypress_runner.js:161122:24)\n    at runAllChecks (http://localhost:3000/__cypress/runner/cypress_runner.js:150107:14)\n    at retryActionability (http://localhost:3000/__cypress/runner/cypress_runner.js:150163:16)\n    at tryCatcher (http://localhost:3000/__cypress/runner/cypress_runner.js:10325:23)\n    at Function.Promise.attempt.Promise.try (http://localhost:3000/__cypress/runner/cypress_runner.js:7599:29)\n    at tryFn (http://localhost:3000/__cypress/runner/cypress_runner.js:165556:21)\n    at whenStable (http://localhost:3000/__cypress/runner/cypress_runner.js:165594:12)\n    at http://localhost:3000/__cypress/runner/cypress_runner.js:165089:16\n    at tryCatcher (http://localhost:3000/__cypress/runner/cypress_runner.js:10325:23)\n    at Promise._settlePromiseFromHandler (http://localhost:3000/__cypress/runner/cypress_runner.js:8260:31)\n    at Promise._settlePromise (http://localhost:3000/__cypress/runner/cypress_runner.js:8317:18)\n    at Promise._settlePromise0 (http://localhost:3000/__cypress/runner/cypress_runner.js:8362:10)\n    at Promise._settlePromises (http://localhost:3000/__cypress/runner/cypress_runner.js:8442:18)\n    at Promise._fulfill (http://localhost:3000/__cypress/runner/cypress_runner.js:8386:18)\n    at http://localhost:3000/__cypress/runner/cypress_runner.js:10000:46\nFrom Your Spec Code:\n    at clickButton (http://localhost:3000/__cypress/tests?p=cypress/integration/ordersAdmin.spec.js:167:19)\n    at login (http://localhost:3000/__cypress/tests?p=cypress/integration/ordersAdmin.spec.js:201:3)\n    at Context.eval (http://localhost:3000/__cypress/tests?p=cypress/integration/ordersAdmin.spec.js:355:27)",
+                "diff": null
+              },
+              "uuid": "9cd7d0a7-ad76-4041-9cf2-434f28746fee",
+              "parentUUID": "f9e552d2-a509-42cd-a2ff-2caa3f7b17e4",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Será validado que os dados do card estão corretos",
+              "fullTitle": "Criar tela de pedidos de admin Será validado que os dados do card estão corretos",
+              "timedOut": null,
+              "duration": 15055,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "(0, _actionBase.loginClientAndBuyProduct)();\n(0, _actionBase.logout)();\n(0, _actionBase.login)(Cypress.env('loginAdmin'), Cypress.env('passwordAdmin'));\n(0, _actionBase.clickButton)('[data-testid=\"side-menu-item-orders\"]');\n(0, _actionBase.verifyElementContainsText)('[data-testid=\"0-order-number\"]', 'Pedido 1');\n(0, _actionBase.verifyElementContainsText)('[data-testid=\"0-order-address\"]', 'Rua da pinga, 2');\n(0, _actionBase.verifyElementContainsText)('[data-testid=\"0-order-total-value\"]', 'R$ 2,20');\n(0, _actionBase.verifyElementContainsText)('[data-testid=\"0-order-status\"]', 'Pendente');",
+              "err": {
+                "message": "CypressError: Timed out retrying: `cy.click()` failed because this element is `disabled`:\n\n`<button data-testid=\"signin-btn\" class=\"rounded-md w-full p-2 bg-gray-300\n          focus:outline-none\" type=\"submit\" disabled=\"\">...</button>`\n\nFix this problem, or use `{force: true}` to disable error checking.\n\nhttps://on.cypress.io/element-cannot-be-interacted-with",
+                "estack": "CypressError: Timed out retrying: `cy.click()` failed because this element is `disabled`:\n\n`<button data-testid=\"signin-btn\" class=\"rounded-md w-full p-2 bg-gray-300\n          focus:outline-none\" type=\"submit\" disabled=\"\">...</button>`\n\nFix this problem, or use `{force: true}` to disable error checking.\n\nhttps://on.cypress.io/element-cannot-be-interacted-with\n    at $Cy.ensureNotDisabled (http://localhost:3000/__cypress/runner/cypress_runner.js:161122:24)\n    at runAllChecks (http://localhost:3000/__cypress/runner/cypress_runner.js:150107:14)\n    at retryActionability (http://localhost:3000/__cypress/runner/cypress_runner.js:150163:16)\n    at tryCatcher (http://localhost:3000/__cypress/runner/cypress_runner.js:10325:23)\n    at Function.Promise.attempt.Promise.try (http://localhost:3000/__cypress/runner/cypress_runner.js:7599:29)\n    at tryFn (http://localhost:3000/__cypress/runner/cypress_runner.js:165556:21)\n    at whenStable (http://localhost:3000/__cypress/runner/cypress_runner.js:165594:12)\n    at http://localhost:3000/__cypress/runner/cypress_runner.js:165089:16\n    at tryCatcher (http://localhost:3000/__cypress/runner/cypress_runner.js:10325:23)\n    at Promise._settlePromiseFromHandler (http://localhost:3000/__cypress/runner/cypress_runner.js:8260:31)\n    at Promise._settlePromise (http://localhost:3000/__cypress/runner/cypress_runner.js:8317:18)\n    at Promise._settlePromise0 (http://localhost:3000/__cypress/runner/cypress_runner.js:8362:10)\n    at Promise._settlePromises (http://localhost:3000/__cypress/runner/cypress_runner.js:8442:18)\n    at Promise._fulfill (http://localhost:3000/__cypress/runner/cypress_runner.js:8386:18)\n    at http://localhost:3000/__cypress/runner/cypress_runner.js:10000:46\nFrom Your Spec Code:\n    at clickButton (http://localhost:3000/__cypress/tests?p=cypress/integration/ordersAdmin.spec.js:167:19)\n    at login (http://localhost:3000/__cypress/tests?p=cypress/integration/ordersAdmin.spec.js:201:3)\n    at Context.eval (http://localhost:3000/__cypress/tests?p=cypress/integration/ordersAdmin.spec.js:364:27)",
+                "diff": null
+              },
+              "uuid": "9ca2309a-b773-4bda-aba1-f151a5f4b7aa",
+              "parentUUID": "f9e552d2-a509-42cd-a2ff-2caa3f7b17e4",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Será validado que é possível clicar no card do produto e ser redirecionado para tela de detalhes do produto",
+              "fullTitle": "Criar tela de pedidos de admin Será validado que é possível clicar no card do produto e ser redirecionado para tela de detalhes do produto",
+              "timedOut": null,
+              "duration": 4696,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "(0, _actionBase.loginClientAndBuyProduct)();\n(0, _actionBase.logout)();\n(0, _actionBase.login)(Cypress.env('loginAdmin'), Cypress.env('passwordAdmin'));\n(0, _actionBase.clickButton)('[data-testid=\"side-menu-item-orders\"]');\n(0, _actionBase.clickButton)('[data-testid=\"0-order-number\"]');\n(0, _actionBase.verifyContainsUrl)(\"\".concat(Cypress.config().baseUrl, \"/admin/orders/1\"));",
+              "err": {
+                "message": "CypressError: `cy.type()` failed because it targeted a disabled element.\n\nThe element typed into was:\n\n  > <input id=\"email-ipt\" data-testid=\"email-input\" name=\"email\" type=\"text\" class=\"border rounded-md p-2 focus:outline-none focus:border-secondary-dark\" placeholder=\"Enter your email...\" required=\"\" value=\"\">\n\nEnsure the element does not have an attribute named `disabled` before typing into it.\n\nhttps://on.cypress.io/type",
+                "estack": "CypressError: `cy.type()` failed because it targeted a disabled element.\n\nThe element typed into was:\n\n  > <input id=\"email-ipt\" data-testid=\"email-input\" name=\"email\" type=\"text\" class=\"border rounded-md p-2 focus:outline-none focus:border-secondary-dark\" placeholder=\"Enter your email...\" required=\"\" value=\"\">\n\nEnsure the element does not have an attribute named `disabled` before typing into it.\n\nhttps://on.cypress.io/type\n    at http://localhost:3000/__cypress/runner/cypress_runner.js:153983:27\n    at tryCatcher (http://localhost:3000/__cypress/runner/cypress_runner.js:10325:23)\n    at Promise._settlePromiseFromHandler (http://localhost:3000/__cypress/runner/cypress_runner.js:8260:31)\n    at Promise._settlePromise (http://localhost:3000/__cypress/runner/cypress_runner.js:8317:18)\n    at Promise._settlePromise0 (http://localhost:3000/__cypress/runner/cypress_runner.js:8362:10)\n    at Promise._settlePromises (http://localhost:3000/__cypress/runner/cypress_runner.js:8442:18)\n    at _drainQueueStep (http://localhost:3000/__cypress/runner/cypress_runner.js:5032:12)\n    at _drainQueue (http://localhost:3000/__cypress/runner/cypress_runner.js:5025:9)\n    at Async.../../node_modules/bluebird/js/release/async.js.Async._drainQueues (http://localhost:3000/__cypress/runner/cypress_runner.js:5041:5)\n    at Async.drainQueues (http://localhost:3000/__cypress/runner/cypress_runner.js:4911:14)\nFrom Your Spec Code:\n    at insertText (http://localhost:3000/__cypress/tests?p=cypress/integration/ordersAdmin.spec.js:195:19)\n    at login (http://localhost:3000/__cypress/tests?p=cypress/integration/ordersAdmin.spec.js:199:3)\n    at Context.eval (http://localhost:3000/__cypress/tests?p=cypress/integration/ordersAdmin.spec.js:374:27)",
+                "diff": null
+              },
+              "uuid": "30126723-7ddb-4efd-8179-cb8a95a4310f",
+              "parentUUID": "f9e552d2-a509-42cd-a2ff-2caa3f7b17e4",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "1270abdd-39e0-4417-8162-0aac1c16191d",
+            "9cd7d0a7-ad76-4041-9cf2-434f28746fee",
+            "9ca2309a-b773-4bda-aba1-f151a5f4b7aa",
+            "30126723-7ddb-4efd-8179-cb8a95a4310f"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 49916,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false
+      },
+      "version": "4.1.0"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "4.1.0"
+    }
+  }
+}
