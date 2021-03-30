@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
+import Checkbox from '@material-ui/core/Checkbox';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { useHistory } from 'react-router-dom';
 import useInput from '../hooks/useInput';
 import { nameValidation,
   passwordValidation,
   emailValidation } from '../utils/validations';
 import fetches from '../services/fetches';
+import './login.css';
 
 export default function Register() {
   const history = useHistory();
@@ -37,8 +40,8 @@ export default function Register() {
 
   return (
     <div className="main-container">
-      <form className="form-group">
-        <fieldset>
+      <form className="form-container">
+        <fieldset className="form-group name-field">
           <label htmlFor="name">
             Nome
             <input
@@ -48,10 +51,11 @@ export default function Register() {
               type="text"
               value={ name }
               onChange={ setName }
+              placeholder="Digite seu nome..."
             />
           </label>
         </fieldset>
-        <fieldset>
+        <fieldset className="form-group">
           <label htmlFor="email">
             Email
             <input
@@ -61,10 +65,11 @@ export default function Register() {
               type="text"
               value={ email }
               onChange={ setEmail }
+              placeholder="Digite seu email..."
             />
           </label>
         </fieldset>
-        <fieldset>
+        <fieldset className="form-group pass-input">
           <label htmlFor="password">
             Senha
             <input
@@ -74,38 +79,40 @@ export default function Register() {
               type="password"
               value={ password }
               onChange={ setPassword }
+              placeholder="Digite sua senha..."
             />
           </label>
         </fieldset>
         <fieldset className="form-check">
-          <label htmlFor="sell">
-            Quero vender
-            <input
-              className="form-check-label"
-              id="sell"
-              data-testid="signup-seller"
-              type="checkbox"
-              onClick={ handleCheckbox }
-            />
-          </label>
-          <button
-            className="form-control btn btn-secondary"
-            id="signup"
-            data-testid="signup-btn"
-            type="button"
-            disabled={
-              !(emailValidation(email)
-              && passwordValidation(password)
-              && nameValidation(name))
+          <FormControlLabel
+            control={
+              <Checkbox
+                data-testid="signup-seller"
+                onChange={ handleCheckbox }
+                color="primary"
+                name="sell-checkbox"
+              />
             }
-            onClick={ (e) => {
-              e.preventDefault();
-              handleOnClik();
-            } }
-          >
-            Cadastrar
-          </button>
+            label="Quero vender"
+          />
         </fieldset>
+        <button
+          className="btn btn-secondary"
+          id="signup"
+          data-testid="signup-btn"
+          type="button"
+          disabled={
+            !(emailValidation(email)
+            && passwordValidation(password)
+            && nameValidation(name))
+          }
+          onClick={ (e) => {
+            e.preventDefault();
+            handleOnClik();
+          } }
+        >
+          Cadastrar
+        </button>
         <span>{emailAlreadyExists}</span>
       </form>
     </div>
