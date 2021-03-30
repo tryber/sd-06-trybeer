@@ -1,15 +1,17 @@
 import React from 'react';
+import { useHistory } from 'react-router';
+
+// Material-IU
 import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
 import { makeStyles } from '@material-ui/core/styles';
-import { useHistory } from 'react-router';
 
+// CSS - Material-Ui
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
   },
   paper: {
-
     zIndex: 99,
     marginRight: theme.spacing(2),
   },
@@ -19,9 +21,9 @@ export default function Hamburguer() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
-
   const history = useHistory();
 
+  // Redirecionar
   const handleRedirect = (event) => {
     switch (event) {
     case 'Pedidos':
@@ -36,14 +38,13 @@ export default function Hamburguer() {
     default:
       break;
     }
-
     if (anchorRef.current && anchorRef.current.contains(event.target)) {
       return;
     }
-
     setOpen(false);
   };
 
+  // Open Hamburguer
   function handleListKeyDown(event) {
     if (event.key === 'Tab') {
       event.preventDefault();
@@ -51,7 +52,7 @@ export default function Hamburguer() {
     }
   }
 
-  // return focus to the button when we transitioned from !open -> open
+  // Material-Iu
   const prevOpen = React.useRef(open);
   React.useEffect(() => {
     if (prevOpen.current === true && open === false) {
@@ -71,7 +72,7 @@ export default function Hamburguer() {
       <div className={ classes.root }>
         <MenuItem
           data-testid="side-menu-item-orders"
-          onClick={ () => handleRedirect('pedidos') }
+          onClick={ () => handleRedirect('Pedidos') }
         >
           Pedidos
         </MenuItem>

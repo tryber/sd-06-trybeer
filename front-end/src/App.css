@@ -13,6 +13,7 @@
   }
 }
 
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -35,4 +36,44 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+/* MATERIAL-IU CSS */
+
+.MuiTypography-body1 {
+  font-weight: bold !important
+}
+
+.MuiAppBar-colorPrimary {
+  background-color: #0063cc !important;
+}
+
+.makeStyles-img-4 {
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+.MuiGrid-container{
+  flex-wrap: inherit !important;
+}
+
+.marginTop {
+  margin-top: 70px;
+}
+
+.orders-0 {
+  margin-top: 70px;
+}  
+
+.buttomStyleNone{
+  text-decoration:none; 
+}
+
+.carrinhoStyleContainer {
+  margin-top: 60px;
+}
+
+.ordersAdmin {
+  max-width: 1000px !important;
+  text-align: center;
 }

@@ -41,6 +41,6 @@ function ButtonSub({ product, dataIndex }) {
 export default ButtonSub;
 
 ButtonSub.propTypes = {
-  product: PropTypes.string.isRequired,
+  product: PropTypes.object.isRequired,
   dataIndex: PropTypes.number.isRequired,
 };

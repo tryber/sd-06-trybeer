@@ -16,6 +16,7 @@ const getByIdDetails = async (id) => {
       sales.id AS id,
       sales.sale_date AS saleDate,
       products.name AS name,
+      products.url_image AS imgUrl,
       sales_products.product_id AS productId,
       sales_products.quantity AS productQty,
       products.price AS price,

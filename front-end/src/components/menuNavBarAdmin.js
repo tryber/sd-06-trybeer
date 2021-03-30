@@ -5,7 +5,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 
-import Hamburguer from './HamburguerAdmin';
+import HamburguerAdmin from './HamburguerAdmin';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -31,7 +31,7 @@ export default function ButtonAppBar({ content }) {
             {content}
           </Typography>
 
-          <Hamburguer />
+          <HamburguerAdmin />
 
         </Toolbar>
       </AppBar>

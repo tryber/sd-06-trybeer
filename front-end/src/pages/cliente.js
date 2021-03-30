@@ -1,38 +1,44 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useHistory } from 'react-router';
+
+// Material-IU
 import { makeStyles } from '@material-ui/core/styles';
-// import GridList from '@material-ui/core/GridList';
-import GridListTile from '@material-ui/core/GridListTile';
-import GridListTileBar from '@material-ui/core/GridListTileBar';
-import { loadState, saveState } from '../services/localStorage';
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
+import ButtonBase from '@material-ui/core/ButtonBase';
+
+// Componentes
+import { useHistory } from 'react-router';
 import NavBar from '../components/menuNavBar';
-import api from '../services/api';
 import context from '../Context/ContextAPI';
 import ButtonAdd from '../components/buttonAdd';
 import ButtonSub from '../components/buttonSub';
 import MenuFooter from '../components/menuFooter';
 
+// Servicos
+import api from '../services/api';
+import { loadState, saveState } from '../services/localStorage';
+
+// CSS - Material-Ui
 const useStyles = makeStyles((theme) => ({
   root: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'space-around',
-    overflow: 'hidden',
-    backgroundColor: theme.palette.background.paper,
+    flexGrow: 1,
   },
-  gridList: {
-    width: 500,
-    height: 1000,
-  },
-  icon: {
-    color: 'rgba(255, 255, 255, 0.54)',
+  paper: {
+    padding: theme.spacing(0),
+    margin: 'auto',
+    maxWidth: 500,
+    textAlign: 'center',
   },
   image: {
-    height: 200,
-    // zIndex: -1
+    width: 128,
+    height: 128,
   },
-  gridListTitleBar: {
-    height: 100,
+  img: {
+    margin: 'auto',
+    display: 'block',
+    maxWidth: '100%',
+    maxHeight: '100%',
   },
 }));
 
@@ -41,31 +47,35 @@ const magicNumber = {
 };
 
 function Cliente() {
+  const classes = useStyles();
   const [products, setProducts] = useState([]);
   const { cart, setCart } = useContext(context);
   const history = useHistory();
 
+  // Renderizacao
   useEffect(() => {
     if (!loadState('user')) return history.push('/login');
     const { email } = loadState('user');
-
     const storageCart = loadState(`${email}`);
     if (storageCart) return setCart(storageCart);
     return saveState(`${email}`, []);
   }, [history, setCart]);
 
+  // Renderizacao
   useEffect(() => {
     if (!loadState('user')) return history.push('/login');
     const { email } = loadState('user');
     saveState(`${email}`, cart);
   }, [cart, history]);
 
+  // Renderizacao
   useEffect(() => {
     const logon = loadState('user');
     if (!logon) return history.push('/login');
     if (logon.role === 'administrator') return history.push('/admin/orders');
   }, [history]);
 
+  // Renderizacao
   useEffect(() => {
     api.listProducts()
       .then((productsList) => {
@@ -74,8 +84,7 @@ function Cliente() {
       .catch((err) => console.log(err));
   }, []);
 
-  const classes = useStyles();
-
+  // Funcao alterar quantidade
   const prodQty = (tile) => {
     const idx = cart.findIndex((elem) => elem.name === tile.name);
     if (idx === magicNumber.menosUm) return '0';
@@ -84,50 +93,43 @@ function Cliente() {
 
   return (
     <div>
-      <NavBar content="TryBeer" />
-      <div className={ classes.root }>
-        {/* <GridList cellHeight={ 180 }  */}
-        {products.map((tile, index) => (
-          <div key={ index }>
-            <GridListTile
-              className={ classes.gridListTitle }
-            >
-
-              {/* Image */}
-              <img
-                className={ classes.image }
-                src={ tile.url_image.replace(/ /g, '_') }
-                data-testid={ `${index}-product-img` }
-                alt={ tile.name }
-              />
-
-              <GridListTileBar
-                className={ classes.gridListTitleBar }
-              />
-
-              <p data-testid={ `${index}-product-name` }>{tile.name}</p>
-
-              <span data-testid={ `${index}-product-price` }>
-                R$
-                {' '}
-                {tile.price.replace('.', ',')}
-              </span>
-
-              {/* Botao de - */}
-              <ButtonSub product={ tile } dataIndex={ index } />
-
-              {/* Quantidade de Produtos */}
-              <span data-testid={ `${index}-product-qtd` }>
-                {prodQty(tile)}
-              </span>
-
-              {/* Botao de + */}
-              <ButtonAdd product={ tile } dataIndex={ index } />
-
-            </GridListTile>
-          </div>
+      <NavBar content="BEER - ICE" />
+      <div className={ `${classes.root} marginTop ` }>
+        {products.map((title, index) => (
+          <Paper key={ index } elevation={ 3 } className={ classes.paper }>
+            <Grid container spacing={ 2 }>
+              <Grid item>
+                <ButtonBase className={ classes.image }>
+                  <img className={ classes.img } src={ title.url_image.replace(/ /g, '_') } alt="imageProduct" />
+                </ButtonBase>
+              </Grid>
+              <Grid item xs={ 12 } sm container>
+                <Grid item xs container direction="column" spacing={ 2 }>
+                  <Grid item xs>
+                    <Typography gutterBottom variant="subtitle1">
+                      {title.name}
+                    </Typography>
+                  </Grid>
+                  <Grid item>
+                    <Typography variant="subtitle1">
+                      {' '}
+                      R$
+                      {' '}
+                      {title.price.replace('.', ',')}
+                    </Typography>
+                  </Grid>
+                  <Grid item>
+                    <ButtonSub product={ title } dataIndex={ index } />
+                    <span data-testid={ `${index}-product-qtd` }>
+                      {prodQty(title)}
+                    </span>
+                    <ButtonAdd product={ title } dataIndex={ index } />
+                  </Grid>
+                </Grid>
+              </Grid>
+            </Grid>
+          </Paper>
         ))}
-        {/* </GridList> */}
       </div>
       <MenuFooter />
     </div>

@@ -35,6 +35,6 @@ function ButtonAdd({ product, dataIndex }) {
 export default ButtonAdd;
 
 ButtonAdd.propTypes = {
-  product: PropTypes.string.isRequired,
+  product: PropTypes.object.isRequired,
   dataIndex: PropTypes.number.isRequired,
 };
