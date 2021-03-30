@@ -55,35 +55,40 @@ function ClientProfile() {
   return (
     <div>
       <MenuTop title="Meu perfil" />
-      <label htmlFor="name-input">
-        Name
-        <input
-          type="text"
-          data-testid="profile-name-input"
-          name="name-input"
-          placeholder={ name }
-          onChange={ (e) => setNewName(e.target.value) }
-        />
-      </label>
-      <label htmlFor="email-input">
-        Email
-        <input
-          type="email"
-          data-testid="profile-email-input"
-          name="email-input"
-          value={ email }
-          readOnly
-        />
-      </label>
-      <button
-        type="button"
-        data-testid="profile-save-btn"
-        disabled={ disable }
-        onClick={ handleChangeName }
-      >
-        Salvar
-      </button>
-      {sucess ? <p>Atualização concluída com sucesso</p> : null}
+      <div className="profile-container">
+        <label htmlFor="name-input">
+          Name
+          <input
+            className="width-full"
+            type="text"
+            data-testid="profile-name-input"
+            name="name-input"
+            placeholder={ name }
+            onChange={ (e) => setNewName(e.target.value) }
+          />
+        </label>
+        <label htmlFor="email-input">
+          Email
+          <input
+            className="width-full"
+            type="email"
+            data-testid="profile-email-input"
+            name="email-input"
+            value={ email }
+            readOnly
+          />
+        </label>
+        <button
+          className="btn btn-success margin-top"
+          type="button"
+          data-testid="profile-save-btn"
+          disabled={ disable }
+          onClick={ handleChangeName }
+        >
+          Salvar
+        </button>
+        {sucess ? <p>Atualização concluída com sucesso</p> : null}
+      </div>
     </div>
   );
 }

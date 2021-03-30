@@ -18,17 +18,22 @@ function AdminOrders() {
   return (
     <div>
       <MenuAdmin />
-      {orders.map((order, index) => (
-        <OrderCard
-          key={ index }
-          index={ index }
-          saleId={ order.id }
-          street={ order.delivery_address }
-          streetNR={ order.delivery_number }
-          totalValue={ order.total_price }
-          status={ order.status }
-        />
-      ))}
+      <h1 className="align-center"> Meus Pedidos</h1>
+      <div className="admin-orders-main">
+        {orders.map((order, index) => ( 
+          <div className="order-details-card-admin">
+          <OrderCard
+            key={ index }
+            index={ index }
+            saleId={ order.id }
+            street={ order.delivery_address }
+            streetNR={ order.delivery_number }
+            totalValue={ order.total_price }
+            status={ order.status }
+          />
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

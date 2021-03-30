@@ -14,6 +14,10 @@ function MenuAdmin() {
 
   return (
     <div className="admin-side-bar-container">
+      <div className="align-center">
+      <h1>Trybeer</h1>
+      <h3>Admin</h3>
+      </div>
       <Button
         className="btn-login btn btn-success width-med margin-med"
         title="Meus Pedidos"

@@ -7,19 +7,29 @@ function OrderCard(props) {
   const history = useHistory();
 
   return (
-    <div
-      data-testid={ `${index}-admin-card-container` }
-      onClick={ () => history.push(`/admin/orders/${saleId}`) }
-      aria-hidden="true"
-    >
-      <p data-testid={ `${index}-order-number` }>{ `Pedido ${saleId}` }</p>
-      <p data-testid={ `${index}-order-address` }>{ `${street}, ${streetNR}` }</p>
-      <p
-        data-testid={ `${index}-order-total-value` }
+    <div className="order-card">
+      <div
+        data-testid={ `${index}-admin-card-container` }
+        onClick={ () => history.push(`/admin/orders/${saleId}`) }
+        aria-hidden="true"
       >
-        { `R$ ${totalValue.replace('.', ',')}` }
-      </p>
-      <p data-testid={ `${index}-order-status` }>{ status }</p>
+        <p className="bold-font" data-testid={ `${index}-order-number` }>{ `Pedido ${saleId}` }</p>
+        <p data-testid={ `${index}-order-address` }>{ `${street}, ${streetNR}` }</p>
+        <div className="order-side-info">
+          <p
+            data-testid={ `${index}-order-total-value` }
+            className="bold-font"
+          >
+            { `R$ ${totalValue.replace('.', ',')}` }
+          </p>
+          <p 
+            className={ status === 'Entregue' ? 'bold-font order-done' : 'bold-font order-notdone' }
+            data-testid={ `${index}-order-status` }
+          >
+            { status }
+          </p>
+        </div>
+      </div>
     </div>
   );
 }

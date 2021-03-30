@@ -30,6 +30,7 @@ function Orders() {
   return (
     <div>
       <MenuTop title="Meus Pedidos" />
+      <div className="orders-container">
       {sales.map((sale, index) => (
         <SaleCard
           key={ index }
@@ -39,6 +40,7 @@ function Orders() {
           value={ sale.total_price }
         />
       ))}
+      </div>
     </div>
   );
 }

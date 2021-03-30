@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
+import MenuAdmin from '../components/MenuAdmin';
 
 function AdminProfile() {
   const [name, setName] = useState('');
@@ -24,9 +25,14 @@ function AdminProfile() {
 
   return (
     <div>
-      <h2>Perfil</h2>
+      <MenuAdmin />
+      <div className="align-center">
+      <h1>Perfil</h1>
+      <h4 className="margin-top-big">
       <p data-testid="profile-name">{`Nome: ${name}`}</p>
       <p data-testid="profile-email">{`Email: ${email}`}</p>
+      </h4>
+      </div>
     </div>
   );
 }

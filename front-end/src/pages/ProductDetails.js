@@ -36,6 +36,7 @@ function ProductDetails({ match }) {
   const getSale = async () => {
     const result = await getSaleByID(id);
     setSale(result);
+    console.log(result);
   };
 
   useEffect(() => {
@@ -47,8 +48,11 @@ function ProductDetails({ match }) {
   return (
     <div>
       <MenuTop title="Detalhes de Pedido" />
-      <p data-testid="order-number">{`Pedido ${id}`}</p>
-      <p data-testid="order-date">{date}</p>
+      <div className="checkout-container">
+        <div className="order-head-info">
+          <p className="order-number" data-testid="order-number">{`Pedido ${id}`}</p>
+          <p className="order-date" data-testid="order-date">{date}</p>
+        </div>
       { sale.map((prod, index) => (
         <DetailCard
           key={ index }
@@ -57,7 +61,8 @@ function ProductDetails({ match }) {
           name={ prod.product }
           price={ prod.price }
         />)) }
-      <p data-testid="order-total-value">{`Total: R$ ${total.replace('.', ',')}`}</p>
+      <p className="total-checkout" data-testid="order-total-value">{`Total: R$ ${total.replace('.', ',')}`}</p>
+      </div>
     </div>
   );
 }

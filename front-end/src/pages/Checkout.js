@@ -86,54 +86,60 @@ function Checkout() {
   return (
     <div>
       <MenuTop title="Finalizar Pedido" />
-      <div>
-        {!cart[0] ? <p>Não há produtos no carrinho</p> : cart.map((item, index) => (
-          <CartItem
-            key={ index }
-            setCart={ setCart }
-            index={ index }
-            name={ item.name }
-            quantity={ item.quantity }
-            price={ item.price }
-            unitPriceID="product-unit-price"
-            qtdID="product-qtd-input"
-          />))}
-      </div>
-      <p
-        data-testid="order-total-value"
-      >
-        {`Total: R$ ${totalCart.toFixed(2).replace('.', ',')}`}
-      </p>
-      <form>
-        <h2>Endereço</h2>
-        <label htmlFor="street">
-          Rua:
-          <input
-            data-testid="checkout-street-input"
-            type="text"
-            name="street"
-            onChange={ (e) => setStreet(e.target.value) }
-          />
-        </label>
-        <label htmlFor="number">
-          Número da casa
-          <input
-            data-testid="checkout-house-number-input"
-            type="number"
-            name="number"
-            onChange={ (e) => setHouseNR(e.target.value) }
-          />
-        </label>
-        <button
-          disabled={ disabled }
-          type="button"
-          data-testid="checkout-finish-btn"
-          onClick={ handleClick }
+      <div className="checkout-container">
+        <div>
+          {!cart[0] ? <p>Não há produtos no carrinho</p> : cart.map((item, index) => (
+            <CartItem
+              key={ index }
+              setCart={ setCart }
+              index={ index }
+              name={ item.name }
+              quantity={ item.quantity }
+              price={ item.price }
+              unitPriceID="product-unit-price"
+              qtdID="product-qtd-input"
+              removeButton={ true }
+            />))}
+        </div>
+        <p
+          className="total-checkout"
+          data-testid="order-total-value"
         >
-          Finalizar Pedido
-        </button>
-      </form>
-      {success ? <p>Compra realizada com sucesso!</p> : null}
+          {`Total: R$ ${totalCart.toFixed(2).replace('.', ',')}`}
+        </p>
+        <form className="checkout-form">
+          <h2>Endereço</h2>
+          <label htmlFor="street">
+            Rua:
+            <input
+            className="street-input"
+              data-testid="checkout-street-input"
+              type="text"
+              name="street"
+              onChange={ (e) => setStreet(e.target.value) }
+            />
+          </label>
+          <label htmlFor="number">
+            Número da casa:
+            <input
+              data-testid="checkout-house-number-input"
+              type="number"
+              name="number"
+              onChange={ (e) => setHouseNR(e.target.value) }
+            />
+          </label>
+          <button
+          className="btn btn-success finish-checkout-btn"
+            disabled={ disabled }
+            type="button"
+            data-testid="checkout-finish-btn"
+            onClick={ handleClick }
+          >
+            Finalizar Pedido
+          </button>
+        </form>
+        {success ? <p>Compra realizada com sucesso!</p> : null}
+      </div>
     </div>
   );
 }

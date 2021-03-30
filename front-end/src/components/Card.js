@@ -56,31 +56,33 @@ function Card(props) {
 
   return (
     <div className="card">
-      <p data-testid={ `${index}-product-price` }>{`R$ ${price.replace('.', ',')}`}</p>
+      <p className="btn-success price-card" data-testid={ `${index}-product-price` }>{`R$ ${price.replace('.', ',')}`}</p>
       <img
         width="111px"
         data-testid={ `${index}-product-img` }
         src={ fixedUrl }
         alt="product"
       />
-      <h4 data-testid={ `${index}-product-name` }>{ name }</h4>
-      <button
-        className="btn-success btn-card"
-        type="button"
-        onClick={ handleClickMinus }
-        data-testid={ `${index}-product-minus` }
-      >
-        -
-      </button>
-      <span data-testid={ `${index}-product-qtd` }>{ quantity }</span>
-      <button
-        className="btn-success btn-card"
-        type="button"
-        onClick={ handleClickPlus }
-        data-testid={ `${index}-product-plus` }
-      >
-        +
-      </button>
+      <h4 className="product-name-size" data-testid={ `${index}-product-name` }>{ name }</h4>
+      <div className="button-value-card">
+        <button
+          className="btn-success btn-card"
+          type="button"
+          onClick={ handleClickMinus }
+          data-testid={ `${index}-product-minus` }
+        >
+          -
+        </button>
+        <span className="quantity-card" data-testid={ `${index}-product-qtd` }>{ quantity }</span>
+        <button
+          className="btn-success btn-card"
+          type="button"
+          onClick={ handleClickPlus }
+          data-testid={ `${index}-product-plus` }
+        >
+          +
+        </button>
+      </div>
     </div>
   );
 }

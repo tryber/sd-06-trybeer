@@ -38,27 +38,38 @@ function OrderDetails({ match }) {
   return (
     <div>
       <MenuAdmin />
-      <p data-testid="order-number">{ `Pedido ${id}` }</p>
-      <p data-testid="order-status">{ orderStatus }</p>
-      { orders.map((order, index) => (
-        <CartItem
-          key={ index }
-          index={ index }
-          quantity={ order.quantidade }
-          name={ order.product }
-          price={ order.price }
-          unitPriceID="order-unit-price"
-          qtdID="product-qtd"
-        />)) }
-      <p data-testid="order-total-value">{`Total: R$ ${totalValue}`}</p>
-      {!orderDone && (
-        <Button
-          title="Marcar como entregue"
-          dataTestid="mark-as-delivered-btn"
-          handleClick={ handleClick }
-          btnDisabled={ false }
-        />
-      )}
+      <div className="order-details-card-admin-2">
+        <div className="order-details-title">
+          <p className="order-number" data-testid="order-number">{ `Pedido ${id} -` }</p>
+          <p
+            data-testid="order-status"
+            className={ `order-number ${orderStatus === 'Entregue' ? 'order-done' : 'order-notdone'}` }
+          >
+            { orderStatus }
+          </p>
+        </div>
+        { orders.map((order, index) => (
+          <CartItem
+            key={ index }
+            index={ index }
+            quantity={ order.quantidade }
+            name={ order.product }
+            price={ order.price }
+            unitPriceID="order-unit-price"
+            qtdID="product-qtd"
+            removeButton={ false }
+          />)) }
+        <p className="total-checkout" data-testid="order-total-value">{`Total: R$ ${totalValue}`}</p>
+        {!orderDone && (
+          <Button
+            className="btn btn-success"
+            title="Marcar como entregue"
+            dataTestid="mark-as-delivered-btn"
+            handleClick={ handleClick }
+            btnDisabled={ false }
+          />
+        )}
+      </div>
     </div>
   );
 }

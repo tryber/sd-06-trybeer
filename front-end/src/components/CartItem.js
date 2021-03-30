@@ -11,6 +11,7 @@ export default function CartItem(props) {
     setCart,
     unitPriceID,
     qtdID,
+    removeButton,
   } = props;
   const { totalCart, setTotalCart } = useContext(context);
   const totalValue = price * quantity;
@@ -26,9 +27,9 @@ export default function CartItem(props) {
     localStorage.setItem('totalCart', JSON.stringify(TOTALCART.toFixed(2)));
   };
   return (
-    <div>
+    <div className="checkout-card">
       <p data-testid={ `${index}-${qtdID}` }>{ quantity }</p>
-      <p data-testid={ `${index}-product-name` }>{ name }</p>
+      <p className="product-name" data-testid={ `${index}-product-name` }>{ name }</p>
       <p
         data-testid={ `${index}-product-total-value` }
       >
@@ -41,13 +42,16 @@ export default function CartItem(props) {
           ? `(R$ ${price.replace('.', ',')} un)`
           : `(R$ ${price.replace('.', ',')})`}
       </p>
-      <button
-        data-testid={ `${index}-removal-button` }
-        type="button"
-        onClick={ () => handleLocalStorage() }
-      >
-        X
-      </button>
+      {removeButton && (
+        <button
+          className="remove-btn"
+          data-testid={ `${index}-removal-button` }
+          type="button"
+          onClick={ () => handleLocalStorage() }
+        >
+          X
+        </button>
+      )}
     </div>
   );
 }
@@ -60,4 +64,5 @@ CartItem.propTypes = {
   setCart: PropTypes.func.isRequired,
   unitPriceID: PropTypes.number.isRequired,
   qtdID: PropTypes.number.isRequired,
+  removeButton: PropTypes.bool.isRequired,
 };
