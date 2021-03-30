@@ -1,0 +1,22 @@
+.client-details-card {
+  align-items: center;
+  border: 2px solid #047575;
+  border-radius: 50px;
+  box-shadow:  10px 10px 16px #046868, 
+              -1px -1px 1px #048282;
+  display: flex;
+  flex-flow: row wrap;
+  font-size: large;
+  margin: 30px auto;
+  max-width: 50%; 
+  padding: 10px;
+  width: 25%; 
+  }
+
+.client-details-card p {
+  width: 100%;
+}
+
+.client-details-card h1 {
+  margin: auto;
+}

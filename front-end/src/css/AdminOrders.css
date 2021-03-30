@@ -1,0 +1,25 @@
+.admin-container {
+  color: #004370;
+  display: flex;
+  flex-flow: column;
+  height: 100vh;
+}
+
+.admin-container-detail {
+  margin-left: 200px;
+  flex-direction: column;
+}
+
+.admin-container h1 {
+  margin-left: 15%;
+  margin-top: 40px;
+  text-align: center;
+  width: 85%;
+}
+
+.admin-orders-list {
+  display: flex;
+  flex-flow: row wrap;
+  margin-left: 15%;
+  width: 85%;
+}

@@ -1,0 +1,37 @@
+.card-container {
+  border: 2px solid #047575;
+  border-radius: 50px;
+  box-shadow:  10px 10px 16px #071a1a, 
+              -1px -1px 1px #111d1d;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: large;
+  margin: 30px auto;
+  padding: 10px;
+  width: 500px; 
+}
+
+.product-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 500px;
+}
+
+/* .product-info button {
+  padding: 5px;
+  min-width: 40px;
+  border: 0.8px solid rgb(149, 148, 148);
+  border-radius: 3px;
+  font-size: 20px;
+  font-weight: 500;
+  height: 40px;
+  color: white;
+  background-color: rgb(0, 117, 117);
+} */
+
+.product-info section span {
+  margin: auto 5px;
+  min-width: 20px;
+}

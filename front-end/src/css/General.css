@@ -1,0 +1,16 @@
+body {
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+.list {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.show {
+  display: block;
+}
+
+.no-show {
+  display: none;
+}
