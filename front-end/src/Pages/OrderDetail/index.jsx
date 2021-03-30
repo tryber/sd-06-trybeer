@@ -19,7 +19,7 @@ const OrderDetail = ({ match }) => {
     const getProd = async () => {
       const { object, specificDate } = await getOrderInfo(match);
       setProduct(object);
-      console.log(specificDate, 'orderDetail, line 22');
+      console.log('orderDetail, line 22', specificDate);
       if (specificDate) {
         const strToDate = new Date(specificDate.sale_date);
         const maxMonthOneDigitUTCformat = 8;

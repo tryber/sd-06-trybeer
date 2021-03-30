@@ -9,7 +9,6 @@ const CardOrders = () => {
   const fetch = async () => {
     const { token } = localStorage;
     const { data } = await Axios.get('http://localhost:3001/admin/orders', { headers: { authorization: token } });
-    console.log(data);
     setOrders(data);
   };
   useEffect(() => {

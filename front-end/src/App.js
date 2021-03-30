@@ -12,6 +12,7 @@ import Checkout from './Pages/Checkout';
 import OrderDetail from './Pages/OrderDetail';
 import AdminOrders from './Pages/AdminOrders';
 import AdminProfile from './Pages/AdminProfile';
+import AdminOrdersDetail from './Pages/AdminOrdersDetail';
 
 function App() {
   return (
@@ -30,7 +31,9 @@ function App() {
           <Route exact path="/orders" component={ Orders } />
           <Route path="/orders/:orderId" exact component={ OrderDetail } />
           <Route exact path="/admin/profile" component={ AdminProfile } />
+          <Route exact path="/admin/orders/:id" component={ AdminOrdersDetail } />
           <Route path="/admin/orders" component={ AdminOrders } />
+
         </Switch>
       </BrowserRouter>
     </Provider>
