@@ -45,7 +45,8 @@ CREATE TABLE IF NOT EXISTS sales_products (
 
 INSERT INTO users (id, name, email, password, role) VALUES
     ('1', 'Tryber Admin', 'tryber@trybe.com.br', '123456', 'administrator'),
-    ('2', 'testuser', 'user@test.com', 'test123', 'client');
+    ('2', 'Bruno Silva Batista', 'bruno.batista@gmail.com', '12345678', 'client'),
+    ('3', 'testuser', 'user@test.com', 'test123', 'client');
 
 INSERT INTO products (id, name, price, url_image) VALUES
 	('1','Skol Lata 250ml',2.20, 'http://localhost:3001/images/Skol Lata 350ml.jpg'),

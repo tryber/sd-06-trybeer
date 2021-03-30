@@ -1,0 +1,19 @@
+.menuTop {
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 5vh;
+}
+
+.btnSideBar {
+    border: solid 2px white;
+}
+
+.menuSideBar {
+    background-color: black;
+    color: white;
+    margin-bottom: 5%;
+    margin-top: 25%;
+}
