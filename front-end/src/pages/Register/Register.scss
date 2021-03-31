@@ -1,0 +1,18 @@
+@import '../Login/Login.scss';
+@import '../../assets/scss/variables.scss';
+@import '../../assets/scss/mixins.scss';
+@import '../../assets/scss/reset.scss';
+.inputs {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.register-form {
+  @extend .loginForm;
+  width: 100%;
+  & input, button {
+    z-index: 3;
+  }
+}

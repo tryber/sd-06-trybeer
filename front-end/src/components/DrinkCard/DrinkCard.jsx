@@ -82,7 +82,11 @@ export default function DrinkCard({ product, index, setCartSum }) {
           <div className="btn">
             <button
               type="button"
+<<<<<<< HEAD
               className="minus-button"
+=======
+              className="minus-button golden"
+>>>>>>> 66384363d5147dd019f6ec635ec3336813173fe6
               data-testid={ `${index}-product-minus` }
               //  VOLTAR PRO SUBTRACT ITEM
               onClick={ () => subtractItem(cartItem, setCartItem) }
@@ -94,7 +98,11 @@ export default function DrinkCard({ product, index, setCartSum }) {
             </div>
             <button
               type="button"
+<<<<<<< HEAD
               className="plus-button"
+=======
+              className="plus-button golden"
+>>>>>>> 66384363d5147dd019f6ec635ec3336813173fe6
               data-testid={ `${index}-product-plus` }
               onClick={ () => addItem(cartItem, setCartItem) }
             >

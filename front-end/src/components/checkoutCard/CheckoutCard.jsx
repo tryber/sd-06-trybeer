@@ -1,5 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
+
+import './CheckoutCard.css';
 
 const deleteProduct = (product, changeState) => {
   const storage = JSON.parse(localStorage.getItem('cart'));
@@ -18,26 +22,28 @@ const CheckoutCard = ({ product, changeState, specialNumber }) => {
   const editFullPrice = `R$ ${fullPrice.toString().replace('.', ',')}`;
 
   return (
-    <div>
-      <span data-testid={ `${specialNumber}-product-qtd-input` }>
-        {quantity}
-      </span>
-      <span data-testid={ `${specialNumber}-product-name` }>
-        -
-        {name}
-      </span>
-      <span data-testid={ `${specialNumber}-product-total-value` }>
-        { editFullPrice }
-      </span>
-      <span data-testid={ `${specialNumber}-product-unit-price` }>
-        {`(${editPrice} un)`}
-      </span>
+    <div className="checkout-item">
+      <div className="product-item">
+        <span data-testid={ `${specialNumber}-product-qtd-input` }>
+          {quantity}
+        </span>
+        <span data-testid={ `${specialNumber}-product-name` }>
+          {name}
+        </span>
+        <span data-testid={ `${specialNumber}-product-total-value` }>
+          { editFullPrice }
+        </span>
+        <span data-testid={ `${specialNumber}-product-unit-price` }>
+          {`(${editPrice} un)`}
+        </span>
+      </div>
       <button
         data-testid={ `${specialNumber}-removal-button` }
         type="button"
         onClick={ () => deleteProduct(product, changeState) }
       >
         EXCLUIR
+        <FontAwesomeIcon icon={ faTrash } style={ { marginLeft: '20px' } } />
       </button>
     </div>
   );

@@ -19,7 +19,11 @@
   justify-content: space-around;
   flex-wrap: wrap;
   background: rgb(255, 255, 255);
+<<<<<<< HEAD
   border: 5px groove green;
+=======
+  /* border: 5px groove green; */
+>>>>>>> 66384363d5147dd019f6ec635ec3336813173fe6
   z-index: 2;
 }
 
@@ -29,6 +33,7 @@
   display: flex;
   width: 100vw;
   height: 4rem;
+<<<<<<< HEAD
   background: linear-gradient(rgb(0, 60, 0),rgb(0, 120, 0), rgb(0, 180, 0), rgb(0, 120, 0), rgb(0, 60, 0));
   justify-content: space-around;
   z-index: 10;
@@ -45,4 +50,28 @@
   background: linear-gradient(black, gray, white,gray, black);
   border: 0.2rem ridge;
   text-shadow: 0 2px white;
+=======
+  background-color: #255923;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 10;
+  color: white;
+  font-size: 30px;
+}
+
+.btnCarrinho {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+  position: relative;
+  font-size: 26px;
+  color:white;
+  width: 15%;
+  height: 80%;
+  margin: 0.5rem;
+  background-color: #255923;
+  border: 1px solid;
+  border-radius: 100%;
+>>>>>>> 66384363d5147dd019f6ec635ec3336813173fe6
 }

@@ -50,7 +50,11 @@
   margin-top: 50px;
   width: 100rf;
   height: 100%;
+<<<<<<< HEAD
   color: #111;
+=======
+  color: #255923;
+>>>>>>> 66384363d5147dd019f6ec635ec3336813173fe6
   text-align: center;
   visibility: hidden;
   opacity: 0;
@@ -73,11 +77,18 @@
   padding: 10px 20px;
 }
 .minus-button {
+<<<<<<< HEAD
+=======
+  display: flex;
+  justify-content: center;
+  align-items: center;
+>>>>>>> 66384363d5147dd019f6ec635ec3336813173fe6
   vertical-align: auto;
   width: 4rem;
   height: 4rem;
   border-radius: 100%;
   font-size: 50px;
+<<<<<<< HEAD
   background: linear-gradient(black, gray, white,white, gray, black);
   box-shadow: 0 2px 20px gray;
 }
@@ -97,6 +108,32 @@
 
 .plus-button:hover {
  box-shadow: 0 2px 20px green;
+=======
+  /* background: linear-gradient(black, gray, white,white, gray, black); */
+  box-shadow: 0 2px 20px #F29F05;
+  margin-top: -2.5%;
+}
+
+.minus-button:hover {
+ box-shadow: 0 2px 20px #401713;
+}
+
+.plus-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  /* background: linear-gradient(black, gray, white,white, gray, black); */
+  font-size: 50px;
+  box-shadow: 0 2px 20px #F29F05;
+  margin-top: -2.5%;
+}
+
+.plus-button:hover {
+ box-shadow: 0 2px 20px #401713;
+>>>>>>> 66384363d5147dd019f6ec635ec3336813173fe6
 }
 
 .quantity {
@@ -115,11 +152,19 @@
 
 .name-tag {
   font-size: 1.2rem;
+<<<<<<< HEAD
   color: black;
+=======
+  color: #255923;
+>>>>>>> 66384363d5147dd019f6ec635ec3336813173fe6
   margin-left: 15px;
 }
 
 .price-tag {
   font-size: 1.5rem;
   margin: 0 15px;
+<<<<<<< HEAD
+=======
+  color: #255923;
+>>>>>>> 66384363d5147dd019f6ec635ec3336813173fe6
 }

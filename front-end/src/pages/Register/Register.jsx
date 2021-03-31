@@ -5,7 +5,8 @@ import Button from '../../components/Button/Button';
 import Checkbox from '../../components/checkbox/Checkbox';
 import { register } from '../../services/Users';
 import { validateEmail, validatePassword, validateName } from '../../utils/validations';
-import './Register.css';
+import './Register.scss';
+import logoVerde from '../../assets/logos/logoVerde_limpa.png';
 
 const inputComponents = [
   {
@@ -65,8 +66,12 @@ export default function Register() {
   };
   const inputValues = [name, email, password];
   return (
-    <form className="inputs">
+    <>
+    <div className='overlay' />
+    <form className="inputs register-form">
+    <img src={ logoVerde } width="150px" className="logo" alt="logo" />
       {inputComponents.map((component, index) => (
+        <div className='input-register'>
         <Input
           key={ index }
           title={ component.title }
@@ -76,6 +81,7 @@ export default function Register() {
           value={ inputValues[index] }
           onChange={ setField }
         />
+        </div>
       ))}
       <Checkbox isSeller={ isSeller } setIsSeller={ setIsSeller } />
       <Button
@@ -89,5 +95,6 @@ export default function Register() {
       />
       {fetchEmail && (<div>{fetchEmail}</div>)}
     </form>
+    </>
   );
 }

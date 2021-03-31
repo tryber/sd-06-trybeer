@@ -17,16 +17,18 @@ export default function Orders() {
   }, []);
 
   return (
-    <div>
+    <div className="page-with-menu-admin">
       <Header title="TryBeer" user="admin" />
-      {(sales.length && sales.map((sale, index) => (
-        <AdminOrderCard
-          sale={ sale }
-          key={ sale.id }
-          index={ index }
-        />
-      )))
-      || (<span>Você não possui nenhum pedido :(</span>)}
+      <div className="content-order-admin">
+        {(sales.length && sales.map((sale, index) => (
+          <AdminOrderCard
+            sale={sale}
+            key={sale.id}
+            index={index}
+          />
+        )))
+          || (<span>Você não possui nenhum pedido :(</span>)}
+      </div>
     </div>
   );
 }
