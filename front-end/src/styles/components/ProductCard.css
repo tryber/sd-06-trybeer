@@ -1,0 +1,40 @@
+.productCardContainer {
+  width: 15rem;
+  border: 1px solid black;
+  border-radius: 10px;
+  margin: 10px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.productCardContainer img {
+  height: 10rem;
+}
+
+.productCardContainer p {
+  margin: 4px 0;
+}
+
+@media(max-width: 530px) {
+  .productCardContainer {
+    width: 30rem;
+    height: 27rem;
+    text-align: center;
+  }
+
+  .productCardContainer img {
+    height: 16rem;
+  }
+
+  .productCardContainer p {
+    font-size: 1.7rem;
+  }
+  
+  .quantityContainer p {
+    font-size: 1.8rem;
+    margin: 5px 20px 0;
+  }
+}
+

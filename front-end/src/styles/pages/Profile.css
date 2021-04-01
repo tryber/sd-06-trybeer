@@ -1,0 +1,68 @@
+.userProfileContainer, .adminProfileContainer {
+  width: fit-content;
+  margin: 40px auto;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.adminProfileContainer {
+  height: fit-content;
+  border: 1px solid gray;
+  border-radius: 15px;
+  padding: 20px;
+  text-align: center;
+}
+
+.adminProfileContainer > img {
+  border-radius: 50%;
+}
+
+.adminProfileContainer > h2 {
+  margin-bottom: 30px;
+}
+
+.adminProfileContainer > h3:last-child {
+  margin-top: 20px;
+}
+
+.userProfileContainer > label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.userProfileContainer > label > input {
+  height: 2rem;
+  margin: 10px 0 15px;
+  padding-left: 10px;
+  border-radius: 5px;
+}
+
+.userProfileContainer > button {
+  margin: 10px auto;
+  background-color: darkcyan;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  width: 20vh;
+  height: 3rem;
+  font-size: 1.5rem;
+  transition: background-color 0.2s;
+}
+
+.userProfileContainer > img {
+  border-radius: 50%;
+}
+
+.userProfileContainer > button:hover:not([disabled]) {
+  background-color: rgba(0, 128, 128, 0.7);
+  cursor: pointer;
+}
+
+.userProfileContainer > button:disabled, .userProfileContainer button:disabled:hover {
+  opacity: 0.2;
+  cursor: auto;
+}

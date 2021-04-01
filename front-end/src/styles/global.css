@@ -1,0 +1,55 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, input, button {
+  font: 400 1rem "Inter", sans-serif;
+}
+
+.adminSideBarAdjust {
+  display: flex;
+}
+
+.quantity-btn {
+  filter: invert(29%) sepia(95%) saturate(1633%) hue-rotate(158deg) brightness(91%) contrast(101%);
+  margin: 0 5px;
+  transition: 288ms;
+}
+
+.quantity-btn:hover {
+  filter: invert(90%) sepia(81%) saturate(7322%) hue-rotate(153deg) brightness(103%) contrast(92%);
+  transition: 288ms;
+  width: 38px;
+}
+
+.quantity-btn:focus {
+  outline: none;
+}
+
+.modalContainer {
+  background: rgba(40, 40, 40, 0.8);
+  color: white;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media(max-width: 530px) {
+  .quantity-btn {
+    width: 45px;
+  }
+  .quantity-btn:hover {
+    width: 50px;
+  }
+  .adminSideBarAdjust {
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,91 @@
+.productsPageContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.checkoutBtnContainer {
+  width: 100%;
+  height: 3rem;
+  background-color: white;
+  position: fixed;
+  bottom: 0;
+
+  display: flex;
+  align-items: center;
+  z-index: 10;
+}
+
+.checkoutBtnContainer > button > span {
+  margin-left: 15px;
+}
+
+.checkoutBtn {
+  border: none;
+  background-color: darkcyan;
+  color: white;
+  margin: 0 auto;
+  height: 2.5rem;
+  border-radius: 5px;
+  width: 16rem;
+  font-size: 1.3rem;
+  transition: background-color 0.2s;
+}
+
+.checkoutBtn:hover:not([disabled]) {
+  background-color: rgba(0, 128, 128, 0.7);
+  cursor: pointer;
+}
+
+.checkoutBtn:disabled, .checkoutBtn:disabled:hover {
+  opacity: 0.2;
+  cursor: auto;
+}
+
+.productsContainer {
+  padding-bottom: 50px;
+  
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.quantityContainer {
+  margin-top: 5px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.quantityContainer p {
+  font-size: 1.5rem;
+}
+
+.quantityBtnContainer {
+  text-align: center;
+  width: 40px;
+  height: 40px;
+  margin: 10px;
+}
+
+.pulseOnce {
+  text-align: center;
+  animation: pulseOnce 0.7s;
+  animation-direction: alternate;
+  animation-name: pulseOnce;
+}
+
+@keyframes pulseOnce {
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@media(max-width: 620px) {
+  .quantityContainer p {
+    font-size: 2rem;
+    margin: 5px 20px 0;
+  }
+}

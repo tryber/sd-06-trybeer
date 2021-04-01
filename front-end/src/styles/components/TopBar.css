@@ -1,0 +1,127 @@
+.topTitleContainer {
+  width: 100vw;
+  position: fixed;
+  margin-top: 0;
+  padding: 0 60px;
+  text-align: center;
+  height: 70px;
+  background-color: gray;
+  color: white;
+
+  display: flex;
+  align-items: center;
+  z-index: 10;
+}
+
+.topTitleContainer > h1 {
+  margin: 0 auto;
+}
+
+.topBarMargin {
+  padding-bottom: 70px;
+}
+
+.sideMenuOff {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  z-index: 10;
+}
+
+.sideMenuOn {
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  z-index: 10;
+}
+
+.hamburguerContainer {
+  width: 40px;
+  height: 70px;
+  margin-left: 80px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hamburguerContainer:focus-within {
+  outline: none;
+  border: none;
+}
+
+.hamburguerContainer > button {
+  border: none;
+  background-color: transparent;
+}
+
+.hamburguerContainer > button:focus {
+  outline: none;
+}
+
+.side-menu-container {
+  background-color: gray;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10;
+}
+
+.side-menu-container a {
+  font-size: 1.2rem;
+  text-decoration: none;
+  color: white;
+}
+
+.side-menu-container a > div {
+  background-color: rgb(128, 128, 128, 0.7);
+  border: 1px solid rgb(128, 128, 128, 0.7);
+  border-radius: 5px;
+  margin: 10px 20px;
+  padding: 10px;
+}
+
+.side-menu-container a > div:hover {
+  border: 1px solid white;
+  opacity: 0.5;
+}
+
+.side-menu-container a > button {
+  width: 5rem;
+  height: 2.5rem;
+  border: none;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.side-menu-container a > button:hover {
+  cursor: pointer;
+  background-color: rgb(255, 0, 0, 0.6);
+  color: white;
+  font-weight: 600;
+}
+
+@media(max-width: 620px) {
+  .hamburguerContainer {
+    margin-left: 15px;
+  }
+
+  .topTitleContainer > h1 {
+    font-size: 1.8rem;
+  }
+}
+
+@media(max-width: 530px) {
+  .menuAdmin {
+    height: 10vh;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  .menuAdmin a > div {
+    margin: 10px 0px;
+  }
+}

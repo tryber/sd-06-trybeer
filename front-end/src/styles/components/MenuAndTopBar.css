@@ -1,0 +1,9 @@
+.sideBarAdjust {
+  height: 100vh;
+}
+
+@media(max-width: 530px) {
+  .sideBarAdjust {
+    height: 10vh;
+  }
+}
