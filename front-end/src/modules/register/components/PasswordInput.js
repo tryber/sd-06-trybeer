@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { FaEye } from 'react-icons/fa';
 
 function PasswordInput(setError, setInputValue, inputValue) {
   const [errorLabel, setErrorLabel] = useState(false);
-  const [seePassword, setSeePassword] = useState(true);
+  const [seePassword, setSeePassword] = useState(false);
   const pattern = /^[0-9]{6,}$/;
   const delay = 500;
 
@@ -53,16 +54,16 @@ function PasswordInput(setError, setInputValue, inputValue) {
             onKeyUp={ () => setErrorLabel(false) }
           />
           <button
-            className="w-4 h-4 rounded-full bg-secondary focus:outline-none"
+            className="rounded-md text-primary bg-secondary p-1 flex items-center justify-center focus:outline-none"
             type="button"
             onClick={ () => setSeePassword((prev) => !prev) }
           >
-            <p className="hidden">Icone</p>
+            <FaEye/>
           </button>
         </div>
       </label>
       <p className={ errorLabel ? 'text-xs text-red-500' : 'hidden' }>
-        At least  6 numbers
+        Password should contain at least  6 numbers
       </p>
     </div>
   );

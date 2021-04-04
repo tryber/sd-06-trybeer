@@ -4,7 +4,7 @@ import Gallery from '../components/Gallery';
 
 function Products() {
   return (
-    <PaperContainer>
+    <PaperContainer title="Products">
       <Gallery />
     </PaperContainer>
   );

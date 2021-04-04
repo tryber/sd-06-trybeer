@@ -4,8 +4,7 @@ import CheckoutCard from '../components/CheckoutCard';
 
 function Checkout() {
   return (
-    <PaperContainer>
-      <h1 data-testid="top-title">Checkout</h1>
+    <PaperContainer title="Checkout" testid="top-title">
       <CheckoutCard />
     </PaperContainer>
   );

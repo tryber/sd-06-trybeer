@@ -5,12 +5,12 @@ module.exports = {
     extend: {
       colors: {
         'app-background': '#e5e7eb',
-        primary: '#00caf9',
-        'primary-light': '#6afdff',
-        'primary-dark': '#0099c6',
-        secondary: '#00f98a',
-        'secondary-light': '#6bffbb',
-        'secondary-dark': '#00c55b',
+        primary: '#651fff',
+        'primary-light': '#a255ff',
+        'primary-dark': '#0100ca',
+        secondary: '#ff6f00',
+        'secondary-light': '#ffa040',
+        'secondary-dark': '#c43e00',
       },
       keyframes: {
         'fade-hide': {

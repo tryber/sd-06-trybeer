@@ -3,9 +3,8 @@ import Form from '../components/Form';
 import PaperContainer from '../../../design-system/containers/PaperContainer';
 
 const Login = () => (
-  <div>
-    <PaperContainer>
-      <p>Login</p>
+  <div className="h-screen flex items-center">
+    <PaperContainer title="Login">
       <Form />
     </PaperContainer>
   </div>

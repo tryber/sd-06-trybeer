@@ -3,9 +3,8 @@ import Gallery from '../components/Gallery';
 import PaperContainer from '../../../design-system/containers/PaperContainer';
 
 const OrdersAdmin = () => (
-  <PaperContainer>
+  <PaperContainer title="Orders">
     <p className="hidden" data-testid="top-title">Admin - Pedidos</p>
-    <p>My orders</p>
     <Gallery />
   </PaperContainer>
 );

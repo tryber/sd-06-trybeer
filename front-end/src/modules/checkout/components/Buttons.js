@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import PropTypes from 'prop-types';
 import GlobalContext from '../../../context/Context';
 import RemoveConfirmation from './RemoveConfirmation';
+import { FaPlusCircle, FaMinusCircle } from 'react-icons/fa';
 
 const Buttons = ({ index, item }) => {
   const { name, price, id, photo } = item;
@@ -26,7 +27,7 @@ const Buttons = ({ index, item }) => {
     ));
   }
 
-  // const handleRemoveConfirmation = () => setOpen(true);
+  const handleRemoveConfirmation = () => setOpen(true);
 
   const handleClick = (type) => {
     const operationsIncrements = {
@@ -46,8 +47,8 @@ const Buttons = ({ index, item }) => {
     }
 
     if (cartItems[position].quantity === 1 && type === 'decrement') {
-      // return handleRemoveConfirmation();
-      return handleRemove();
+      return handleRemoveConfirmation();
+      // return handleRemove();
     }
 
     return setCartItems((prev) => (
@@ -71,25 +72,26 @@ const Buttons = ({ index, item }) => {
       />
       <button
         data-testid={ `${index}-product-minus` }
-        className="bg-gray-200 mr-2 w-6 h-6 flex items-center justify-center rounded-full"
+        className="text-secondary mr-2 w-6 h-6 flex items-center justify-center rounded-full"
         type="button"
         name="decrement"
-        onClick={ ({ target }) => handleClick(target.name) }
+        onClick={ () => handleClick('decrement') }
         disabled={ quantity === 0 }
       >
-        -
+        <FaMinusCircle/>
       </button>
       <p data-testid={ `${index}-product-qtd-input` } className="mr-2">
         { quantity }
       </p>
       <button
         data-testid={ `${index}-product-plus` }
-        className="bg-gray-200 mr-2 w-6 h-6 flex items-center justify-center rounded-full"
+        className="text-secondary mr-2 w-6 h-6 flex items-center justify-center
+          focus:outline-none rounded-full"
         type="button"
         name="increment"
-        onClick={ ({ target }) => handleClick(target.name) }
+        onClick={ () => handleClick('increment') }
       >
-        +
+        <FaPlusCircle/>
       </button>
     </div>
   );

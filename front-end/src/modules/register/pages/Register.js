@@ -3,9 +3,8 @@ import Form from '../components/Form';
 import PaperContainer from '../../../design-system/containers/PaperContainer';
 
 const Register = () => (
-  <div>
-    <PaperContainer>
-      <p>Register</p>
+  <div className="h-screen flex items-center">
+    <PaperContainer title="Register">
       <Form />
     </PaperContainer>
   </div>

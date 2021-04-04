@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import GlobalContext from '../../../context/Context';
+import { FaPlusCircle, FaMinusCircle } from 'react-icons/fa';
 
 const Buttons = ({ index, product }) => {
   const { name, price, id, photo } = product;
@@ -56,28 +57,30 @@ const Buttons = ({ index, product }) => {
   };
 
   return (
-    <div className="flex items-center space-x-1">
+    <div className="w-full flex justify-between items-center space-x-1">
       <button
         data-testid={ `${index}-product-minus` }
-        className="bg-gray-200 mr-2 w-6 h-6 flex items-center justify-center rounded-full"
+        className="text-secondary mr-2 w-6 h-6 flex items-center justify-center
+          focus:outline-none rounded-full"
         type="button"
         name="decrement"
-        onClick={ ({ target }) => handleClick(target.name) }
+        onClick={ () => handleClick('decrement') }
         // disabled={ quantity === 0 }
       >
-        -
+        <FaMinusCircle/>
       </button>
       <p data-testid={ `${index}-product-qtd` } className="mr-2">
         { quantity }
       </p>
       <button
         data-testid={ `${index}-product-plus` }
-        className="bg-gray-200 mr-2 w-6 h-6 flex items-center justify-center rounded-full"
+        className="text-secondary mr-2 w-6 h-6 flex items-center justify-center
+          focus:outline-none rounded-full"
         type="button"
         name="increment"
-        onClick={ ({ target }) => handleClick(target.name) }
+        onClick={ () => handleClick('increment') }
       >
-        +
+        <FaPlusCircle/>
       </button>
     </div>
   );

@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import PropTypes from 'prop-types';
 import GlobalContext from '../../../context/Context';
 import RemoveConfirmation from './RemoveConfirmation';
+import { FaTimesCircle } from 'react-icons/fa';
 
 const ButtonRemove = ({ index, item }) => {
   const [open, setOpen] = useState(false);
@@ -18,7 +19,7 @@ const ButtonRemove = ({ index, item }) => {
 
   const quantity = (position === initialValue) ? 0 : cartItems[position].quantity;
 
-  // const handleRemoveConfirmation = () => setOpen(true);
+  const handleRemoveConfirmation = () => setOpen(true);
 
   function handleRemove() {
     return setCartItems((prev) => (
@@ -39,14 +40,14 @@ const ButtonRemove = ({ index, item }) => {
       />
       <button
         data-testid={ `${index}-removal-button` }
-        className="bg-gray-200 mr-2 w-6 h-6 flex items-center justify-center rounded-full"
+        className="text-red-600 mr-2 w-6 h-6 flex items-center justify-center rounded-full"
         type="button"
         name="remove"
-        // onClick={ () => handleRemoveConfirmation() }
-        onClick={ () => handleRemove() }
+        onClick={ () => handleRemoveConfirmation() }
+        // onClick={ () => handleRemove() }
         disabled={ quantity === 0 }
       >
-        X
+        <FaTimesCircle/>
       </button>
     </div>
   );

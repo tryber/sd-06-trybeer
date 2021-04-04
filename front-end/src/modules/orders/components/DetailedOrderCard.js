@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import api from '../../../axios';
 import { update } from '../../../utils';
+import { FaSquare, FaCheckSquare } from 'react-icons/fa';
 
 function DetailedOrderCard(props) {
   const [order, setOrder] = useState();
@@ -38,9 +39,12 @@ function DetailedOrderCard(props) {
       <button
         type="button"
         data-testid="mark-as-delivered-btn"
+        className="bg-secondary p-2 rounded-md my-2 flex items-center
+        justify-center text-white space-x-2"
         onClick={ () => handleClick() }
       >
-        Marcar como entregue
+        <FaSquare/>
+        <p>Marcar como entregue</p>
       </button>
     );
 
@@ -71,42 +75,48 @@ function DetailedOrderCard(props) {
         Total:
         { order ? `R$ ${order.total.replace('.', ',')}` : '' }
       </p>
-      <p data-testid="order-status">
-        { orderStatus === 'pending' ? 'Pendente' : 'Entregue' }
-      </p>
+      <div className="bg-secondary p-2 rounded-md my-2 flex items-center
+          justify-center text-white space-x-2">
+        { orderStatus !== 'pending' && <FaCheckSquare/> }
+        <p data-testid="order-status">
+          { orderStatus === 'pending' ? 'Pendente' : 'Entregue' }
+        </p>
+      </div>
       {
         renderButton()
       }
-      { order && order.products.map((product, index) => (
-        <div
-          key={ index }
-          className="border rounded-md border-primary p-2 flex flex-col items-center"
-        >
-          <div className="w-50 h-50 border-gray-200 border p-2">
-            <img
-              src={ product.photo }
-              className="round-md object-contain
-                w-80 h-80 md:w-48 md:h-48 md:object-scale-down"
-              alt={ product.name }
-            />
-          </div>
-          <div className="flex flex-col">
-            <p data-testid={ `${index}-order-unit-price` }>
-              <strong>{ `(R$ ${product.price.replace('.', ',')})` }</strong>
-            </p>
-            <p data-testid={ `${index}-product-name` }>
-              { product.name }
-            </p>
-            <p data-testid={ `${index}-product-qtd` }>
-              { product.quantity }
-            </p>
-            <p data-testid={ `${index}-product-total-value` }>
-              { `R$ ${(product.price * product.quantity).toFixed(2).replace('.', ',')}` }
-            </p>
-          </div>
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+        { order && order.products.map((product, index) => (
+          <div
+            key={ index }
+            className="border rounded-md border-primary p-2 flex flex-col items-center"
+          >
+            <div className="w-50 h-50 border-gray-200 border p-2">
+              <img
+                src={ product.photo }
+                className="round-md object-contain
+                  w-80 h-80 md:w-48 md:h-48 md:object-scale-down"
+                alt={ product.name }
+              />
+            </div>
+            <div className="flex flex-col">
+              <p data-testid={ `${index}-order-unit-price` }>
+                <strong>{ `(R$ ${product.price.replace('.', ',')})` }</strong>
+              </p>
+              <p data-testid={ `${index}-product-name` }>
+                { product.name }
+              </p>
+              <p data-testid={ `${index}-product-qtd` }>
+                { product.quantity }
+              </p>
+              <p data-testid={ `${index}-product-total-value` }>
+                { `R$ ${(product.price * product.quantity).toFixed(2).replace('.', ',')}` }
+              </p>
+            </div>
 
-        </div>
-      ))}
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

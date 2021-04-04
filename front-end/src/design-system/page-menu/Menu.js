@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import GlobalContext from '../../context/Context';
+import { FaSignOutAlt } from 'react-icons/fa';
 
 function Menu(props) {
   const [menuStatus, setMenuStatus] = useState(false);
@@ -68,7 +69,7 @@ function Menu(props) {
   };
 
   return (
-    <nav className="top-0 left-0 w-full bg-primary md:flex ">
+    <nav className="top-0 left-0 w-full bg-primary md:flex">
       <button
         onClick={ () => handleMenu() }
         type="button"
@@ -86,11 +87,11 @@ function Menu(props) {
           md:justify-end md:px-2` }
       >
         <div
-          style={ {
-            visibility: menuStatus ? 'visible' : 'hidden',
-            width: '100px',
-            height: '100px',
-          } }
+          // style={ {
+          //   visibility: menuStatus ? 'visible' : 'hidden',
+          //   width: '100px',
+          //   height: '100px',
+          // } }
           className={ `${classToTest} h-1 w-1 ${menuStatus ? '' : 'hidden'}` }
         />
         { links.map((link, index) => (
@@ -109,10 +110,11 @@ function Menu(props) {
         <button
           type="button"
           onClick={ () => logout() }
-          className="w-full md:max-w-min text-xl text-center p-5 block hover:bg-white"
+          className="md:max-w-min text-xl text-center p-5 hover:bg-white flex items-center justify-center w-full space-x-2"
           data-testid="side-menu-item-logout"
         >
-          Logout
+          <p>Logout</p>
+          <p className="hidden md:inline-block"><FaSignOutAlt/></p>
           <p className="hidden">Sair</p>
         </button>
       </div>
