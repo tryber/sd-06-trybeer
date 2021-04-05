@@ -20,7 +20,7 @@ const RegisterForm = (props) => {
   } = props;
 
   const onHandleClick = async () => {
-    const role = isChecked ? 'admin' : 'client';
+    const role = isChecked ? 'administrator' : 'client';
     const user = {
       name, email, password, role,
     };
