@@ -46,6 +46,7 @@ const SidebarMenu = () => {
                 type="button"
                 onClick={ () => {
                   eraseLocalStorage();
+                  setVisibility();
                 } }
               >
                 Sair

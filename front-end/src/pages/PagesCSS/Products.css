@@ -1,0 +1,6 @@
+.products-container {
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 5%;
+}

@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import './ComponentsCSS/AddressForm.css';
 
 const AddressForm = (props) => {
   const {
@@ -16,27 +17,36 @@ const AddressForm = (props) => {
   }, [street, number, setIsFormFilled]);
 
   return (
-    <form>
-      <label htmlFor="street">
-        Rua:
-        <input
-          data-testid="checkout-street-input"
-          type="text"
-          name="street"
-          value={ street }
-          onChange={ (e) => setStreet(e.target.value) }
-        />
-      </label>
-      <label htmlFor="street">
-        Número da casa:
-        <input
-          data-testid="checkout-house-number-input"
-          type="text"
-          name="street"
-          value={ number }
-          onChange={ (e) => setNumber(e.target.value) }
-        />
-      </label>
+    <form className="addresForm">
+      <h4>Endereço</h4>
+      <div className="addres-form">
+        <div className="input-form">
+          <label htmlFor="street">
+            Rua:
+            <input
+              data-testid="checkout-street-input"
+              type="text"
+              name="street"
+              value={ street }
+              onChange={ (e) => setStreet(e.target.value) }
+              className="form-control mt-0 y-3 p-4"
+            />
+          </label>
+        </div>
+        <div className="input-form">
+          <label htmlFor="street">
+            Número da casa:
+            <input
+              data-testid="checkout-house-number-input"
+              type="text"
+              name="street"
+              value={ number }
+              onChange={ (e) => setNumber(e.target.value) }
+              className="form-control mt-0 y-3 p-4"
+            />
+          </label>
+        </div>
+      </div>
     </form>
   );
 };

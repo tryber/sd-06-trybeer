@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { verifyEmailAndPassword } from '../utils/verifications';
 import fetchFunctions from '../api/fetchFunctions';
 import TrybeerContext from '../context/TrybeerContext';
+import './PagesCSS/Login.css';
 
 function Login() {
   const history = useHistory();
@@ -35,46 +36,51 @@ function Login() {
   };
 
   return (
-    <div className="login-form">
-      <h1>TRYBEER</h1>
-      <form onSubmit={ handleSignUp }>
-        <p>Email</p>
-        <input
-          type="text"
-          placeholder="email"
-          name="email"
-          value={ email }
-          data-testid="email-input"
-          onChange={ (e) => setEmail(e.target.value) }
-        />
-        <p>Senha</p>
-        <input
-          type="password"
-          placeholder="senha"
-          name="password"
-          value={ password }
-          data-testid="password-input"
-          onChange={ (e) => setPassword(e.target.value) }
-        />
-        <button
-          data-testid="signin-btn"
-          type="submit"
-          disabled={ isDisabled }
-        >
-          Entrar
-        </button>
-      </form>
-      <button
-        data-testid="no-account-btn"
-        type="button"
-        onClick={ handleRegister }
-      >
-        Ainda não tenho conta
-      </button>
-      <p>
-        { isInvalidUser ? 'Invalid entries. Try again.' : '' }
-      </p>
-    </div>
+    <section className="my-container">
+      <div className="my-row">
+        <h1>TryBeer</h1>
+        <h4>Encontre aqui a sua cerveja!</h4>
+        <form onSubmit={ handleSignUp }>
+          <input
+            type="text"
+            placeholder="E-mail"
+            name="email"
+            value={email}
+            data-testid="email-input"
+            className="form-control mt-0 y-3 p-4"
+            onChange={ (e) => setEmail(e.target.value) }
+          />
+          <input
+            type="password"
+            placeholder="Senha"
+            name="password"
+            value={password}
+            data-testid="password-input"
+            className="form-control my-3 p-4"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <button
+            type="submit"
+            data-testid="signin-btn"
+            disabled={ isDisabled }
+            className="btn1 mt-3 mb-0"
+          >
+            Entrar
+                    </button>
+          <button
+            type="button"
+            data-testid="no-account-btn"
+            onClick={ handleRegister }
+            className="btn1 mt-3 mb-5"
+          >
+            Ainda não tenho conta
+                    </button>
+          <p>
+            { isInvalidUser ? 'Invalid entries. Try again.' : '' }
+          </p>
+        </form>
+      </div>
+    </section>
   );
 }
 

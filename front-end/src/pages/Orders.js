@@ -6,7 +6,7 @@ import { TopMenu } from '../components';
 import { verifyToken } from '../utils/verifications';
 import formatedPrice from '../utils/formatedPrice';
 import formatedDate from '../utils/formatedDate';
-import './Orders.css';
+import './PagesCSS/Orders.css';
 
 function Orders({ history }) {
   const [orders, setOrders] = useState([]);
@@ -32,14 +32,15 @@ function Orders({ history }) {
             orders.map(({ id, date_time: saleDate, total_price: totalPrice }, index) => (
               <div
                 key={ id }
-                className="order-card-container"
+                className="panel-orders"
                 data-testid={ `${index}-order-card-container` }
               >
                 <Link
                   to={ { pathname: `/orders/${id}`,
                     state: { id, saleDate, totalPrice } } }
+                    className="link"
                 >
-                  <div className="card-id-date">
+                  <div className="card-id-date title">
                     <div data-testid={ `${index}-order-number` }>
                       {`Pedido ${id}` }
                     </div>

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { TopMenu } from '../components';
 import fetchFunctions from '../api/fetchFunctions';
 import TrybeerContext from '../context/TrybeerContext';
+import './PagesCSS/Profile.css';
 
 function Profile(props) {
   const { user, eraseLocalStorage } = useContext(TrybeerContext);
@@ -44,39 +45,52 @@ function Profile(props) {
       <TopMenu
         titleMenu="Meu perfil"
       />
-      <form method="put">
-        <div className="content-panel">
-          <label htmlFor="name">
-            Name
-            <input
-              data-testid="profile-name-input"
-              type="text"
-              name="name"
-              placeholder="Nome"
-              id="name"
-              onChange={ onChangeName }
-            />
+      <form method="put" className="my-container-profile">
+        <div className="panel-profile">
+          <label htmlFor="name" className="col-lg-20">
+            Nome
+            <div className="">
+              <input
+                data-testid="profile-name-input"
+                type="text"
+                name="name"
+                placeholder="Nome"
+                id="name"
+                onChange={ onChangeName }
+                className="form-control mt-0 y-3 p-4"
+              />
+            </div>
           </label>
-          <label htmlFor="email">
-            Email
-            <input
-              value={ email }
-              readOnly="readonly"
-              data-testid="profile-email-input"
-              type="text"
-              name="email"
-              placeholder="Email"
-              id="email"
-            />
-          </label>
-          <button
-            data-testid="profile-save-btn"
-            type="submit"
-            disabled={ disabled }
-            onClick={ handleSubmit }
-          >
-            Salvar
-          </button>
+          <div className="">
+            <label htmlFor="email">
+              Email
+              <div className="">
+                <input
+                  value={ email }
+                  readOnly="readonly"
+                  data-testid="profile-email-input"
+                  type="text"
+                  name="email"
+                  placeholder="Email"
+                  id="email"
+                  className="form-control mt-0 y-3 p-4"
+                />
+              </div>
+            </label>
+          </div>
+          <div className="form-row">
+            <div className="col-lg-20">
+              <button
+                data-testid="profile-save-btn"
+                type="submit"
+                disabled={ disabled }
+                onClick={ handleSubmit }
+                className="btn1 saveButton"
+              >
+                Salvar
+              </button>
+            </div>
+          </div>
           {
             isUpdated && (<div> Atualização concluída com sucesso </div>)
           }

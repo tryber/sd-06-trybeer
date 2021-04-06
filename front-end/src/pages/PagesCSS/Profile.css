@@ -1,0 +1,38 @@
+.panel-profile {
+  background-color: white ;
+  color: black;
+  margin: 15px;
+  padding: 15px;
+  border-width:thin;
+  border-radius: 20px;
+  box-shadow: 2px 3px 11px 2px rgba(0,0,0,0.89);
+  min-width: 60%;
+}
+
+.my-container-profile {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin-bottom: -50px;
+}
+
+.panel-profile label {
+  width: 100%;
+}
+
+.saveButton {
+  inline-size: 300px;
+  font-size: 15px;
+  cursor: pointer;
+  margin-top: 20px;
+  text-align: center;	
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: rgb(255, 136, 0);
+  border: none;
+  border-radius: 15px;
+  box-shadow: 2px 4px 4px #999;
+}

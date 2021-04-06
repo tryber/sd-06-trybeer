@@ -5,6 +5,7 @@ import { TopMenu } from '../components';
 import { verifyToken } from '../utils/verifications';
 import formatedPrice from '../utils/formatedPrice';
 import TrybeerContext from '../context/TrybeerContext';
+import './PagesCSS/AdminOrders.css';
 
 function AdminOrders({ history }) {
   const [orders, setOrders] = useState([]);
@@ -16,39 +17,46 @@ function AdminOrders({ history }) {
 
   useEffect(() => {
     fetchOrders();
-  }, [setOrders, user]);
+  }, []);
 
   return (
     <div>
       <TopMenu />
-      {
-        orders.map(({
-          id,
-          delivery_address: deliveryAddress,
-          delivery_number: deliveryNumber,
-          total_price: totalPrice,
-          status,
-        }, index) => (
-          <div key={ id }>
-            <Link
-              to={ { pathname: `/admin/orders/${id}`, state: { id } } }
-            >
-              <div data-testid={ `${index}-order-number` }>
-                {`Pedido ${id}` }
+      <div className="content-panel">
+        <div className="container">
+          {
+            orders.map(({
+              id,
+              delivery_address: deliveryAddress,
+              delivery_number: deliveryNumber,
+              total_price: totalPrice,
+              status,
+            }, index) => (
+              <div key={ id } className="panel-orders">
+                <Link
+                  to={ { pathname: `/admin/orders/${id}`, state: { id } } }
+                  className="link"
+                >
+                  <div className="title">
+                    <div data-testid={ `${index}-order-number` }>
+                      {`Pedido ${id}` }
+                    </div>
+                    <div data-testid={ `${index}-order-status` }>
+                      { status }
+                    </div>
+                  </div>
+                  <div data-testid={ `${index}-order-address` }>
+                    { `Endereço: ${deliveryAddress}, ${deliveryNumber}` }
+                  </div>
+                  <div data-testid={ `${index}-order-total-value` }>
+                    { `Total: ${formatedPrice(totalPrice)}` }
+                  </div>
+                </Link>
               </div>
-              <div data-testid={ `${index}-order-address` }>
-                { `${deliveryAddress}, ${deliveryNumber}` }
-              </div>
-              <div data-testid={ `${index}-order-total-value` }>
-                { formatedPrice(totalPrice) }
-              </div>
-              <div data-testid={ `${index}-order-status` }>
-                { status }
-              </div>
-            </Link>
-          </div>
-        ))
-      }
+            ))
+          }
+        </div>
+      </div>
     </div>
   );
 }

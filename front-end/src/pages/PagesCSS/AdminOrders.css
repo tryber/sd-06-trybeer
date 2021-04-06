@@ -1,0 +1,50 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+
+.panel-orders {
+  background-color: white ;
+  color: black;
+  margin: 2%;
+  padding: 3%;
+  border-width:thin;
+  border-radius: 20px;
+  box-shadow: 2px 3px 11px 2px rgba(0,0,0,0.89);
+  width: 80%;
+}
+
+.link {
+  text-decoration: none;
+  color: black;
+}
+
+.title {
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+}
+
+.title-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-bottom: 3%;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.btn-delivery {
+  display: flex;
+  justify-content: space-around;
+}
+
+.btn-cancel {
+  background-color: red;
+}
+
+.btn-scs {
+  background-color: darkgreen;
+}

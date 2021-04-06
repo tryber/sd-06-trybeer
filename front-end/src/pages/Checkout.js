@@ -3,7 +3,10 @@ import { useHistory } from 'react-router-dom';
 import fetchFunctions from '../api/fetchFunctions';
 import TrybeerContext from '../context/TrybeerContext';
 import formatedPrice from '../utils/formatedPrice';
+import { IoBeerOutline } from 'react-icons/io5';
+import { IconContext } from 'react-icons';
 import { ProductListItem, TopMenu, AddressForm } from '../components';
+import './PagesCSS/Checkout.css';
 
 function Checkout() {
   const [street, setStreet] = useState('');
@@ -15,7 +18,7 @@ function Checkout() {
   } = useContext(TrybeerContext);
   const [isFormFilled, setIsFormFilled] = useState(false);
   const TITLE_MENU_CHECKOUT = 'Finalizar Pedido';
-  const TIME_TO_REDIRECT = 3000;
+  const TIME_TO_REDIRECT = 2500;
   const cartHasProducts = cart.length > 0;
 
   useEffect(() => {
@@ -40,12 +43,32 @@ function Checkout() {
     setTimeout(() => history.push('products'), TIME_TO_REDIRECT);
   };
 
+  if(purchaseMade) return (
+    <div>
+      <TopMenu titleMenu={ TITLE_MENU_CHECKOUT } />
+      <div className='checkout-container'>
+        <IconContext.Provider value={ { size: '3em' } }>
+          <IoBeerOutline />
+        </IconContext.Provider>
+        <br />
+        <h4>Compra realizada com sucesso!</h4>
+        <br/>
+      </div>
+      <br/>
+      <div class="d-flex justify-content-center">
+        <div class="spinner-border" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+    </div>
+  )
+
   return (
     <div>
       <TopMenu titleMenu={ TITLE_MENU_CHECKOUT } />
       <br />
       <br />
-      <h2>Produtos</h2>
+      <h3 className="titleProducts">Produtos</h3>
       {cartHasProducts ? cart.map(({ id, name, quantity, price }, index) => (
         <ProductListItem
           key={ index }
@@ -55,8 +78,8 @@ function Checkout() {
           quantity={ quantity }
           price={ price }
         />
-      )) : <h3>Não há produtos no carrinho</h3>}
-      <p data-testid="order-total-value">
+      )) : <h3 className="noProducts">Não há produtos no carrinho</h3>}
+      <p data-testid="order-total-value" className="finalValue">
         Total:
         {formatedPrice(getTotalPriceCart())}
       </p>
@@ -67,12 +90,12 @@ function Checkout() {
         setNumber={ setNumber }
         setIsFormFilled={ setIsFormFilled }
       />
-      <h3>{ purchaseMade ? 'Compra realizada com sucesso!' : ''}</h3>
       <button
         type="button"
         data-testid="checkout-finish-btn"
         disabled={ !(isFormFilled && cartHasProducts) }
         onClick={ handleCheckOut }
+        className="finalBuy"
       >
         Finalizar pedido
       </button>

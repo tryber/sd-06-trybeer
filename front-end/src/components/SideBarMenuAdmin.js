@@ -6,8 +6,7 @@ const SidebarMenuADM = () => {
   const { eraseLocalStorage, setVisibility } = useContext(TrybeerContext);
 
   return (
-    <div className="admin-side-bar-container">
-      <p>TryBeer</p>
+    <div className="side-menu-container">
       <Link to="/admin/orders">
         <button
           data-testid="side-menu-item-orders"
@@ -33,6 +32,7 @@ const SidebarMenuADM = () => {
           type="button"
           onClick={ () => {
             eraseLocalStorage();
+            setVisibility();
           } }
         >
           Sair

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { TopMenu, ProductCard, Cart } from '../components';
 import TrybeerContext from '../context/TrybeerContext';
 import { verifyToken } from '../utils/verifications';
+import './PagesCSS/Products.css';
 
 function Products({ history }) {
   const [products, setProducts] = useState([]);
@@ -19,7 +20,7 @@ function Products({ history }) {
 
   return (
     <div>
-      <TopMenu />
+      <TopMenu titleMenu="TryBeer"/>
       <div className="products-container">
         {products && products.map(({ id, name, price, url_image: urlImage }, index) => (
           <ProductCard

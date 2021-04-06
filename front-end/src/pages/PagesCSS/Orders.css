@@ -1,0 +1,115 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.container-detail {
+  align-items: center;
+  flex-direction: column;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.order-card-container {
+  width: 100%;
+  border: 1px solid white;
+  display: flex;
+  padding: 1%;
+  text-align: center;
+  align-items: center;
+}
+
+.order-card-container:nth-child(odd) {
+  background-color: yellow;
+}
+
+.order-card-container:nth-child(even) {
+  background-color: orange;
+}
+
+
+.order-card-detail-container {
+  width: 100%;
+  border: 1px solid white;
+  display: flex;
+  flex-direction: column;
+  background-color: blue;
+}
+
+
+.card-id-date {
+  color: black;
+  display: flex;
+  justify-content: space-around;
+  padding-top: 3%;
+}
+
+.card-total{
+  color: black;
+  padding-top: 5%;
+  padding-left: 5%;
+}
+
+.panel-orders {
+  background-color: white ;
+  color: black;
+  margin: 2%;
+  padding: 3%;
+  border-width:thin;
+  border-radius: 20px;
+  /* box-shadow: 20px 20px 22px rgb(0, 0, 0); */
+  box-shadow: 2px 3px 11px 2px rgba(0,0,0,0.89);
+  width: 33%;
+}
+
+.panel-orders-detail {
+  background-color: white ;
+  color: black;
+  margin: 2%;
+  padding: 3%;
+  border-width:thin;
+  border-radius: 20px;
+  /* box-shadow: 20px 20px 22px rgb(0, 0, 0); */
+  box-shadow: 2px 3px 11px 2px rgba(0,0,0,0.89);
+  width: 80%;
+}
+.title-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-bottom: 3%;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.title {
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 5%;
+}
+
+.order-total-value {
+  display: flex;
+  justify-content: flex-end;
+  font-weight: bold;
+  margin-top: 5%;
+}
+
+.quantity {
+  width: 10%;
+}
+
+.name {
+  width: 45%;
+}
+
+.price {
+  width: 20%;
+}
+
+.priceTotal {
+  width: 25%;
+}
