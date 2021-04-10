@@ -9,7 +9,7 @@ export default function Home(props) {
   }, [history]);
   return (
     <div>
-      <p>Teste</p>
+      <p>Teste!</p>
     </div>
   );
 }
