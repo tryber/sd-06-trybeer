@@ -70,7 +70,7 @@ export default function Products() {
         updatePrice += product.price * product.quantity;
       });
       setTotalPrice(updatePrice);
-      localStorage.setItem('totalPrice', JSON.stringify(updatePrice));
+      localStorage.setItem('totalPrice', updatePrice.toFixed(2));
     };
     updateTotalPrice();
   }, [products, setTotalPrice]);
