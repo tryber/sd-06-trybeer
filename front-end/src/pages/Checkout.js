@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import ProductsContext from '../context/ProductsContext';
 import Header from '../components/Header';
 import Navbar from '../components/Navbar';
 import {
@@ -10,10 +11,46 @@ import {
 } from '../styles/styles';
 
 export default function Checkout() {
-  const productsInStorage = JSON.parse(localStorage.products);
-  const filteredItens = productsInStorage.filter((product) => product.quantity > 0);
+  const { products, setProducts, setTotalPrice } = useContext(ProductsContext);
+  const [cartList, setCartList] = useState([]);
+  const [address, setAddress] = useState(
+    {
+      street: '',
+      number: '',
+    },
+  );
+  const cartValue = JSON.parse(localStorage.totalPrice);
 
-  const totalPrice = JSON.parse(localStorage.totalPrice);
+  useEffect(() => {
+    function setInitialState() {
+      const productsInStorage = JSON.parse(localStorage.products);
+      setProducts(productsInStorage);
+      const productSelected = productsInStorage.filter((el) => el.quantity > 0);
+      setCartList(productSelected);
+    }
+    setInitialState();
+  }, [setProducts]);
+
+  function excludeItemAndUpdateValue(product) {
+    const itemPrice = product.price * product.quantity;
+    const newPrice = cartValue - itemPrice;
+    localStorage.setItem('totalPrice', JSON.stringify(newPrice));
+    setTotalPrice(newPrice);
+    product.quantity = 0;
+    const cartListInState = [...cartList];
+    const newCartList = cartListInState.filter((el) => el.quantity > 0);
+    const allProducts = [...products];
+    localStorage.setItem('products', JSON.stringify(allProducts));
+    setCartList(newCartList);
+  }
+
+  function handleChange({ target }) {
+    const { name, value } = target;
+    setAddress({ ...address, [name]: value });
+  }
+
+  const { street, number } = address;
+  const activeButton = street.length > 0 && number.length > 0 && cartList.length;
 
   return (
     <section>
@@ -22,7 +59,7 @@ export default function Checkout() {
       <Container>
         <Content>
           {
-            filteredItens.map((product, index) => (
+            cartList.length ? cartList.map((product, index) => (
               <ul key={ index }>
                 <li>
                   <h4
@@ -49,26 +86,36 @@ export default function Checkout() {
                   <button
                     type="button"
                     data-testid={ `${index}-removal-button` }
+                    onClick={ () => excludeItemAndUpdateValue(product) }
                   >
                     X
                   </button>
                 </li>
               </ul>
-            ))
+            )) : <span> Não há produtos no carrinho  </span>
           }
           <h3
             data-testid="order-total-value"
           >
             {/* { `R$ ${(totalPrice).toFixed(2)}` } */}
-            { `${totalPrice
+            { `${cartValue
               .toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}` }
           </h3>
           <form>
             <Label> Rua </Label>
-            <Input data-testid="checkout-street-input" />
+            <Input
+              name="street"
+              data-testid="checkout-street-input"
+              onChange={ handleChange }
+            />
             <Label> Número da casa </Label>
-            <Input data-testid="checkout-house-number-input" />
+            <Input
+              name="number"
+              data-testid="checkout-house-number-input"
+              onChange={ handleChange }
+            />
             <Button
+              disabled={ !activeButton }
               data-testid="checkout-finish-btn"
             >
               Finalizar Pedido

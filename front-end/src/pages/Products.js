@@ -74,6 +74,12 @@ export default function Products() {
     };
     updateTotalPrice();
   }, [products, setTotalPrice]);
+
+  useEffect(() => () => {
+    const itensSelected = products.filter((product) => product.quantity > 0);
+    localStorage.setItem('cartList', JSON.stringify(itensSelected));
+  });
+
   return (
     <div>
       <Header />
