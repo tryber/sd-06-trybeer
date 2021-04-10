@@ -53,3 +53,17 @@ export async function edit(id, name, email) {
     }
   }
 }
+
+export async function registerOrder({ value, date, userID, street, number }) {
+  try {
+    await axios.post('http://localhost:3001/orders', { value, date, userID, street, number });
+  } catch (error) {
+    if (error.response) {
+      return {
+        status: error.response.status,
+        statusText: error.response.statusText,
+        message: error.response.data.message,
+      };
+    }
+  }
+}

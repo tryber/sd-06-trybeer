@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { useHistory } from 'react-router';
 import ProductsContext from '../context/ProductsContext';
 import Header from '../components/Header';
 import Navbar from '../components/Navbar';
@@ -9,9 +10,16 @@ import {
   Label,
   Button,
 } from '../styles/styles';
+import { registerOrder } from '../api/axiosApi';
 
 export default function Checkout() {
-  const { products, setProducts, setTotalPrice } = useContext(ProductsContext);
+  const history = useHistory();
+  const {
+    products,
+    setProducts,
+    totalPrice,
+    setTotalPrice,
+  } = useContext(ProductsContext);
   const [cartList, setCartList] = useState([]);
   const [address, setAddress] = useState(
     {
@@ -19,6 +27,16 @@ export default function Checkout() {
       number: '',
     },
   );
+  const [success, setSuccess] = useState(false);
+
+  useEffect(() => {
+    const localStorageProfile = JSON.parse(localStorage.getItem('user'));
+    console.log(localStorageProfile);
+    if (localStorageProfile === null) {
+      history.push('./login');
+    }
+  }, [history]);
+
   const cartValue = JSON.parse(localStorage.totalPrice);
 
   useEffect(() => {
@@ -52,6 +70,36 @@ export default function Checkout() {
   const { street, number } = address;
   const activeButton = street.length > 0 && number.length > 0 && cartList.length;
 
+  const getDate = new Date();
+  const year = getDate.getFullYear();
+  const month = getDate.getMonth();
+  const day = getDate.getDay();
+  const hour = getDate.getHours();
+  const minutes = getDate.getMinutes();
+  const seconds = getDate.getSeconds();
+  const date = (`${year}/${month}/${day} ${hour}:${minutes}:${seconds}`);
+
+  function clear() {
+    localStorage.setItem('products', []);
+    localStorage.setItem('cartList', []);
+  }
+
+  async function handleCallApi() {
+    const userStorage = JSON.parse(localStorage.user);
+    const TIMEOUT = 2000;
+    const { id } = userStorage;
+    const value = JSON.stringify(totalPrice);
+    const userID = JSON.stringify(id);
+    await registerOrder({ value, date, userID, street, number });
+    setSuccess(true);
+
+    setTimeout(() => {
+      history.push('/products');
+      clear();
+    }, TIMEOUT);
+  }
+
+  console.log(totalPrice);
   return (
     <section>
       <Header />
@@ -94,6 +142,9 @@ export default function Checkout() {
               </ul>
             )) : <span> Não há produtos no carrinho  </span>
           }
+          {
+            success && <span>Compra realizada com sucesso!</span>
+          }
           <h3
             data-testid="order-total-value"
           >
@@ -101,7 +152,7 @@ export default function Checkout() {
             { `${cartValue
               .toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}` }
           </h3>
-          <form>
+          <div>
             <Label> Rua </Label>
             <Input
               name="street"
@@ -117,10 +168,11 @@ export default function Checkout() {
             <Button
               disabled={ !activeButton }
               data-testid="checkout-finish-btn"
+              onClick={ () => handleCallApi() }
             >
               Finalizar Pedido
             </Button>
-          </form>
+          </div>
         </Content>
       </Container>
     </section>
