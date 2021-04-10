@@ -3,6 +3,8 @@ import { useHistory } from 'react-router';
 import ProductsContext from '../context/ProductsContext';
 import Header from '../components/Header';
 import Navbar from '../components/Navbar';
+// import { useHistory } from 'react-router';
+
 import {
   Container,
   Content,
@@ -52,7 +54,7 @@ export default function Checkout() {
   function excludeItemAndUpdateValue(product) {
     const itemPrice = product.price * product.quantity;
     const newPrice = cartValue - itemPrice;
-    localStorage.setItem('totalPrice', JSON.stringify(newPrice));
+    localStorage.setItem('totalPrice', newPrice.toFixed(2));
     setTotalPrice(newPrice);
     product.quantity = 0;
     const cartListInState = [...cartList];
@@ -166,6 +168,7 @@ export default function Checkout() {
               onChange={ handleChange }
             />
             <Button
+              type="button"
               disabled={ !activeButton }
               data-testid="checkout-finish-btn"
               onClick={ () => handleCallApi() }
