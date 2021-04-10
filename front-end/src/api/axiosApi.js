@@ -53,3 +53,17 @@ export async function edit(id, name, email) {
     }
   }
 }
+
+export async function goUpTheSale(
+  { userID, totalPrice, deliveryAddress, deliveryNumber, saleDate },
+) {
+  const registerSale = await axios.post('http://localhost:3001/order', {
+    userID, totalPrice, deliveryAddress, deliveryNumber, saleDate,
+  })
+    .then((resp) => resp)
+    .catch((err) => {
+      console.log(err.response);
+      return err.response;
+    });
+  return registerSale;
+}

@@ -11,6 +11,7 @@ const loginRouter = require('./src/controllers/loginController.js');
 const registerRouter = require('./src/controllers/registerController');
 const productsRouter = require('./src/controllers/productsController.js');
 const profileRouter = require('./src/controllers/profileController');
+const orderRouter = require('./src/controllers/orderController.js');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -32,6 +33,8 @@ app.use('/register', registerRouter);
 app.use('/products', productsRouter);
 
 app.use('/profile', profileRouter);
+
+app.use('/order', orderRouter);
 
 app.use('/images', express.static(`${__dirname}/images`));
 
