@@ -1,13 +1,14 @@
 import styled from 'styled-components';
 
 const DivNavContainer = styled.div`
-  background: linear-gradient(135deg, #ba0c2f 0%, #89011d 100%);
+  background: #89011d;
   height: 100%;
   left: 0;
   overflow-x: hidden;
   position: fixed;
   top: 0;
   transition: 0.5s;
+  width: 25%;
   z-index: 1;
 `;
 

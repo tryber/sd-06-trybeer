@@ -5,7 +5,7 @@ import { DivNavContainer, DivNavContent } from './styled-components';
 import SidebarData from './SidebarData';
 import SidebarAdminData from './SidebarAdminData';
 
-const Navbar = () => {
+const NavbarAdmin = () => {
   const { sidebar, setSidebar } = useContext(UserContext);
   const [data, setData] = useState([]);
   const showSidebar = () => setSidebar(!sidebar);
@@ -16,10 +16,10 @@ const Navbar = () => {
   }, []);
 
   return (
-    <DivNavContainer
-      style={ sidebar ? { width: '100%' } : { width: '0%' } }
-    >
-      <DivNavContent className="side-menu-container">
+    <DivNavContainer admin>
+      <DivNavContent
+        className="admin-side-bar-container"
+      >
         {
           data.map((link, index) => (
             <LinkElement
@@ -36,4 +36,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default NavbarAdmin;
