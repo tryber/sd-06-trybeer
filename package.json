@@ -23,7 +23,10 @@
   },
   "homepage": "https://github.com/betrybe/sd-0x-trybeer#readme",
   "dependencies": {
+    "express-rescue": "^1.1.31",
+    "jsonwebtoken": "^8.5.1",
     "mysql2": "2.1.0",
+    "react-icons": "^4.2.0",
     "sequelize": "6.3.4"
   },
   "devDependencies": {
