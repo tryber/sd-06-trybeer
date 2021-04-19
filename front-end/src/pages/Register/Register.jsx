@@ -67,6 +67,7 @@ export default function Register() {
   return (
     <form className="inputs">
       {inputComponents.map((component, index) => (
+        <div className='input-register'>
         <Input
           key={ index }
           title={ component.title }
@@ -76,6 +77,7 @@ export default function Register() {
           value={ inputValues[index] }
           onChange={ setField }
         />
+        </div>
       ))}
       <Checkbox isSeller={ isSeller } setIsSeller={ setIsSeller } />
       <Button

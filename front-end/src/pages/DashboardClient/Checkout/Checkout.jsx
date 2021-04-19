@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCompass, faCoins } from '@fortawesome/free-solid-svg-icons';
 import Header from '../../../components/Header/Header';
 import Button from '../../../components/Button/Button';
 import { verifyUser } from '../../../store/LocalStorage/actions';
@@ -10,6 +12,8 @@ import CheckoutCard from '../../../components/checkoutCard/CheckoutCard';
 import AddressForm from './AddressForm';
 import { parseCartPrice } from '../../../utils/parseValues';
 import { TWO_THOUSAND, NINETEEN } from '../../../services/magicNumbers';
+
+import './Checkout.css';
 
 const Checkout = (props) => {
   const { location } = props;
@@ -81,43 +85,57 @@ const Checkout = (props) => {
   };
 
   return (
-    <div>
-      {(saleDone)
-        ? (
-          <h1>{saleDone}</h1>
-        )
-        : (
-          <div>
-            <Header title="Finalizar Pedido" user="client" />
-            <h3>Produtos</h3>
-            {
-              (cart.length)
-                ? (
-                  cart.map((product, index) => (
-                    <CheckoutCard
-                      product={ product }
-                      changeState={ changeState }
-                      key={ index }
-                      specialNumber={ index }
-                    />
-                  ))
-                )
-                : (<h2>Não há produtos no carrinho</h2>)
-            }
-            <span data-testid="order-total-value">
-              Total:
-              {mySum}
-            </span>
-            <h3>Endereço</h3>
-            <AddressForm handleChange={ handleChange } />
-            <Button
-              title="Finalizar pedido"
-              isDisabled={ chkButton }
-              testId="checkout-finish-btn"
-              onClick={ () => makeSale() }
-            />
-          </div>
-        )}
+    <div className="checkout-general">
+      <Header title="Finalizar Pedido" user="client" />
+      <div className="checkout-container">
+        <h2 className="products-title">Produtos</h2>
+        {(saleDone)
+          ? (
+            <h1>{saleDone}</h1>
+          )
+          : (
+            <div>
+              {
+                (cart.length)
+                  ? (
+                    cart.map((product, index) => (
+                      <CheckoutCard
+                        product={ product }
+                        changeState={ changeState }
+                        key={ index }
+                        specialNumber={ index }
+                      />
+                    ))
+                  )
+                  : (<h3> Não há produtos no carrinho </h3>)
+              }
+              <span className="span-total" data-testid="order-total-value">
+                <FontAwesomeIcon
+                  icon={ faCoins }
+                  style={ { color: '#F29F05', padding: ' 3px' } }
+                  size="1x"
+                />
+                Total:
+                {mySum}
+              </span>
+              <h3 className="address-title">
+                <FontAwesomeIcon
+                  icon={ faCompass }
+                  style={ { color: '#F29F05', padding: ' 3px' } }
+                  size="1x"
+                />
+                Endereço:
+              </h3>
+              <AddressForm handleChange={ handleChange } />
+              <Button
+                title="Finalizar pedido"
+                isDisabled={ chkButton }
+                testId="checkout-finish-btn"
+                onClick={ () => makeSale() }
+              />
+            </div>
+          )}
+      </div>
     </div>
   );
 };

@@ -5,6 +5,7 @@ import { getAdminSaleDetails, fullfilSale } from '../../../services/Sales';
 import capitalize from '../../../utils/capitalize';
 import { parseCartPrice } from '../../../utils/parseValues';
 import './AdminOrdersDetail.css';
+import totalPrice from './totalPrice.png';
 
 export default function AdminOrdersDetail({ match: { params: { id } } }) {
   const [saleDetails, setSaleDetails] = useState({});
@@ -33,36 +34,45 @@ export default function AdminOrdersDetail({ match: { params: { id } } }) {
 
     <div>
       <Header title="TryBeer" user="admin" />
+      <div className="sale-details">
       {saleProducts && (
         <>
-          <h1>
-            <span data-testid="order-number">
+          <div className="title-div-admin">
+            <h2 data-testid="order-number">
               {`Pedido ${id}`}
-            </span>
-            <span data-testid="order-status">{sale && capitalize(sale.status)}</span>
-          </h1>
-          <div className="sale-details">
-            <ul>
+            </h2>
+            <h2 
+            data-testid="order-status"
+            className={
+              `itemStatus ${sale.status === 'pendente' ? 'itemPending-admin' : 'itemDelivered-admin'}`
+            }
+            >
+              {sale && capitalize(sale.status)}
+            </h2>
+          </div>
+          <div >
               {saleProducts.map(({ quantity, name, price }, index) => (
-                <li key={ index }>
-                  <p data-testid={ `${index}-product-qtd` }>
+                <div key={ index } className="detalhes-admin">
+                  <p className="quantity-admin" data-testid={ `${index}-product-qtd` }>
                     {quantity}
                   </p>
-                  <p data-testid={ `${index}-product-name` }>
+                  <p className="name-admin" data-testid={ `${index}-product-name` }>
                     {name}
                   </p>
-                  <p data-testid={ `${index}-order-unit-price` }>
+                  <p className="unit-admin"data-testid={ `${index}-order-unit-price` }>
                     {`(${parseCartPrice(price)})`}
                   </p>
-                  <p data-testid={ `${index}-product-total-value` }>
+                  <p className="total-admin" data-testid={ `${index}-product-total-value` }>
                     {parseCartPrice(price * quantity)}
                   </p>
-                </li>
+                </div>
               ))}
-            </ul>
+              <div className="price-admin">
+              <img className="total-price-admin" src={ totalPrice } alt="conta final" />
             <h2 data-testid="order-total-value">
               {sale && parseCartPrice(sale.total_price)}
             </h2>
+            </div>
           </div>
           {sale && sale.status === 'pendente' && (
             <button
@@ -75,6 +85,7 @@ export default function AdminOrdersDetail({ match: { params: { id } } }) {
           )}
         </>
       )}
+      </div>
     </div>
   );
 }
