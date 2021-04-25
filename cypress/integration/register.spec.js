@@ -21,8 +21,8 @@ describe('Crie uma página de registro de usuários', () => {
     dropAndTruncateDataBase();
   })
 
-  beforeEach(() => {
-    cy.visit(`${Cypress.config().baseUrl}/login`);
+  beforeEach( () => {
+    cy.visit(Cypress.config().baseUrl);
     clickButton('[data-testid="no-account-btn"]');
   });
 
