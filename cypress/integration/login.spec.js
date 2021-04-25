@@ -11,13 +11,13 @@ import {
 } from '../actions/actionBase';
   
 describe('Crie uma página de login', () => {
-  before(() => {
-    createAndInsertsDataBase();
-  });
+  // before(() => {
+  //   createAndInsertsDataBase();
+  // });
 
-  after(() => {
-    dropAndTruncateDataBase();
-  });
+  // after(() => {
+  //   dropAndTruncateDataBase();
+  // });
 
   beforeEach(() => {
     cy.visit(`${Cypress.config().baseUrl}/login`);
