@@ -13,9 +13,12 @@ const getOrder = async (userId) => {
 
 const getDetailOrder = async (saleId) => {
   try {
-    const [product] = await connection
-    .execute('SELECT sale_id, product_id, quantity FROM sales_products WHERE sale_id=?', [saleId]);
-    
+    const [product] = await connection.execute(
+      'SELECT * FROM sales_products LEFT JOIN products ON products.id = sales_products'
+        + '.product_id WHERE sale_id=?',
+      [saleId],
+      );
+    console.log(product);
     return product;
   } catch (e) {
     return 'erro interno';
