@@ -3,16 +3,6 @@ import { fireEvent } from '@testing-library/react';
 import renderWithRouter from './RenderWithRouter';
 import App from '../App';
 
-
-
-// 3 steps for mock with React and Jest using axios
-// 1º Import dependencies
-// import axios from 'axios';
-// 2º Mock the dependency
-// jest.mock('axios);
-// 3º Fake the function outputs
-// axios.get.mockResolvedValue({data: fakeOutput})
-
 describe('1 - Teste tela de Login.', () => {
   it('Será testado que a página de Login é renderizada.', () => {
     // Acessar elemnetos da tela
@@ -115,21 +105,4 @@ describe('1 - Teste tela de Login.', () => {
 
     expect(buttonEntrar).toBeEnabled();
   });
-
-  // it('Será testado que é gerado um Token ao clicar no button Entrar', async () => {
-  //   const { getByTestId, history } = renderWithRouter (<App />);
-
-  //   const emailInput = getByTestId('email-input');
-  //   const passwordInput = getByTestId('password-input');
-  //   const buttonEntrar = getByTestId('signin-btn');
-
-  //   fireEvent.change(emailInput, { target: { value: 'user@test.com' } });
-  //   fireEvent.change(passwordInput, { target: { value: 'test123' } });
-  //   fireEvent.click(buttonEntrar);
-
-  //   const { pathname } = history.location;
-
-  //   expect(pathname).toBe('/products');
-  //   // expect(fakeAxios.post).toHaveBeenCalledTimes(1);
-  // });
 });

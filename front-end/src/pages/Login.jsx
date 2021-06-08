@@ -13,7 +13,6 @@ export default function Login() {
   const handleOnClick = () => {
     fetches.fetchUserByEmail(email, password)
       .then((response) => {
-        // console.log('my response', response);
         if (!response) return;
         window.localStorage.setItem('token', response[1]);
         if (response[0].role === 'client') history.push('/products');

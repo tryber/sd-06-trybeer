@@ -12,8 +12,12 @@ export default function Products() {
 
   useEffect(() => {
     const fetch = async () => {
-      const allProducts = await fetches.fetchAllProducts();
-      setProducts(allProducts.data);
+      try {
+        const allProducts = await fetches.fetchAllProducts();
+        setProducts(allProducts.data);
+      } catch (error) {
+        console.log(error);
+      }
     };
     fetch();
     // eslint-disable-next-line react-hooks/exhaustive-deps
