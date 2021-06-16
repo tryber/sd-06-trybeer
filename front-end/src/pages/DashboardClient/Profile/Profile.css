@@ -2,12 +2,13 @@
 .logo-perfil {
   width: 25%;
   padding-left: 38%;
-  padding-top: 5%;
+  padding-top: 10%;
   padding-bottom: 4%;
 }
 
 .logo-name {
   width: 13%;
+  height: 10%;
   padding-left: 2%;
   padding-top: 2%;
 }
@@ -15,7 +16,7 @@
 .div-input {
   display: flex;
   flex-direction: row;
-  padding-left: 4%;
+  /* padding-left: 2%; */
 }
 
 .input-profile {

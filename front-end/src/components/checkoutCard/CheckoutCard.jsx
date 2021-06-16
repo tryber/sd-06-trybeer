@@ -25,7 +25,7 @@ const CheckoutCard = ({ product, changeState, specialNumber }) => {
     <div className="checkout-item">
       <div className="product-item">
         <span data-testid={ `${specialNumber}-product-qtd-input` }>
-          {quantity}
+          {`${quantity} - `}
         </span>
         <span data-testid={ `${specialNumber}-product-name` }>
           {name}

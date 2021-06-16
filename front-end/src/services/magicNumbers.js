@@ -1,7 +1,7 @@
-const TWO_THOUSAND = 2000;
+const CHECKOUT_CONFIRM_TIME = 4000;
 const NINETEEN = 19;
 
 module.exports = {
-  TWO_THOUSAND,
+  CHECKOUT_CONFIRM_TIME,
   NINETEEN,
 };

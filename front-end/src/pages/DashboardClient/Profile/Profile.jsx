@@ -43,7 +43,7 @@ export default function Profile() {
 
   const buttonClickPayload = { userName, userEmail, setUserNameInStorage, setIsUpdated };
   return (
-    <div>
+    <div className="page-with-menu">
       <Header title="Meu perfil" user="client" />
       <img className="logo-perfil" src={profileIcon} alt='logo perfil' />
       <form>

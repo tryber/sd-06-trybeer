@@ -2,6 +2,7 @@
 @import '../../assets/scss/variables.scss';
 @import '../../assets/scss/mixins.scss';
 @import '../../assets/scss/reset.scss';
+
 .inputs {
   display: flex;
   flex-direction: column;
@@ -12,7 +13,17 @@
 .register-form {
   @extend .loginForm;
   width: 100%;
-  & input, button {
+
+  & input, button, .input-register, label {
     z-index: 3;
+  }
+
+  label {
+    font-size: calc(10px + 0.6vw);
+    font-weight: bold;
+    color: #D9B573;
+    @include flexBox(row);
+
+
   }
 }

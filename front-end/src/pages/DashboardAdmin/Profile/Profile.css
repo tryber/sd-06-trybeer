@@ -1,19 +1,32 @@
-.container {
-  width: 100vw;
-  height: 100vh;
+/* .container {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-}
+} */
 
 .perfil {
+  font-size: 2em;
   display: flex;
-  width: 100vw;
-  justify-content: center;
-  font-size: 36px;
+  flex-direction: row;
 }
 
-.dados {
+/* .dados {
   margin: 0 2rem;
   font-size: 26px
+} */
+
+.allContent {
+  padding-left: 20%;
+  padding-top: 5%;
+  color: #255923;
+}
+
+.logo-perfil-admin {
+  width: 150%;
+  padding-left: 55%;
+}
+
+.admin-title {
+  padding-top: 5%;
+  padding-left: 5%;
 }
